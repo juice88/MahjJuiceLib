@@ -1,0 +1,13 @@
+# folder ignore
+
+
+.settings/
+bin/
+
+
+#file ignore
+
+.actionScriptProperties
+.flexLibProperties
+.fxpProperties
+.project
