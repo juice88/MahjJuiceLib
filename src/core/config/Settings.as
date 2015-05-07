@@ -23,8 +23,8 @@ package core.config
 		public static const SCORE_BONUS:uint = 200; ////кількість очків, яка нараховується при виборі бонуса з очками
 		
 		//налаштування розмірів заднього напівпрозорого фону для попапів
-		public static const BACKGROUND_RECT_HEIGHT:int = 555;
-		public static const BACKGROUND_RECT_WIDTH:int = 640;
+		public static var BACKGROUND_RECT_HEIGHT:int;
+		public static var BACKGROUND_RECT_WIDTH:int;
 		
 	}
 }

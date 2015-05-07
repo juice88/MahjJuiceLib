@@ -1,6 +1,7 @@
 package core.controller.commands
 {
 	import core.config.GeneralNotifications;
+	import core.config.Settings;
 	import core.counters.controller.commands.NumberOfMovesSendCommand;
 	import core.counters.controller.commands.SetPlayerScoreCommand;
 	import core.levelsConfig.controller.commands.SetLevelConfigCommand;
@@ -43,6 +44,8 @@ package core.controller.commands
 	{
 		override public function execute(notification:INotification):void{
 			var rootSprite:Sprite = notification.getBody() as Sprite;
+			Settings.BACKGROUND_RECT_HEIGHT = rootSprite.stage.stageHeight;
+			Settings.BACKGROUND_RECT_WIDTH = rootSprite.stage.stageWidth;
 			registerCommand();
 			facade.registerMediator(new RootMediator(rootSprite));
 			sendNotification(GeneralNotifications.LOAD_URL_REQUEST);

@@ -4,6 +4,7 @@ package core.view.mediator
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.display.Stage;
 	import flash.display.StageDisplayState;
 	
 	import org.puremvc.as3.interfaces.INotification;
