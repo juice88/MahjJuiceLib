@@ -21,6 +21,7 @@ package lobby.highScore.view.mediator
 		{
 			sendNotification(GeneralNotifications.HIGH_SCORE_UPDATE);
 		}
+		
 		private function get highScoreVL():HighScorePanelVL
 		{
 			return viewLogic as HighScorePanelVL;

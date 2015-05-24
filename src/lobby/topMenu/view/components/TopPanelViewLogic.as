@@ -18,6 +18,7 @@ package lobby.topMenu.view.components
 		private var _pauseBtn:SimpleButton;
 		private var _movesTf:TextField;
 		private var _scoreTf:TextField;
+		private var _lvlsTf:TextField;
 		
 		public function TopPanelViewLogic()
 		{
@@ -77,6 +78,19 @@ package lobby.topMenu.view.components
 		{
 			_scoreTf = topPanel.scoreTf.scoreTf;
 			_scoreTf.text = String(scoreValue);
+		}
+		
+		public function lvlsCountUpdate(lvlsNum:int, totalLvlsNum:String):void
+		{
+			_lvlsTf = topPanel.lvlsTf;
+			if (lvlsNum!=0)
+			{
+				_lvlsTf.text = String(lvlsNum)+"/"+totalLvlsNum;
+			}
+			else
+			{
+				_lvlsTf.text = String(totalLvlsNum)+"/"+totalLvlsNum;
+			}
 		}
 	}
 }

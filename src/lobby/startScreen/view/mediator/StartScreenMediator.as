@@ -30,6 +30,7 @@ package lobby.startScreen.view.mediator
 			startScreen.addEventListener(GeneralEventsConst.START_NEW_GAME, onStartGameHand);
 			startScreen.addEventListener(GeneralEventsConst.CONTINUE_GAME, onContinueGameHand);
 			startScreen.addEventListener(GeneralEventsConst.SHOW_SETTINGS_PANEL, onShowSettingsPanelHand);
+			startScreen.addEventListener(GeneralEventsConst.CHOISE_OF_LEVEL, onChoiseOfLevelHand);
 		}
 		
 		override public function onRemoveListeners():void
@@ -52,7 +53,12 @@ package lobby.startScreen.view.mediator
 		protected function onShowSettingsPanelHand(event:Event):void
 		{
 			sendNotification(GeneralNotifications.SETTINGS_PANEL_OPEN);
-		}		
+		}
+		
+		protected function onChoiseOfLevelHand(event:Event):void
+		{
+			sendNotification(GeneralNotifications.CHOISE_OF_LEVEL);			
+		}
 		
 		override public function listNotificationInterests():Array
 		{

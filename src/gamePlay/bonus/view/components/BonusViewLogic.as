@@ -32,6 +32,7 @@ package gamePlay.bonus.view.components
 				
 		public function startBonusLevel(elemBonusDto:Vector.<ElemBonusDto>):void
 		{
+			addBackground();
 			_bonusElemList = new Vector.<ElemBonusDto>;
 			_bonusElemList = elemBonusDto;
 			
@@ -46,7 +47,6 @@ package gamePlay.bonus.view.components
 		
 		protected function onClickToBonusElemHald(event:MouseEvent):void
 		{
-			addBackground();
 			var bonusClip:MovieClip = (event.currentTarget as MovieClip);
 			var neededDto:ElemBonusDto = getDtoByContent(bonusClip);
 			removeLisenersElem();
@@ -74,6 +74,7 @@ package gamePlay.bonus.view.components
 			}
 			return null;
 		}
+		
 		private function addBackground():void
 		{
 			var graf:Graphics = bonusVL.graphics;

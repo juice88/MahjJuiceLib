@@ -8,6 +8,7 @@ package core.config
 		public static const BONUS_POPUP_SHOW:String = "bonus_popup_show";
 		public static const BONUS_READE_TO_DRAW:String = "bonus_reade_to_draw"; //нотіф про готовність нарисування елементів бонусів (відсилається з проксі послідовність кадрів)
 		public static const BONUS_RESULT_OF_CHOISE:String = "bonus_result_of_choise"; //нотіф з результатом вибору нонуса в скор проксі
+		public static const CHOISE_OF_LEVEL:String = "choise_of_level";
 		public static const CONTINUE_BTN_IS_VISIBLE:String = "continue_btn_is_visible"; //нотіф, про те, щоб зробити видимою кнопку continue game
 		public static const CONTINUE_GAME:String = "continue_game";
 		public static const DIALOG_CLOSE:String = "dialog_close"; //нотіф про закривання діалога (відсилається з onRemove DialogMediator)
@@ -19,6 +20,9 @@ package core.config
 		public static const GAME_OVER_CLOSE_POPUP:String = "game_over_close_popup";
 		public static const HIGH_SCORE_SEND:String = "high_score_send";
 		public static const HIGH_SCORE_UPDATE:String = "high_score_update";
+		public static const LEVELS_MAP_CHOISE:String = "levels_map_choise";
+		public static const LEVELS_MAP_CLOSE:String = "levels_map_close";
+		public static const LEVELS_MAP_SHOW:String = "levels_map_show";
 		public static const LIFES_COUNTER_UPDATED:String = "lifes_counter_updated";
 		public static const LOAD_URL_REQUEST:String = "load_url_request";
 		public static const MOVES_COUTNER_UPDATED:String = "moves_coutner_updated"; //нотіф з проксі про те що лічильник обновився... (має нове значення)

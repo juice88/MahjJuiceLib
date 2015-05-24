@@ -29,6 +29,12 @@ package lobby.enterName.view.mediator
 			enterName.addEventListener(GeneralEventsConst.SET_PLAYER_NAME, onSetPlayerName);
 		}
 		
+		override public function onRemoveListeners():void
+		{
+			enterName.removeEventListener(GeneralEventsConst.ENTER_NAME_POPUP_CLOSE, onCloseEnterNamePopupHand);
+			enterName.removeEventListener(GeneralEventsConst.SET_PLAYER_NAME, onSetPlayerName);
+		}
+		
 		protected function onSetPlayerName(event:GameEvent):void
 		{
 			sendNotification(GeneralNotifications.REMOVE_MEDIATOR, NAME);

@@ -73,11 +73,11 @@ package core.levelsConfig.model.proxy
 			configDto.scoreMoreSel = parseInt(xmlObj.scoreMoreSel.text(), 10);
 			configDto.numSelForScoreMoreSel = parseInt(xmlObj.numSelForScoreMoreSel.text(), 10);
 			sendNotification(GeneralNotifications.SET_LEVEL_CONFIG, configDto);
-			sendNotification(GeneralNotifications.SET_NUM_LEVEL, configDto.levelNum);
 			if (configDto.levelNum == configDto.configXml.children().length())
 			{
 				configDto.levelNum = 0;
 			}
+			sendNotification(GeneralNotifications.SET_NUM_LEVEL, configDto.levelNum, configDto.configXml.children().length().toString());
 			trace("Кількість левелів у грі", configDto.configXml.children().length());
 		}
 		
@@ -86,9 +86,16 @@ package core.levelsConfig.model.proxy
 			configDto.levelNum++;
 		}
 		
-		public function setLevelNum(contGameDto:ContinGameConfDto):void
+		public function setLevelNum(contGameDto:ContinGameConfDto=null, lvlNum:String=null):void
 		{
-			configDto.levelNum = contGameDto.numLvl + 1; // додається на 1 левел більше, адже numLevel це поточний левел, який пройшов гравець
+			if(contGameDto!=null)
+			{
+				configDto.levelNum = contGameDto.numLvl + 1; // додається на 1 левел більше, адже numLevel це поточний левел, який пройшов гравець
+			}
+			else if (lvlNum!=null)
+			{
+				configDto.levelNum = parseInt(lvlNum);
+			}
 		}
 	}
 }

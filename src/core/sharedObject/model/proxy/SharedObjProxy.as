@@ -1,8 +1,8 @@
 package core.sharedObject.model.proxy
 {
+	import core.config.GeneralNotifications;
 	import core.sharedObject.model.dto.ContinGameConfDto;
 	import core.sharedObject.model.dto.SharedObjDto;
-	import core.config.GeneralNotifications;
 	
 	import flash.display.MovieClip;
 	import flash.net.SharedObject;
@@ -115,6 +115,17 @@ package core.sharedObject.model.proxy
 			var arrData:Array = getUserNameAndScoreList();
 			sendNotification(GeneralNotifications.HIGH_SCORE_SEND, arrData);
 		}
+		
+		public function detFinishedLvlNum():int
+		{
+			return sharedDto.sharedObject.data[sharedDto.userName].numLvl;
+		}
+		
+		public function getScoreForChoiseLvl():int
+		{
+			return sharedDto.sharedObject.data[sharedDto.userName].score;
+		}
+			
 	}
 }
 

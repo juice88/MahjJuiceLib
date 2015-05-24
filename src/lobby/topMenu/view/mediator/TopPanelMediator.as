@@ -2,13 +2,13 @@ package lobby.topMenu.view.mediator
 {
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
+	import core.view.mediator.UIMediator;
 	
 	import flash.events.Event;
 	
-	import org.puremvc.as3.interfaces.INotification;
-	
 	import lobby.topMenu.view.components.TopPanelViewLogic;
-	import core.view.mediator.UIMediator;
+	
+	import org.puremvc.as3.interfaces.INotification;
 
 	public class TopPanelMediator extends UIMediator
 	{
@@ -55,7 +55,8 @@ package lobby.topMenu.view.mediator
 		}
 		override public function listNotificationInterests():Array{
 			return [GeneralNotifications.MOVES_COUTNER_UPDATED,
-					GeneralNotifications.SCORE_COUTNER_UPDATED];
+					GeneralNotifications.SCORE_COUTNER_UPDATED,
+					GeneralNotifications.SET_NUM_LEVEL];
 		}
 		override public function handleNotification(notification:INotification):void
 		{
@@ -67,6 +68,8 @@ package lobby.topMenu.view.mediator
 				case GeneralNotifications.SCORE_COUTNER_UPDATED:
 					topPanel.scoreCounterUpdate(notification.getBody() as uint);
 					break;
+				case GeneralNotifications.SET_NUM_LEVEL:
+					topPanel.lvlsCountUpdate(notification.getBody() as int, notification.getType());
 			}
 		}
 	}

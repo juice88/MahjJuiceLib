@@ -50,7 +50,7 @@ package gamePlay.level1.view.components
 		
 		public function readyToDraw(value:Vector.<ElementDto>):void
 		{
-			var _Elem:Class = Warehouse.getInstance().getAssetClass(_elemName);
+			var Elem:Class = Warehouse.getInstance().getAssetClass(_elemName);
 			_openElemList = new Vector.<MovieClip>; // вектор, що містить список відкритих елементів
 			_allElemList = new Vector.<MovieClip>; // вектор усіх елементів
 			_restElement = new Vector.<MovieClip>; // вектор елементів, що ще не відкриті та залишаються на сцені
@@ -58,8 +58,8 @@ package gamePlay.level1.view.components
 			_vectorElementDto = value;
 			for (var i:uint = 0; i<value.length; i++)
 			{
-				value[i].element = new _Elem();
-				_allElemList.push(value[i].element); // додаємо до вестора clipsList MovieClip-и витягнуті з вектора ElementDto
+				value[i].element = new Elem();
+				_allElemList.push(value[i].element); // додаємо до вектора clipsList MovieClip-и витягнуті з вектора ElementDto
 				_restElement.push(value[i].element);
 				value[i].element.gotoAndStop(value[i].kadr);
 				((level1Content[_shablon+i]) as MovieClip).addChild(value[i].element);
@@ -94,6 +94,7 @@ package gamePlay.level1.view.components
 				_restElement.splice(availableElem, 1, null); //видаляємо елемент(який було видалено зі сцени) з вектора MovieClip по індексу, 1 - кількість видалених елементів після елемента з індексом, null - ставиться в масив замість видалених елементів... (без налл не видаляються елементи зі сценни в методі replayLevel)
 			}
 		}
+		
 		public function setScorAnim(scoreValue:int):void
 		{
 			_movesScoreVal = scoreValue;

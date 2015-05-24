@@ -27,10 +27,14 @@ package core.controller.commands
 	import lobby.gameOver.controller.commands.GameOverCommand;
 	import lobby.highScore.controller.commands.HighScoreUpdateCommand;
 	import lobby.highScore.controller.commands.SetNameLevelAndScoreInSOCommand;
+	import lobby.levelsMap.controller.commands.LevelsMapChoiseCommand;
+	import lobby.levelsMap.controller.commands.LevelsMapCloseCommand;
+	import lobby.levelsMap.controller.commands.LevelsMapShowCommand;
 	import lobby.pause.controller.commands.PauseCommand;
 	import lobby.pause.controller.commands.PauseContinueGameCommand;
 	import lobby.pause.controller.commands.StartTimerCommand;
 	import lobby.settings.controller.commands.SettingsPanelOpenCommand;
+	import lobby.startScreen.controller.commands.ChoiseOfLevelCommand;
 	import lobby.startScreen.controller.commands.ContinueGameCommand;
 	import lobby.startScreen.controller.commands.StartGameCommand;
 	import lobby.topMenu.controller.commands.BackToMenuCommand;
@@ -57,6 +61,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.BONUS_LEVEL_LOAD, BonusLevelLoadCommand);
 			facade.registerCommand(GeneralNotifications.BONUS_RESULT_OF_CHOISE, BonusResultOfChoiseCommand);
 			facade.registerCommand(GeneralNotifications.BONUS_POPUP_SHOW, BonusPopupShowCommand);
+			facade.registerCommand(GeneralNotifications.CHOISE_OF_LEVEL, ChoiseOfLevelCommand);
 			facade.registerCommand(GeneralNotifications.CONTINUE_GAME, ContinueGameCommand);
 			facade.registerCommand(GeneralNotifications.DIALOG_CLOSE, DialogCloseCommand);
 			facade.registerCommand(GeneralNotifications.DIALOG_LOAD_TO_QUEUE, DialogLoadToQueueCommand);
@@ -65,6 +70,9 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.GAME_OVER, GameOverCommand);
 			facade.registerCommand(GeneralNotifications.GAME_OVER_CLOSE_POPUP, GameOverClosePopupCommand);
 			facade.registerCommand(GeneralNotifications.HIGH_SCORE_UPDATE, HighScoreUpdateCommand);
+			facade.registerCommand(GeneralNotifications.LEVELS_MAP_CHOISE, LevelsMapChoiseCommand);
+			facade.registerCommand(GeneralNotifications.LEVELS_MAP_CLOSE, LevelsMapCloseCommand);
+			facade.registerCommand(GeneralNotifications.LEVELS_MAP_SHOW, LevelsMapShowCommand);
 			facade.registerCommand(GeneralNotifications.LOAD_URL_REQUEST, LoadUrlRequestCommand);
 			facade.registerCommand(GeneralNotifications.NEXT_LEVEL, NextLevelCommand);
 			facade.registerCommand(GeneralNotifications.NUMBER_OF_MOVES, NumberOfMovesSendCommand);

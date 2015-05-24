@@ -1,15 +1,22 @@
 package core.config
 {
+	import flash.events.Event;
+
 	public class GeneralEventsConst
 	{
 		public static const ALL_ELEMENTS_DRAWED:String = "AllElementsDrawed";
 		public static const BONUS_LEVEL_START:String = "BonusLevelStart";
 		public static const BONUS_RESULT_OF_CHOISE:String = "ResultOfChoiseBonus";
+		public static const CHOISE_OF_LEVEL:String = "ChoiseOfLevel";
 		public static const CONTINUE_GAME:String = "ContinueGame"; //при натиснені кнопки на стартСкріні Continue game
 		public static const GO_TO_MENU:String = "GoToMenu";
 		public static const END_TURN:String = "EndTurn";
 		public static const ENTER_NAME_POPUP_CLOSE:String = "EnterNamePopupClose";
  		public static const FULL_SCREEN:String = "FullScreen";
+		public static const LEVELS_CATEGORY_POPUP_CLOSE:String = "LevelsCategoryPopupClose";
+		public static const LEVELS_MAP_CHOISE:String = "LevelsMapChoise";
+		public static const LEVELS_MAP_CLOSE:String = "LevelsMapClose";
+		public static const LEVELS_MAP_SHOW:String = "LevelsMapShow";
 		public static const MUTE:String = "Mute";
 		public static const NEXT_LEVEL:String = "NextLevel";
 		public static const OPENED_ELEMENT:String = "OpenedElement";

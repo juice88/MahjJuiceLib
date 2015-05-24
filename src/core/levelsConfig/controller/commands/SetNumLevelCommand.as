@@ -11,8 +11,7 @@ package core.levelsConfig.controller.commands
 	{
 		override public function execute(notification:INotification):void
 		{
-		(facade.retrieveProxy(HighScoreProxy.NAME) as HighScoreProxy).setNumLevel(notification.getBody() as int);
-		//	(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelNum(notification.getBody() as int);
+			(facade.retrieveProxy(HighScoreProxy.NAME) as HighScoreProxy).setNumLevel(notification.getBody() as int);
 		}
 	}
 }
