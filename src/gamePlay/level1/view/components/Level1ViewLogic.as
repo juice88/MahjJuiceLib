@@ -1,5 +1,10 @@
 package gamePlay.level1.view.components
 {
+	import com.greensock.TweenLite;
+	import com.greensock.TweenMax;
+	import com.greensock.easing.Back;
+	import com.greensock.easing.Circ;
+	
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
 	import core.levelsConfig.model.dto.ConfigDto;
@@ -11,6 +16,7 @@ package gamePlay.level1.view.components
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
+	import flash.ui.Mouse;
 	import flash.utils.setTimeout;
 	
 	import gamePlay.level1.model.dto.ElementDto;
@@ -32,9 +38,9 @@ package gamePlay.level1.view.components
 		
 		private var _ScoreAnim:Class = Warehouse.getInstance().getAssetClass("ScoreAnim");
 		
+		private var scoreAnim:MovieClip;
 		private var _scoreAnimTf:TextField;
 		private var _movesScoreVal:uint;
-		
 		
 		public function Level1ViewLogic(confDto:ConfigDto)
 		{
@@ -81,6 +87,11 @@ package gamePlay.level1.view.components
 			
 		protected function onClickElement(event:MouseEvent):void
 		{
+			scoreAnim = new _ScoreAnim();
+			_scoreAnimTf = scoreAnim.scoreMovesTf;
+			scoreAnim.x = event.currentTarget.parent.x;
+			scoreAnim.y = event.currentTarget.parent.y;
+			TweenMax.to((event.currentTarget as MovieClip), 0.5, {bevelFilter:{blurX:10, blurY:10, strength:2, angle:45, distance:10, remove:true}, ease:Back.easeOut});
 			var element:MovieClip = (event.currentTarget as MovieClip); 
 			var neededDto:ElementDto = getDtoByContent(element); // зміній neededDto (необхіднийДТО) присвоюємо ДТО яка визначається в методі getDtoByContent в який передано (зміну element(елемент по якому був клік))
 			dispatchEvent(new GameEvent(GeneralEventsConst.OPENED_ELEMENT, neededDto));
@@ -102,30 +113,30 @@ package gamePlay.level1.view.components
 
 		public function resultTurn(notif:Boolean):void //перевірка результатів ходу (вибору елементів)
 		{
+			
 			if(notif as Boolean)
 			{
 				dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_TRUE));
-				//додаємо анімацію нарахування очків за поточний хід
-				var scoreAnim:MovieClip = new _ScoreAnim();
-				_scoreAnimTf = scoreAnim.scoreMovesTf;
-				_scoreAnimTf.text = _movesScoreVal.toString(10);
-				
 				for (var i:uint = 0; i < _openElemList.length; i++)
 				{
 					restElemFun(_openElemList[i]);
-					_openElemList[i].parent.addChild(scoreAnim); //додаємо анімацію нарахування очків
-					scoreAnim.addEventListener(Event.ENTER_FRAME, onEnterFrameScoreAnim); //по закінченю анімації видаляємо її
+				//	TweenLite.to(_openElemList[i], 1, {tint:0xcc33cc, ease:Circ.easeOut});
 					_openElemList[i].parent.removeChild(_openElemList[i]);
-					SoundLib.getInstance().playSound("TrueSound", 200);
 				}
+				//додаємо анімацію нарахування очків за поточний хід
+				_scoreAnimTf.text = _movesScoreVal.toString(10);
+				scoreAnim.addEventListener(Event.ENTER_FRAME, onEnterFrameScoreAnim); //по закінченю анімації видаляємо її
+				level1Content.addChild(scoreAnim); //додаємо анімацію нарахування очків
+				TweenLite.to(scoreAnim, 1.2, {x:level1Content["scorePoint"].x, y:level1Content["scorePoint"].y, ease:Circ.easeIn});
+				SoundLib.getInstance().playSound("TrueSound", 200);
 			}
 			else
 			{
-				for ( i = 0; i < _openElemList.length; i++)
+				for (i = 0; i < _openElemList.length; i++)
 				{
-					SoundLib.getInstance().playSound("FalseSound");
 					_openElemList[i].back.gotoAndStop(_hide);
 				}
+				SoundLib.getInstance().playSound("FalseSound");
 				dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_FALSE));
 			}
 			_openElemList = new Vector.<MovieClip>;
@@ -136,6 +147,7 @@ package gamePlay.level1.view.components
 		{
 			if (event.currentTarget.currentFrame == event.currentTarget.totalFrames && event.target.parent != null)
 			{
+				TweenLite.killTweensOf(event.target);
 				event.target.parent.removeChild(event.target);
 				event.target.removeEventListener(Event.ENTER_FRAME, onEnterFrameScoreAnim);
 			}

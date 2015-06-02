@@ -39,13 +39,11 @@ package lobby.highScore.model.proxy
 				highScoreDto.userDto.userName = usName;
 			}
 			sendNotification(GeneralNotifications.SET_NAME_LEVEL_AND_SCORE_IN_SO, highScoreDto.userDto);
-			trace ("1   SET_NAME_LEVEL_AND_SCORE_IN_SO після введеня імені Левел #", highScoreDto.userDto.numLevel);
 		}
 		
-	public function setNumLevel(numLevel:int):void
+		public function setNumLevel(numLevel:int):void
 		{
 			highScoreDto.userDto.numLevel = numLevel;
-			trace ("2   setNumLevel після запуска левела Левел #", numLevel);
 		}
 		
 		public function setUserScore(usScore:uint):void
@@ -59,7 +57,6 @@ package lobby.highScore.model.proxy
 				highScoreDto.userDto.userScore = usScore;
 			}
 			sendNotification(GeneralNotifications.SET_NAME_LEVEL_AND_SCORE_IN_SO, highScoreDto.userDto);
-			trace ("3   SET_NAME_LEVEL_AND_SCORE_IN_SO після виграшу Левел #", highScoreDto.userDto.numLevel);
 		}
 	}
 }

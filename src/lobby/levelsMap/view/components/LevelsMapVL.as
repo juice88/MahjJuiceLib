@@ -15,6 +15,7 @@ package lobby.levelsMap.view.components
 		private var _btnClickNum:int;
 		private var _startLvlNumIcon:int;
 		private var _finishedLvlNum:int;
+		private var _maxNumOfComplLvl:int;
 		private var _currentLvl:int;
 		private var _nameCategory:String;
 		
@@ -24,11 +25,12 @@ package lobby.levelsMap.view.components
 		
 		private var _backBtn:SimpleButton;
 		
-		public function LevelsMapVL(btnNum:int, lvlNum:int)
+		public function LevelsMapVL(btnNum:int, lvlNum:int, lvlMaxNum:int)
 		{
 			super("LvlsMap");
 			_btnClickNum = btnNum;
 			_finishedLvlNum = lvlNum;
+			_maxNumOfComplLvl = lvlMaxNum;
 			loadLvlsMap();
 		}
 		
@@ -79,7 +81,7 @@ package lobby.levelsMap.view.components
 				{
 					lvlNumIcon.currentLvl.gotoAndStop(_show);
 				}
-				if (_currentLvl<_finishedLvlNum+3)
+				if (_currentLvl<_maxNumOfComplLvl+3)
 				{
 					lvlNumIcon.block.gotoAndStop(_show);
 				}

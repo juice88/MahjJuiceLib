@@ -258,18 +258,10 @@ package core.counters.model.proxy
 			counters.timerIsStopped = false;
 		}
 		
-		public function continueGame(contGame:ContinGameConfDto=null, usScore:uint = -1):void
+		public function continueGame(contGame:ContinGameConfDto):void
 		{
-			if (contGame!=null)
-			{
-				counters.totalScore = contGame.userScore;
-				nextLevel();
-			}
-			else if (usScore!=-1)
-			{
-				counters.totalScore = usScore;
-				nextLevel();
-			}
+			counters.totalScore = contGame.userScore;
+			nextLevel();
 		}
 	}
 }

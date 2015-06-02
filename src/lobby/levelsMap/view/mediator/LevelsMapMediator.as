@@ -12,9 +12,9 @@ package lobby.levelsMap.view.mediator
 	public class LevelsMapMediator extends UIMediator
 	{
 		public static const NAME:String = "LevelsMapMediator";
-		public function LevelsMapMediator(btnNum:int, lvlNum:int)
+		public function LevelsMapMediator(btnNum:int, lvlNum:int, lvlMaxNum:int)
 		{
-			super(NAME, new LevelsMapVL(btnNum, lvlNum));
+			super(NAME, new LevelsMapVL(btnNum, lvlNum, lvlMaxNum));
 		}
 		private function get levelsMapVL():LevelsMapVL
 		{

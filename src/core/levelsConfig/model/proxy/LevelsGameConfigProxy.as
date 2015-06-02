@@ -60,6 +60,7 @@ package core.levelsConfig.model.proxy
 		public function setLevelConfig():void
 		{
 			var xmlObj:XML = configDto.configXml.level[configDto.levelNum-1];
+			configDto.totalLevelNum = configDto.configXml.children().length();
 			configDto.elemNum = parseInt(xmlObj.elemNum.text(), 10);
 			configDto.framesBeginNum = parseInt(xmlObj.framesBeginNum.text(), 10);
 			configDto.framesNum = parseInt(xmlObj.framesNum.text(), 10);
@@ -72,21 +73,22 @@ package core.levelsConfig.model.proxy
 			configDto.scoreOneSel = parseInt(xmlObj.scoreOneSel.text(), 10);
 			configDto.scoreMoreSel = parseInt(xmlObj.scoreMoreSel.text(), 10);
 			configDto.numSelForScoreMoreSel = parseInt(xmlObj.numSelForScoreMoreSel.text(), 10);
+			
 			sendNotification(GeneralNotifications.SET_LEVEL_CONFIG, configDto);
 			if (configDto.levelNum == configDto.configXml.children().length())
 			{
 				configDto.levelNum = 0;
 			}
-			sendNotification(GeneralNotifications.SET_NUM_LEVEL, configDto.levelNum, configDto.configXml.children().length().toString());
-			trace("Кількість левелів у грі", configDto.configXml.children().length());
+			sendNotification(GeneralNotifications.SET_NUM_LEVEL, configDto.levelNum, configDto.totalLevelNum.toString());
+			trace("Кількість левелів у грі", configDto.totalLevelNum);
 		}
 		
 		public function addLevelNum():void
 		{
 			configDto.levelNum++;
 		}
-		
-		public function setLevelNum(contGameDto:ContinGameConfDto=null, lvlNum:String=null):void
+		// Косяк чи ні, ось  в чому питання???? //Вирішення - зробити ще один інший метод
+		public function setLevelNum(contGameDto:ContinGameConfDto=null, lvlNum:String=null):void // крім ContinGameConfDto (відправляється з SharedObjProxy при натиснені на кнопку ContinueGame) при виборі потрібного левела з LevelsMapMediator передається нотіфом LEVELS_MAP_CHOISE число левела, по якому було клікнуто
 		{
 			if(contGameDto!=null)
 			{

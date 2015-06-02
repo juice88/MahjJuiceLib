@@ -5,7 +5,9 @@ package core.levelsConfig.model.dto
 
 	public class ConfigDto extends Object
 	{
+		public var configXml:XML;
 		public var levelNum:int;
+		public var totalLevelNum:int; //загальна кількість левелів
 		
 		//Для StartLevelProxy
 		public var elemNum:int; // кількість елементів на сцені
@@ -26,8 +28,7 @@ package core.levelsConfig.model.dto
 		public var numSelForScoreMoreSel:int; //кількість підряд правильних ходів для нарахування бонусного числа очків
 	
 		// загрузка XML файла
-		public var loader:URLLoader;
-		public var request:URLRequest;
-		public var configXml:XML;
+//		public var loader:URLLoader;
+//		public var request:URLRequest;
 	}
 }

@@ -44,6 +44,7 @@ package core.sharedObject.model.proxy
 					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
 					sharedDto.sharedObject.data[sharedDto.userName].score = 0;
 					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 0;
+					sharedDto.sharedObject.data[sharedDto.userName].maxLvl = 0;
 				}
 				if (sharedDto.sharedObject.data[sharedDto.userName] == null)
 				{
@@ -51,6 +52,7 @@ package core.sharedObject.model.proxy
 					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
 					sharedDto.sharedObject.data[sharedDto.userName].score = 0;
 					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 0;
+					sharedDto.sharedObject.data[sharedDto.userName].maxLvl = 0;
 				}
 				visibleContinueBtn();
 			}
@@ -63,6 +65,7 @@ package core.sharedObject.model.proxy
 					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
 					sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
 					sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
+					setMaxContinueLvl();
 				}
 				if (sharedDto.sharedObject.data[sharedDto.userName] == null)
 				{
@@ -70,18 +73,28 @@ package core.sharedObject.model.proxy
 					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
 					sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
 					sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
+					setMaxContinueLvl();
 				}
 				else 
 				{
 					sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
 					sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
+					setMaxContinueLvl();
 				}
 			}
+		}
+		private function setMaxContinueLvl():void
+		{
+			if (sharedDto.sharedObject.data[sharedDto.userName].maxLvl < sharedDto.sharedObject.data[sharedDto.userName].numLvl)
+			{
+				sharedDto.sharedObject.data[sharedDto.userName].maxLvl = sharedDto.sharedObject.data[sharedDto.userName].numLvl;
+			}
+			trace("Останній завершений левел",sharedDto.sharedObject.data[sharedDto.userName].maxLvl);
 		}
 		
 		public function visibleContinueBtn():void
 		{
-			if (sharedDto.sharedObject.data[sharedDto.userName].numLvl >= 1)
+			if (sharedDto.sharedObject.data[sharedDto.userName].maxLvl >= 1)
 			{
 				sendNotification(GeneralNotifications.CONTINUE_BTN_IS_VISIBLE);
 			}
@@ -89,9 +102,14 @@ package core.sharedObject.model.proxy
 		
 		public function continueGame():void
 		{
+			setDataForContinueGame();
+			sendNotification(GeneralNotifications.SET_CONF_TO_CONTINUE_GAME, sharedDto.continGameConfDto);
+		}
+		
+		private function setDataForContinueGame():void
+		{
 			sharedDto.continGameConfDto.numLvl = sharedDto.sharedObject.data[sharedDto.continGameConfDto.userName].numLvl;
 			sharedDto.continGameConfDto.userScore = sharedDto.sharedObject.data[sharedDto.continGameConfDto.userName].score;
-			sendNotification(GeneralNotifications.SET_CONF_TO_CONTINUE_GAME, sharedDto.continGameConfDto);
 		}
 		
 		private function getUserNameAndScoreList():Array 
@@ -116,16 +134,21 @@ package core.sharedObject.model.proxy
 			sendNotification(GeneralNotifications.HIGH_SCORE_SEND, arrData);
 		}
 		
-		public function detFinishedLvlNum():int
+		public function getFinishedLvlNum():int
 		{
 			return sharedDto.sharedObject.data[sharedDto.userName].numLvl;
 		}
 		
-		public function getScoreForChoiseLvl():int
+		public function getMaxNumOfComplLvl():int
 		{
-			return sharedDto.sharedObject.data[sharedDto.userName].score;
+			return sharedDto.sharedObject.data[sharedDto.userName].maxLvl;
 		}
-			
+		
+		public function getScoreForChoiseLvl():ContinGameConfDto
+		{
+			setDataForContinueGame();
+			return sharedDto.continGameConfDto;
+		}
 	}
 }
 

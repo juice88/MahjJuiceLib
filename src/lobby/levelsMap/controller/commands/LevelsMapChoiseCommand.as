@@ -2,6 +2,7 @@ package lobby.levelsMap.controller.commands
 {
 	import core.counters.model.proxy.CountersProxy;
 	import core.levelsConfig.model.proxy.LevelsGameConfigProxy;
+	import core.sharedObject.model.dto.ContinGameConfDto;
 	import core.sharedObject.model.proxy.SharedObjProxy;
 	
 	import lobby.botMenu.view.mediator.BotPanelMediator;
@@ -22,8 +23,8 @@ package lobby.levelsMap.controller.commands
 			facade.removeMediator(StartScreenMediator.NAME);
 			facade.registerMediator(new TopPanelMediator());
 			facade.registerMediator(new BotPanelMediator());
-			var usScore:uint = (facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).getScoreForChoiseLvl();
-			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).continueGame(null,usScore);
+			var contGameDto:ContinGameConfDto = (facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).getScoreForChoiseLvl();
+			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).continueGame(contGameDto);
 			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelNum(null, notification.getBody() as String);
 			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelConfig();
 		}
