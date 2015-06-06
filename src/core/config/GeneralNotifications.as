@@ -35,7 +35,7 @@ package core.config
 		public static const PERMIT_TO_ADD:String = "permit_to_add"; //Нотіф про дозвіл добавити ще один вибраний елемент
 		public static const READY_TO_DRAW:String = "ready_to_draw"; // Нотіф про готовність до розташування елементів
 		public static const REMOVE_CHILD_FROM_ROOT:String = "remove_child_from_root";
-		public static const REMOVE_MEDIATOR:String = "remove_mediator"; //нотіф яким в команду передається ім"я медіатора, котрий потрібно видалити
+		public static const REMOVE_DIALOG:String = "remove_dialog"; //нотіф яким в команду передається ім"я медіатора, котрий потрібно видалити
 		public static const REPLAY_LEVEL:String = "replay_level";
 		public static const RESTART_GAME:String = "restart_game";
 		public static const RESULTS_TURN:String = "result_turn"; //нотіф з результатом ходу (вибору елемента)

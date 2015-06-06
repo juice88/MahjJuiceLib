@@ -25,6 +25,7 @@ package lobby.levelsMap.controller.commands
 			facade.registerMediator(new BotPanelMediator());
 			var contGameDto:ContinGameConfDto = (facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).getScoreForChoiseLvl();
 			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).continueGame(contGameDto);
+			
 			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelNum(null, notification.getBody() as String);
 			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelConfig();
 		}

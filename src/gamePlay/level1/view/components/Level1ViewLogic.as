@@ -4,6 +4,7 @@ package gamePlay.level1.view.components
 	import com.greensock.TweenMax;
 	import com.greensock.easing.Back;
 	import com.greensock.easing.Circ;
+	import com.greensock.easing.Elastic;
 	
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
@@ -120,15 +121,15 @@ package gamePlay.level1.view.components
 				for (var i:uint = 0; i < _openElemList.length; i++)
 				{
 					restElemFun(_openElemList[i]);
-				//	TweenLite.to(_openElemList[i], 1, {tint:0xcc33cc, ease:Circ.easeOut});
-					_openElemList[i].parent.removeChild(_openElemList[i]);
+					_openElemList[i].removeEventListener(MouseEvent.CLICK, onClickElement);
+					TweenMax.to(_openElemList[i], .5, {blurFilter:{blurX:50, blurY:50, quality:3, remove:true, ease:Elastic.easeInOut}, onComplete:removeElem, onCompleteParams:[_openElemList[i]]});
 				}
 				//додаємо анімацію нарахування очків за поточний хід
 				_scoreAnimTf.text = _movesScoreVal.toString(10);
 				scoreAnim.addEventListener(Event.ENTER_FRAME, onEnterFrameScoreAnim); //по закінченю анімації видаляємо її
 				level1Content.addChild(scoreAnim); //додаємо анімацію нарахування очків
 				TweenLite.to(scoreAnim, 1.2, {x:level1Content["scorePoint"].x, y:level1Content["scorePoint"].y, ease:Circ.easeIn});
-				SoundLib.getInstance().playSound("TrueSound", 200);
+				SoundLib.getInstance().playSound("TrueSound");
 			}
 			else
 			{
@@ -141,6 +142,11 @@ package gamePlay.level1.view.components
 			}
 			_openElemList = new Vector.<MovieClip>;
 			dispatchEvent(new Event(GeneralEventsConst.END_TURN)); //відправляємо евент про закінчення вибору елементів
+		}
+		
+		private function removeElem(elem:MovieClip):void
+		{
+			elem.parent.removeChild(elem);
 		}
 		
 		protected function onEnterFrameScoreAnim(event:Event):void //якщо поточний кадр мувікліпа scoreAnin рівний загальній кількості кадрів (тобто останній) і парент, який на який покладено мувікліп scoreAnin, тоді видаляємо мувікліп scoreAnin (після його програшу) з парента 

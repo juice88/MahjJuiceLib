@@ -79,7 +79,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.ON_OPEN_ELEMENT, OpenedElementCommand);
 			facade.registerCommand(GeneralNotifications.PAUSE, PauseCommand);
 			facade.registerCommand(GeneralNotifications.PAUSE_CONTINUE_GAME, PauseContinueGameCommand);
-			facade.registerCommand(GeneralNotifications.REMOVE_MEDIATOR, RemoveMediatorCommand);
+			facade.registerCommand(GeneralNotifications.REMOVE_DIALOG, RemoveDialogCommand);
 			facade.registerCommand(GeneralNotifications.RESTART_GAME, RestartCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_TRUE, SelectIsTrueCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_FALSE, SelectIsFalseCommand);

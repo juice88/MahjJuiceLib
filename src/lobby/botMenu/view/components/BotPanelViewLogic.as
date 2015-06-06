@@ -12,8 +12,7 @@ package lobby.botMenu.view.components
 
 	public class BotPanelViewLogic extends ViewLogic
 	{
-		private var _muteBtn:MovieClip;
-		private var _fullScreenBtn:SimpleButton;
+		private var _settingsBtn:SimpleButton;
 		private var _frameMuteBtn:uint = 1;
 		private var _lifesPic:MovieClip;
 		private var _minuteTf:TextField;
@@ -32,10 +31,8 @@ package lobby.botMenu.view.components
 		
 		private function botPaneLoad():void
 		{
-			_muteBtn = botPanel["muteBtn"];
-			_muteBtn.addEventListener(MouseEvent.CLICK, onMuteBtnClickHand);
-			_fullScreenBtn = botPanel["fullScreenBtn"];
-			_fullScreenBtn.addEventListener(MouseEvent.CLICK, onFullScreenBtnClickHand);
+			_settingsBtn = botPanel["settingsBtn"];
+			_settingsBtn.addEventListener(MouseEvent.CLICK, onSettingsBtnClickHand);
 			_lifesPic = botPanel["lifesPic"];
 			_lifesPic.gotoAndStop(11);
 		}
@@ -60,6 +57,13 @@ package lobby.botMenu.view.components
 			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.FULL_SCREEN));
 		}
+		
+		protected function onSettingsBtnClickHand(event:MouseEvent):void
+		{
+			SoundLib.getInstance().btnClickSound();
+			dispatchEvent(new Event(GeneralEventsConst.SHOW_SETTINGS_PANEL));
+		}
+		
 		public function lifesCounterUpdated(lifesValue:int):void
 		{
 			_lifesPic.gotoAndStop(lifesValue + 1);

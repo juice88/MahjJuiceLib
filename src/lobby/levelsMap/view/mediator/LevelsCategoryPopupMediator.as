@@ -39,7 +39,7 @@ package lobby.levelsMap.view.mediator
 		
 		protected function onCloseEnterNamePopupHand(event:Event):void
 		{
-			sendNotification(GeneralNotifications.REMOVE_MEDIATOR, NAME);
+			sendNotification(GeneralNotifications.REMOVE_DIALOG, NAME);
 		}
 		
 		protected function onLevelsMapShowHand(event:GameEvent):void

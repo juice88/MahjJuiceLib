@@ -1,5 +1,10 @@
 package lobby.topMenu.view.components
 {
+	import com.greensock.TweenLite;
+	import com.greensock.easing.Linear;
+	import com.greensock.plugins.EndArrayPlugin;
+	import com.greensock.plugins.TweenPlugin;
+	
 	import core.config.GeneralEventsConst;
 	import core.utils.SoundLib;
 	import core.view.components.ViewLogic;
@@ -18,6 +23,7 @@ package lobby.topMenu.view.components
 		private var _pauseBtn:SimpleButton;
 		private var _movesTf:TextField;
 		private var _scoreTf:TextField;
+		private var _scoreArr:Array;
 		private var _lvlsTf:TextField;
 		
 		public function TopPanelViewLogic()
@@ -33,6 +39,8 @@ package lobby.topMenu.view.components
 		
 		private function topPanelLoad():void
 		{
+			TweenPlugin.activate([EndArrayPlugin]);
+			_scoreTf = topPanel.scoreTf.scoreTf;
 			_menuBtn = topPanel["menuBtn"];
 			_menuBtn.addEventListener(MouseEvent.CLICK, onMenuBtnClick);
 			_restartBtn = topPanel["restartBtn"];
@@ -76,8 +84,23 @@ package lobby.topMenu.view.components
 		
 		public function scoreCounterUpdate(scoreValue:uint):void
 		{
-			_scoreTf = topPanel.scoreTf.scoreTf;
-			_scoreTf.text = String(scoreValue);
+			_scoreArr = [parseInt(_scoreTf.text)];
+			var diffVal:int;
+			if (_scoreArr[0]==0)
+			{
+				diffVal = 0;
+				_scoreArr = [scoreValue];
+			}
+			else if (_scoreArr[0] != 0)
+			{
+				diffVal = scoreValue - _scoreArr[0];
+			}
+			TweenLite.to(_scoreArr, 2, {endArray:[_scoreArr[0]+diffVal], ease:Linear.easeNone, onUpdate:writeScore});
+		}
+		
+		private function writeScore():void
+		{
+			_scoreTf.text = String(_scoreArr[0]);
 		}
 		
 		public function lvlsCountUpdate(lvlsNum:int, totalLvlsNum:String):void

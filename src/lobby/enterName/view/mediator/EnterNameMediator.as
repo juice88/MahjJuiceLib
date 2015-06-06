@@ -37,13 +37,13 @@ package lobby.enterName.view.mediator
 		
 		protected function onSetPlayerName(event:GameEvent):void
 		{
-			sendNotification(GeneralNotifications.REMOVE_MEDIATOR, NAME);
+			sendNotification(GeneralNotifications.REMOVE_DIALOG, NAME);
 			sendNotification(GeneralNotifications.SET_PLAYER_NAME, event.params);
 		}
 		
 		protected function onCloseEnterNamePopupHand(event:Event):void
 		{
-			sendNotification(GeneralNotifications.REMOVE_MEDIATOR, NAME);
+			sendNotification(GeneralNotifications.REMOVE_DIALOG, NAME);
 			sendNotification(GeneralNotifications.SET_PLAYER_NAME);
 		}
 	}
