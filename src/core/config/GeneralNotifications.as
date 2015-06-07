@@ -8,6 +8,7 @@ package core.config
 		public static const BONUS_POPUP_SHOW:String = "bonus_popup_show";
 		public static const BONUS_READE_TO_DRAW:String = "bonus_reade_to_draw"; //нотіф про готовність нарисування елементів бонусів (відсилається з проксі послідовність кадрів)
 		public static const BONUS_RESULT_OF_CHOISE:String = "bonus_result_of_choise"; //нотіф з результатом вибору нонуса в скор проксі
+		public static const CHECK_EXISTANS_USER_NAME_IN_SO:String = "check_existans_user_name_in_so";
 		public static const CHOISE_OF_LEVEL:String = "choise_of_level";
 		public static const CONTINUE_BTN_IS_VISIBLE:String = "continue_btn_is_visible"; //нотіф, про те, щоб зробити видимою кнопку continue game
 		public static const CONTINUE_GAME:String = "continue_game";
@@ -50,6 +51,7 @@ package core.config
 		public static const SET_PLAYER_NAME:String = "set_player_name"; //нотіфом пересилається в highScore проксі введене ім"я гравця
 		public static const SET_PLAYER_SCORE:String = "set_player_score"; //нотіфом пересилається в highScore проксі score гравця
 		public static const SETTINGS_PANEL_OPEN:String = "settings_panel_open";
+		public static const SHOW_ENTER_NAME_POPUP:String = "show_enter_name_popup";
 		public static const START_NEW_GAME:String = "start_new_game";
 		public static const START_TIMER:String = "start_timer";
 		public static const START_APP:String = "start_app";

@@ -10,6 +10,7 @@ package gamePlay.bonus.view.components
 	import flash.display.Graphics;
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
+	import flash.text.TextField;
 	
 	import gamePlay.bonus.model.dto.ElemBonusDto;
 
@@ -40,6 +41,11 @@ package gamePlay.bonus.view.components
 			{
 				elemBonusDto[i].elemBonus = new _BonusElem();
 				elemBonusDto[i].elemBonus.gotoAndStop(elemBonusDto[i].kadr);
+				if (elemBonusDto[i].scoreBonus != -1)
+				{
+					var scoreBonusTf:TextField = elemBonusDto[i].elemBonus["scoreBonusTf"];
+					scoreBonusTf.text = "+"+elemBonusDto[i].scoreBonus.toString(10);
+				}
 				elemBonusDto[i].elemBonus.addEventListener(MouseEvent.CLICK, onClickToBonusElemHald);
 				((bonusVL[_shablonBonus+i]) as MovieClip).addChild(elemBonusDto[i].elemBonus);
 			}

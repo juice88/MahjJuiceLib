@@ -3,7 +3,7 @@ package lobby.topMenu.controller.commands
 	import core.config.GeneralNotifications;
 	
 	import core.counters.model.proxy.CountersProxy;
-	import gamePlay.level1.model.proxy.StartLevelProxy;
+	import gamePlay.level1.model.proxy.LevelProxy;
 	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
@@ -21,7 +21,7 @@ package lobby.topMenu.controller.commands
 		//	facade.removeMediator(GameOverPopupMediator.NAME);
 		//	facade.removeMediator(WinPopupMediator.NAME);
 			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).restartLevel();
-			(facade.retrieveProxy(StartLevelProxy.NAME) as StartLevelProxy).replayLevel();
+			(facade.retrieveProxy(LevelProxy.NAME) as LevelProxy).replayLevel();
 		}
 	}
 }

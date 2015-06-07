@@ -9,6 +9,7 @@ package gamePlay.level1.view.components
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
 	import core.levelsConfig.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.LevelConfigDto;
 	import core.utils.SoundLib;
 	import core.utils.Warehouse;
 	import core.view.components.ViewLogic;
@@ -43,7 +44,7 @@ package gamePlay.level1.view.components
 		private var _scoreAnimTf:TextField;
 		private var _movesScoreVal:uint;
 		
-		public function Level1ViewLogic(confDto:ConfigDto)
+		public function Level1ViewLogic(confDto:LevelConfigDto)
 		{
 			super(confDto.nameOfGameField);
 			_showElemDelay = confDto.showElemDelay;

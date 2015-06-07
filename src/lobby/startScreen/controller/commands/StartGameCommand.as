@@ -3,7 +3,7 @@ package lobby.startScreen.controller.commands
 	import core.counters.model.proxy.CountersProxy;
 	import core.levelsConfig.model.proxy.LevelsGameConfigProxy;
 	
-	import gamePlay.level1.model.proxy.StartLevelProxy;
+	import gamePlay.level1.model.proxy.LevelProxy;
 	import gamePlay.level1.view.mediator.LevelMediator;
 	
 	import lobby.botMenu.view.mediator.BotPanelMediator;

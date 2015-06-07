@@ -106,7 +106,7 @@ package lobby.levelsMap.view.components
 		
 		protected function onClickHand(event:MouseEvent):void
 		{
-			dispatchEvent(new GameEvent(GeneralEventsConst.LEVELS_MAP_CHOISE, event.target.parent.lvlNum.text));
+			dispatchEvent(new GameEvent(GeneralEventsConst.LEVELS_MAP_CHOISE, parseInt(event.target.parent.lvlNum.text)));
 		}
 	}
 }

@@ -34,7 +34,7 @@ package lobby.enterName.view.components
 		{
 			_setPlayerNameTF = setNamePop["enterName"];
 			_closeBtn = setNamePop["closeBtn"];
-			setNamePop["enterName"].maxChars = 10;
+			setNamePop["enterName"].maxChars = 10; //максимальна к-ть вводимих символів
 			_closeBtn.addEventListener(MouseEvent.CLICK, onCloseBtnClickHand);
 			_setPlayerNameTF.addEventListener(KeyboardEvent.KEY_UP, onSettEnterNamePlayerHand);
 			_setPlayerNameTF.addEventListener(MouseEvent.MOUSE_DOWN, onMouseClickForText);
@@ -42,7 +42,6 @@ package lobby.enterName.view.components
 		
 		protected function onSettEnterNamePlayerHand(event:KeyboardEvent):void
 		{
-			
 			_playerName = setNamePop["enterName"].text;
 			
 			if(event.charCode == 13) //якщо натиснуто Enter

@@ -3,6 +3,7 @@ package gamePlay.level1.model.proxy
 	import core.config.GeneralNotifications;
 	import core.config.Settings;
 	import core.levelsConfig.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.LevelConfigDto;
 	
 	import flash.display.MovieClip;
 	import flash.sampler.NewObjectSample;
@@ -13,11 +14,11 @@ package gamePlay.level1.model.proxy
 	
 	import org.puremvc.as3.patterns.proxy.Proxy;
 	
-	public class StartLevelProxy extends Proxy
+	public class LevelProxy extends Proxy
 	{
 		public static const NAME:String = "StartGameProxy";
 		
-		public function StartLevelProxy(confDto:ConfigDto)
+		public function LevelProxy(confDto:LevelConfigDto)
 		{
 			super(NAME, new LevelDto(confDto));
 		}
@@ -32,7 +33,7 @@ package gamePlay.level1.model.proxy
 			return getData() as LevelDto;
 		}
 		
-		// формуються гетера та сеттер для перемінної state (стан гри) в StartGameDto, щоб було швидко та зручно записати (Set) в ню дані та їх отримати(Get)
+		// формуються гетера та сеттер для перемінної state (стан гри) в LevelDto, щоб було швидко та зручно записати (Set) в ню дані та їх отримати(Get)
 		public function get state():String
 		{
 			return levelDto.state;

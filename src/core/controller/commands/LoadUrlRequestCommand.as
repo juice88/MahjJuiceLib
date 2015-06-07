@@ -1,10 +1,10 @@
 package core.controller.commands
 {
-	import core.sharedObject.model.proxy.SharedObjProxy;
 	import core.config.GeneralNotifications;
 	import core.counters.model.proxy.CountersProxy;
 	import core.levelsConfig.model.proxy.LevelsGameConfigProxy;
 	import core.queue.model.proxy.QueueDialogProxy;
+	import core.sharedObject.model.proxy.SharedObjProxy;
 	import core.utils.Warehouse;
 	
 	import flash.display.Loader;
@@ -52,8 +52,7 @@ package core.controller.commands
 			facade.registerProxy(new CountersProxy());
 			facade.registerProxy(new HighScoreProxy());
 			facade.registerMediator(new StartScreenMediator());
-			var enterNamePopup:EnterNameMediator = new EnterNameMediator();
-			sendNotification(GeneralNotifications.DIALOG_LOAD_TO_QUEUE, enterNamePopup);
+			sendNotification(GeneralNotifications.SHOW_ENTER_NAME_POPUP);
 			facade.registerMediator(new HighScorePanelMediator());
 		}
 	}

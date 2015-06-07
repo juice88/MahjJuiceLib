@@ -149,6 +149,17 @@ package core.sharedObject.model.proxy
 			setDataForContinueGame();
 			return sharedDto.continGameConfDto;
 		}
+		
+		public function checkExistansUserName(usName:String):Boolean
+		{
+			if (sharedDto.sharedObject.data[usName] == undefined)
+			{
+				trace("немає такого імені в ШарОбж");
+				return false;
+			}
+			trace("є таке імя в ШарОбж");
+			return true;
+		}
 	}
 }
 

@@ -4,6 +4,7 @@ package core.counters.model.proxy
 	import core.config.Settings;
 	import core.counters.model.dto.CountersDto;
 	import core.levelsConfig.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.LevelConfigDto;
 	import core.sharedObject.model.dto.ContinGameConfDto;
 	
 	import flash.events.TimerEvent;
@@ -30,7 +31,7 @@ package core.counters.model.proxy
 			return getData() as CountersDto;
 		}
 		
-		public function setLevelConfig(confDto:ConfigDto):void
+		public function setLevelConfig(confDto:LevelConfigDto):void
 		{
 			counters.setLevelConf(confDto);
 			timerGameSet();
@@ -214,7 +215,7 @@ package core.counters.model.proxy
 		{
 			if (choiseFrame == 1)
 			{
-				counters.totalScore += Settings.SCORE_BONUS;
+				counters.totalScore += counters.scoreBonus;
 			}
 			else if (choiseFrame == 2)
 			{
@@ -226,6 +227,11 @@ package core.counters.model.proxy
 			}
 			sendValueScoreTrueFalseMoves();
 			sendNotification(GeneralNotifications.SET_PLAYER_SCORE, counters.totalScore);
+		}
+		
+		public function getScoreBonus():int
+		{
+			return counters.scoreBonus;
 		}
 		
 		public function nextLevel():void

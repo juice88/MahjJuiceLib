@@ -30,6 +30,8 @@ package core.config
 		public static const SHOW_SETTINGS_PANEL:String = "ShowSettingsPanel";
 		public static const START_NEW_GAME:String = "StartNewGame";
 		public static const START_TIMER:String = "StartTimer";
+		public static const USER_EXIST_POPUP_BACK:String = "UserExistPopupBack";
+		public static const USER_EXIST_POPUP_CLOSE:String = "UserExistPopupClose";
 		
 	}
 }

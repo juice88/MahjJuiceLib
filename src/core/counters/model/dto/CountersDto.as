@@ -1,6 +1,7 @@
 package core.counters.model.dto
 {
 	import core.levelsConfig.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.LevelConfigDto;
 	
 	import flash.utils.Timer;
 
@@ -25,9 +26,10 @@ package core.counters.model.dto
 		public var minuteSecond:Array; //додаються в масив значення хвилин та секунд для таймера та передається в BotPanelViewLogic
 		public var scoreOneSel:int; //кількість очків, яка нараховується при першому правильному ході
 		public var scoreMoreSel:int; //кількість очків, яка нараховується при декількох підряд правильних ходів та всіх наступних (до помилки)
+		public var scoreBonus:int; //кількість очок, яка надається за вибір бонусу з очками
 		public var numSelForScoreMoreSel:int; //кількість підряд правильних ходів для нарахування бонусного числа очків
 		
-		public function setLevelConf(confDto:ConfigDto):void
+		public function setLevelConf(confDto:LevelConfigDto):void
 		{
 			second = confDto.second;
 			minute = confDto.minute;
@@ -35,6 +37,7 @@ package core.counters.model.dto
 			restartSetMinute = confDto.minute;
 			scoreOneSel = confDto.scoreOneSel;
 			scoreMoreSel = confDto.scoreMoreSel;
+			scoreBonus = confDto.scoreBonus;
 			numSelForScoreMoreSel = confDto.numSelForScoreMoreSel;
 		}
 	}

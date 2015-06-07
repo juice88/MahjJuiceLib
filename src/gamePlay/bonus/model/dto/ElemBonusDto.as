@@ -6,5 +6,6 @@ package gamePlay.bonus.model.dto
 	{
 		public var kadr:int;
 		public var elemBonus:MovieClip;
+		public var scoreBonus:int = -1;
 	}
 }

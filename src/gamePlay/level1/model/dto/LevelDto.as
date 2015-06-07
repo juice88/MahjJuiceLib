@@ -1,6 +1,6 @@
 package gamePlay.level1.model.dto
 {
-	import core.levelsConfig.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.LevelConfigDto;
 
 	public class LevelDto extends Object
 	{
@@ -17,7 +17,7 @@ package gamePlay.level1.model.dto
 		public var framesNum:int; // кількість кадрів яка формуватиметься починаючи з кадру framesBeginNum
 		public var openElemLimit:int; // кількість елементів яка порівнюється
 		
-		public function LevelDto(confDto:ConfigDto):void
+		public function LevelDto(confDto:LevelConfigDto):void
 		{
 			elemNum = confDto.elemNum;
 			framesBeginNum = confDto.framesBeginNum;

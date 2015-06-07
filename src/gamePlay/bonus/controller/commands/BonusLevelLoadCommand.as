@@ -1,5 +1,8 @@
 package gamePlay.bonus.controller.commands
 {
+	import core.counters.model.dto.CountersDto;
+	import core.counters.model.proxy.CountersProxy;
+	
 	import gamePlay.bonus.model.proxy.BonusProxy;
 	import gamePlay.bonus.view.mediator.BonusMediator;
 	import gamePlay.bonus.view.mediator.BonusPopupMediator;
@@ -14,7 +17,8 @@ package gamePlay.bonus.controller.commands
 		{
 			facade.removeMediator(BonusPopupMediator.NAME);
 			facade.registerMediator(new BonusMediator());
-			facade.registerProxy(new BonusProxy());
+			var scoreBonus:int = (facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).getScoreBonus();
+			facade.registerProxy(new BonusProxy(scoreBonus));
 			//(facade.retrieveProxy(BonusProxy.NAME) as BonusProxy).sendBonusKadrList();
 		//	facade.removeMediator(LevelMediator.NAME);
 		}

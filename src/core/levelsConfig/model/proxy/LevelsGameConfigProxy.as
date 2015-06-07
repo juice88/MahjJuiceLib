@@ -2,6 +2,7 @@ package core.levelsConfig.model.proxy
 {
 	import core.config.GeneralNotifications;
 	import core.levelsConfig.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.LevelConfigDto;
 	import core.sharedObject.model.dto.ContinGameConfDto;
 	
 	import flash.events.Event;
@@ -32,12 +33,14 @@ package core.levelsConfig.model.proxy
 		override public function onRegister():void
 		{
 			loadLevelsConfigFile();
+			
 		}
 		
 		public function loadLevelsConfigFile():void
 		{
 			[Embed(source = "res/ConfigFile.xml", mimeType="application/octet-stream")] var ConfLvl:Class;
 			configDto.configXml = new XML(new ConfLvl());
+			parseXMLConfFile();
 //			configDto.loader = new URLLoader();
 //			configDto.request = new URLRequest("res/ConfigFile.xml");
 //			configDto.loader.load(configDto.request);
@@ -57,47 +60,51 @@ package core.levelsConfig.model.proxy
 //			} 
 //		}
 		
+		private function parseXMLConfFile():void
+		{
+			configDto.levelConfigList = new Vector.<LevelConfigDto>;
+			for (var i:int = 0; i<configDto.configXml.children().length(); i++)
+			{
+				var levelConfigDto:LevelConfigDto = new LevelConfigDto();
+				var xmlObj:XML = configDto.configXml.level[i];
+				levelConfigDto.elemNum = parseInt(xmlObj.elemNum.text(), 10);
+				levelConfigDto.framesBeginNum = parseInt(xmlObj.framesBeginNum.text(), 10);
+				levelConfigDto.framesNum = parseInt(xmlObj.framesNum.text(), 10);
+				levelConfigDto.nameOfGameField = xmlObj.nameOfGameField.text();
+				levelConfigDto.elemName = xmlObj.elemName.text();
+				levelConfigDto.openElemLimit = parseInt(xmlObj.openElemLimit.text(), 10);
+				levelConfigDto.showElemDelay = parseInt(xmlObj.showElemDelay.text(), 10);
+				levelConfigDto.minute = parseInt(xmlObj.minute.text(), 10);
+				levelConfigDto.second = parseInt(xmlObj.second.text(), 10);
+				levelConfigDto.scoreOneSel = parseInt(xmlObj.scoreOneSel.text(), 10);
+				levelConfigDto.scoreMoreSel = parseInt(xmlObj.scoreMoreSel.text(), 10);
+				levelConfigDto.scoreBonus = parseInt(xmlObj.scoreBonus.text(), 10);
+				levelConfigDto.numSelForScoreMoreSel = parseInt(xmlObj.numSelForScoreMoreSel.text(), 10);
+				
+				configDto.levelConfigList.push(levelConfigDto);
+			}
+		}
+		
 		public function setLevelConfig():void
 		{
-			var xmlObj:XML = configDto.configXml.level[configDto.levelNum-1];
-			configDto.totalLevelNum = configDto.configXml.children().length();
-			configDto.elemNum = parseInt(xmlObj.elemNum.text(), 10);
-			configDto.framesBeginNum = parseInt(xmlObj.framesBeginNum.text(), 10);
-			configDto.framesNum = parseInt(xmlObj.framesNum.text(), 10);
-			configDto.nameOfGameField = xmlObj.nameOfGameField.text();
-			configDto.elemName = xmlObj.elemName.text();
-			configDto.openElemLimit = parseInt(xmlObj.openElemLimit.text(), 10);
-			configDto.showElemDelay = parseInt(xmlObj.showElemDelay.text(), 10);
-			configDto.minute = parseInt(xmlObj.minute.text(), 10);
-			configDto.second = parseInt(xmlObj.second.text(), 10);
-			configDto.scoreOneSel = parseInt(xmlObj.scoreOneSel.text(), 10);
-			configDto.scoreMoreSel = parseInt(xmlObj.scoreMoreSel.text(), 10);
-			configDto.numSelForScoreMoreSel = parseInt(xmlObj.numSelForScoreMoreSel.text(), 10);
-			
-			sendNotification(GeneralNotifications.SET_LEVEL_CONFIG, configDto);
+			sendNotification(GeneralNotifications.SET_LEVEL_CONFIG, configDto.levelConfigList[configDto.levelNum-1]);
 			if (configDto.levelNum == configDto.configXml.children().length())
 			{
 				configDto.levelNum = 0;
 			}
-			sendNotification(GeneralNotifications.SET_NUM_LEVEL, configDto.levelNum, configDto.totalLevelNum.toString());
-			trace("Кількість левелів у грі", configDto.totalLevelNum);
+			sendNotification(GeneralNotifications.SET_NUM_LEVEL, configDto.levelNum, configDto.levelConfigList.length.toString());
+			trace("Кількість левелів у грі", configDto.levelConfigList.length);
 		}
 		
 		public function addLevelNum():void
 		{
 			configDto.levelNum++;
 		}
-		// Косяк чи ні, ось  в чому питання???? //Вирішення - зробити ще один інший метод
-		public function setLevelNum(contGameDto:ContinGameConfDto=null, lvlNum:String=null):void // крім ContinGameConfDto (відправляється з SharedObjProxy при натиснені на кнопку ContinueGame) при виборі потрібного левела з LevelsMapMediator передається нотіфом LEVELS_MAP_CHOISE число левела, по якому було клікнуто
+		
+		public function setLevelNum(lvlNum:int):void
 		{
-			if(contGameDto!=null)
-			{
-				configDto.levelNum = contGameDto.numLvl + 1; // додається на 1 левел більше, адже numLevel це поточний левел, який пройшов гравець
-			}
-			else if (lvlNum!=null)
-			{
-				configDto.levelNum = parseInt(lvlNum);
-			}
+			configDto.levelNum = lvlNum;
 		}
+		
 	}
 }

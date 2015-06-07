@@ -22,7 +22,9 @@ package core.controller.commands
 	import gamePlay.level1.controller.commands.SelectIsFalseCommand;
 	import gamePlay.level1.controller.commands.SelectIsTrueCommand;
 	
+	import lobby.enterName.controller.commands.CheckExistUserNameInSOCommand;
 	import lobby.enterName.controller.commands.SetPlayerNameCommand;
+	import lobby.enterName.controller.commands.ShowEnterNamePopupCommand;
 	import lobby.gameOver.controller.commands.GameOverClosePopupCommand;
 	import lobby.gameOver.controller.commands.GameOverCommand;
 	import lobby.highScore.controller.commands.HighScoreUpdateCommand;
@@ -61,6 +63,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.BONUS_LEVEL_LOAD, BonusLevelLoadCommand);
 			facade.registerCommand(GeneralNotifications.BONUS_RESULT_OF_CHOISE, BonusResultOfChoiseCommand);
 			facade.registerCommand(GeneralNotifications.BONUS_POPUP_SHOW, BonusPopupShowCommand);
+			facade.registerCommand(GeneralNotifications.CHECK_EXISTANS_USER_NAME_IN_SO, CheckExistUserNameInSOCommand);
 			facade.registerCommand(GeneralNotifications.CHOISE_OF_LEVEL, ChoiseOfLevelCommand);
 			facade.registerCommand(GeneralNotifications.CONTINUE_GAME, ContinueGameCommand);
 			facade.registerCommand(GeneralNotifications.DIALOG_CLOSE, DialogCloseCommand);
@@ -90,6 +93,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.SET_PLAYER_NAME, SetPlayerNameCommand);
 			facade.registerCommand(GeneralNotifications.SET_PLAYER_SCORE, SetPlayerScoreCommand);
 			facade.registerCommand(GeneralNotifications.SETTINGS_PANEL_OPEN, SettingsPanelOpenCommand);
+			facade.registerCommand(GeneralNotifications.SHOW_ENTER_NAME_POPUP, ShowEnterNamePopupCommand);
 			facade.registerCommand(GeneralNotifications.START_NEW_GAME, StartGameCommand);
 			facade.registerCommand(GeneralNotifications.START_TIMER, StartTimerCommand);
 			facade.registerCommand(GeneralNotifications.WIN, WinCommand);
