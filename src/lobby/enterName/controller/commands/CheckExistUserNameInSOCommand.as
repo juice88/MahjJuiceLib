@@ -15,7 +15,8 @@ package lobby.enterName.controller.commands
 			var ifExists:Boolean = (facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).checkExistansUserName(notification.getBody() as String);
 			if (ifExists == true)
 			{
-				facade.registerMediator(new UserAlreadyExistPopUpMediator(notification.getBody() as String));
+				var userExistPop:UserAlreadyExistPopUpMediator = new UserAlreadyExistPopUpMediator(notification.getBody() as String);
+				sendNotification(GeneralNotifications.DIALOG_LOAD_TO_QUEUE, userExistPop);
 			}
 			else
 			{
