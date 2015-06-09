@@ -5,6 +5,7 @@ package gamePlay.level1.view.components
 	import com.greensock.easing.Back;
 	import com.greensock.easing.Circ;
 	import com.greensock.easing.Elastic;
+	import com.greensock.easing.Expo;
 	
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
@@ -17,6 +18,7 @@ package gamePlay.level1.view.components
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	import flash.text.TextField;
 	import flash.ui.Mouse;
 	import flash.utils.setTimeout;
@@ -123,6 +125,8 @@ package gamePlay.level1.view.components
 				{
 					restElemFun(_openElemList[i]);
 					_openElemList[i].removeEventListener(MouseEvent.CLICK, onClickElement);
+					_openElemList[i].removeEventListener(MouseEvent.MOUSE_OVER, onMouseOverHand);
+					_openElemList[i].removeEventListener(MouseEvent.MOUSE_OUT, onMouseOutHand);
 					TweenMax.to(_openElemList[i], .5, {blurFilter:{blurX:50, blurY:50, quality:3, remove:true, ease:Elastic.easeInOut}, onComplete:removeElem, onCompleteParams:[_openElemList[i]]});
 				}
 				//додаємо анімацію нарахування очків за поточний хід
@@ -136,7 +140,7 @@ package gamePlay.level1.view.components
 			{
 				for (i = 0; i < _openElemList.length; i++)
 				{
-					_openElemList[i].back.gotoAndStop(_hide);
+					TweenLite.to(_openElemList[i], 0.5, {scaleX:-0.5, scaleY:0.5, rotation:360, alpha:0.1, ease:Back.easeInOut, onComplete:hideElement, onCompleteParams:[_openElemList[i]]});
 				}
 				SoundLib.getInstance().playSound("FalseSound");
 				dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_FALSE));
@@ -147,7 +151,14 @@ package gamePlay.level1.view.components
 		
 		private function removeElem(elem:MovieClip):void
 		{
+			TweenLite.killTweensOf(elem);
 			elem.parent.removeChild(elem);
+		}
+		
+		private function hideElement(elem:MovieClip):void
+		{
+			TweenLite.to(elem, 0.2, {scaleX:1, scaleY:1, rotation:0, alpha:1, ease:Back.easeInOut});
+			elem.back.gotoAndStop(_hide);
 		}
 		
 		protected function onEnterFrameScoreAnim(event:Event):void //якщо поточний кадр мувікліпа scoreAnin рівний загальній кількості кадрів (тобто останній) і парент, який на який покладено мувікліп scoreAnin, тоді видаляємо мувікліп scoreAnin (після його програшу) з парента 
@@ -183,9 +194,27 @@ package gamePlay.level1.view.components
 			{
 				_vectorElementDto[i].element.back.gotoAndStop(_hide);
 				_vectorElementDto[i].element.addEventListener(MouseEvent.CLICK, onClickElement); //добавляємо лісенери на всі елементи, лише коли вони закриються
+				_vectorElementDto[i].element.addEventListener(MouseEvent.MOUSE_OVER, onMouseOverHand);
+				_vectorElementDto[i].element.addEventListener(MouseEvent.MOUSE_OUT, onMouseOutHand);
 			}
 			dispatchEvent(new Event(GeneralEventsConst.START_TIMER));
 		}
+		
+		protected function onMouseOverHand(event:MouseEvent):void
+		{
+			var pos_x:int = event.currentTarget.parent.parent.x;
+			var pos_y:int = event.currentTarget.parent.parent.y;
+			
+			TweenLite.to(event.currentTarget, 1, {x:pos_x, y:pos_y-20, /*scaleX:1.1, scaleY:1.1,*/ ease:Back.easeInOut});
+		}
+		
+		protected function onMouseOutHand(event:MouseEvent):void
+		{
+			var pos_x:int = event.currentTarget.parent.parent.x;
+			var pos_y:int = event.currentTarget.parent.parent.y;
+			TweenLite.to(event.currentTarget, 1, {x:pos_x, y:pos_y, /*scaleX:1, scaleY:1,*/ ease:Back.easeInOut});
+		}
+		
 		
 		public function replayLevel():void
 		{
@@ -218,14 +247,19 @@ package gamePlay.level1.view.components
 			for (var i:uint=0; i<_vectorElementDto.length; i++)
 			{
 				_vectorElementDto[i].element.removeEventListener(MouseEvent.CLICK, onClickElement);
+				_vectorElementDto[i].element.removeEventListener(MouseEvent.MOUSE_OVER, onMouseOverHand);
+				_vectorElementDto[i].element.removeEventListener(MouseEvent.MOUSE_OUT, onMouseOutHand);
+				
 			}
 		}
 		
-		public function addListenerForPause():void
+		public function addListenerAfterPause():void
 		{
 			for (var i:uint=0; i<_vectorElementDto.length; i++)
 			{
 				_vectorElementDto[i].element.addEventListener(MouseEvent.CLICK, onClickElement);
+				_vectorElementDto[i].element.addEventListener(MouseEvent.MOUSE_OVER, onMouseOverHand);
+				_vectorElementDto[i].element.addEventListener(MouseEvent.MOUSE_OUT, onMouseOutHand);
 			}
 		}
 		

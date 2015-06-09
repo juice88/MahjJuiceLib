@@ -1,6 +1,6 @@
 # folder ignore
 
-
+bin/
 .settings/
 
 

@@ -87,7 +87,7 @@ package gamePlay.level1.view.mediator
 					levelVL.removeListener();
 					break;
 				case GeneralNotifications.PAUSE_CONTINUE_GAME:
-					levelVL.addListenerForPause();
+					levelVL.addListenerAfterPause();
 					break;
 				case GeneralNotifications.GAME_OVER:
 					levelVL.gameOver();
