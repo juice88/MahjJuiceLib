@@ -97,6 +97,16 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.START_NEW_GAME, StartGameCommand);
 			facade.registerCommand(GeneralNotifications.START_TIMER, StartTimerCommand);
 			facade.registerCommand(GeneralNotifications.WIN, WinCommand);
+			
+			facade.registerCommand(GeneralNotifications.POPUP_SHOW_ENTER_NAME, PopupShowEnterNameCommand);
+			facade.registerCommand(GeneralNotifications.POPUP_SHOW_CHECK_USER_NAME_EXIST, PopupShowCheckUserNameExistCommand);
+			facade.registerCommand(GeneralNotifications.POPUP_SHOW_PAUSE, PopupShowPauseCommand);
+			facade.registerCommand(GeneralNotifications.POPUP_SHOW_CONFIRM_TO_RESTART, PopupShowConfirmToRestartCommand);
+			facade.registerCommand(GeneralNotifications.POPUP_SHOW_CONFIRM_TO_EXIT, PopupShowConfirmToExitCommand);
+			facade.registerCommand(GeneralNotifications.POPUP_SHOW_BONUS, PopupShowBonusCommand);
+			facade.registerCommand(GeneralNotifications.POPUP_SHOW_WIN, PopupShowWinCommand);
+			facade.registerCommand(GeneralNotifications.POPUP_SHOW_GAME_OVER, PopupShowGameOverCommand);
+			
 		}
 	}
 }

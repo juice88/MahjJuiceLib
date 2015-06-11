@@ -33,5 +33,11 @@ package core.config
 		public static const USER_EXIST_POPUP_BACK:String = "UserExistPopupBack";
 		public static const USER_EXIST_POPUP_CLOSE:String = "UserExistPopupClose";
 		
+		public static const POPUP_BACK_BTN_CLICK:String = "PopupBackBtnClick";
+		public static const POPUP_NEXT_BTN_CLICK:String = "PopupNextBtnClick";
+		public static const POPUP_X_BTN_CLICK:String = "PopupXBtnClick";
+		public static const POPUP_RESTART_BTN_CLICK:String = "PopupRestartBtnClick";
+		public static const POPUP_ENTER_PRESSET:String = "PopupEnterPresset";
+		
 	}
 }

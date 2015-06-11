@@ -19,8 +19,6 @@ package gamePlay.bonus.controller.commands
 			facade.registerMediator(new BonusMediator());
 			var scoreBonus:int = (facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).getScoreBonus();
 			facade.registerProxy(new BonusProxy(scoreBonus));
-			//(facade.retrieveProxy(BonusProxy.NAME) as BonusProxy).sendBonusKadrList();
-		//	facade.removeMediator(LevelMediator.NAME);
 		}
 	}
 }

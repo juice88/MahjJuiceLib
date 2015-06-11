@@ -55,9 +55,18 @@ package core.config
 		public static const START_NEW_GAME:String = "start_new_game";
 		public static const START_TIMER:String = "start_timer";
 		public static const START_APP:String = "start_app";
-		public static const TOTAL_SCORE_UPDATED:String = "total_score_updated";
+		public static const TOTAL_SCORE_UPDATED:String = "total_score_updated"; //----
 		public static const VALUES_MINUTE_SECOND:String = "values_minute_second"; //нотіф що передає значення хвилин та секунд, для відображення таймера
 		public static const VALUES_SCORE_TRUE_FALSE_MOVES:String = "values_score_true_false_movs"; //відплавляємо нотіфом значення totalScore, trueMoves, falseMoves
 		public static const WIN:String = "win"; //перемога (пройдено рівень)
+		
+		public static const POPUP_SHOW_ENTER_NAME:String = "popup_show_enter_name";
+		public static const POPUP_SHOW_CHECK_USER_NAME_EXIST:String = "POPUP_SHOW_CHECK_USER_NAME_EXIST";
+		public static const POPUP_SHOW_PAUSE:String ="popup_show_pause";
+		public static const POPUP_SHOW_CONFIRM_TO_RESTART:String = "popup_show_confirm_to_restart";
+		public static const POPUP_SHOW_CONFIRM_TO_EXIT:String = "popup_show_confirm_to_exit";
+		public static const POPUP_SHOW_BONUS:String = "popup_show_bonus";
+		public static const POPUP_SHOW_WIN:String = "popup_show_win";
+		public static const POPUP_SHOW_GAME_OVER:String = "popup_show_game_over";
 	}
 }

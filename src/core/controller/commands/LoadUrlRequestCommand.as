@@ -52,7 +52,8 @@ package core.controller.commands
 			facade.registerProxy(new CountersProxy());
 			facade.registerProxy(new HighScoreProxy());
 			facade.registerMediator(new StartScreenMediator());
-			sendNotification(GeneralNotifications.SHOW_ENTER_NAME_POPUP);
+		//	sendNotification(GeneralNotifications.SHOW_ENTER_NAME_POPUP);
+			sendNotification(GeneralNotifications.POPUP_SHOW_ENTER_NAME);
 			facade.registerMediator(new HighScorePanelMediator());
 		}
 	}

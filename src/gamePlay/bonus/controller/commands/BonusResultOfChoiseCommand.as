@@ -14,7 +14,7 @@ package gamePlay.bonus.controller.commands
 		override public function execute(notification:INotification):void
 		{
 			facade.removeMediator(BonusMediator.NAME);
-			sendNotification(GeneralNotifications.WIN);
+			sendNotification(GeneralNotifications.POPUP_SHOW_WIN);
 			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).resultOfChoiseBonus(notification.getBody() as int);
 		}
 	}

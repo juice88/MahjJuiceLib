@@ -76,7 +76,7 @@ package core.counters.model.proxy
 			if (counters.lifes < 1)
 			{
 				timerStop();
-				sendNotification(GeneralNotifications.GAME_OVER);
+				sendNotification(GeneralNotifications.POPUP_SHOW_GAME_OVER);
 			}
 			sendNotification(GeneralNotifications.LIFES_COUNTER_UPDATED, counters.lifes);
 		}
@@ -117,10 +117,12 @@ package core.counters.model.proxy
 			sendNotification(GeneralNotifications.LIFES_COUNTER_UPDATED, counters.lifes);
 		}
 		
-		public function openPausePopup():void // виклик з команди. передаємо значення загального рахунку очків при відкривання діалогового вікна pausePopup
+		public function openPausePopup():int
 		{
 			timerStop();
-			sendNotification(GeneralNotifications.TOTAL_SCORE_UPDATED, counters.totalScore);
+			return counters.totalScore;
+			
+		//	sendNotification(GeneralNotifications.TOTAL_SCORE_UPDATED, counters.totalScore);
 		}
 		
 		public function timerStart():void // перевірка чи таймер не має бути зупинений
@@ -143,24 +145,25 @@ package core.counters.model.proxy
 				timerStop();
 				counters.timerIsStopped = false;
 				counters.lifesIsFrozen = false;
-				sendNotification(GeneralNotifications.BONUS_POPUP_SHOW);
+				sendNotification(GeneralNotifications.POPUP_SHOW_BONUS);
 			}
 			else if (counters.allTrueSelect == counters.numberOfMoves)
 			{
 				timerStop();
 				counters.timerIsStopped = false;
 				counters.lifesIsFrozen = false;
-				sendNotification(GeneralNotifications.WIN);
+				sendNotification(GeneralNotifications.POPUP_SHOW_WIN);
 				sendNotification(GeneralNotifications.SET_PLAYER_SCORE, counters.totalScore);
-				sendValueScoreTrueFalseMoves();
+				//sendValueScoreTrueFalseMoves();
 			}
 		}
 		
-		public function sendValueScoreTrueFalseMoves():void
+		public function sendValueScoreTrueFalseMoves():Array
 		{
 			counters.scoreTrueFalseValue = new Array;
 			counters.scoreTrueFalseValue.push(counters.scoreOfSomeLevel, counters.allTrueSelect, counters.allFalseSelect);
-			sendNotification(GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVES, counters.scoreTrueFalseValue);
+			return counters.scoreTrueFalseValue;
+	//		sendNotification(GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVES, counters.scoreTrueFalseValue);
 		}
 		
 		public function timerGameSet():void
@@ -195,7 +198,7 @@ package core.counters.model.proxy
 				if (counters.second == 0)
 				{
 					timerStop();
-					sendNotification(GeneralNotifications.GAME_OVER);
+					sendNotification(GeneralNotifications.POPUP_SHOW_GAME_OVER);
 				}
 			}
 		}

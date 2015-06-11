@@ -58,8 +58,8 @@ package gamePlay.level1.view.mediator
 					GeneralNotifications.MUTE,
 					GeneralNotifications.PAUSE,
 					GeneralNotifications.PAUSE_CONTINUE_GAME,
-					GeneralNotifications.GAME_OVER,
-					GeneralNotifications.WIN,
+					GeneralNotifications.POPUP_SHOW_GAME_OVER,
+					GeneralNotifications.POPUP_SHOW_WIN,
 					GeneralNotifications.SCORE_MOVES_ANIMATION,
 					GeneralNotifications.BONUS_POPUP_SHOW]; //потрібно буде переробити на один нотуф, щоб звук запускався з іншого місця...
 		}
@@ -89,10 +89,10 @@ package gamePlay.level1.view.mediator
 				case GeneralNotifications.PAUSE_CONTINUE_GAME:
 					levelVL.addListenerAfterPause();
 					break;
-				case GeneralNotifications.GAME_OVER:
+				case GeneralNotifications.POPUP_SHOW_GAME_OVER:
 					levelVL.gameOver();
 					break;
-				case GeneralNotifications.WIN:
+				case GeneralNotifications.POPUP_SHOW_WIN:
 					levelVL.win();
 					break;
 				case GeneralNotifications.SCORE_MOVES_ANIMATION:

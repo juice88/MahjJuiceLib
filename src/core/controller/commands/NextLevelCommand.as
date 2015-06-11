@@ -16,7 +16,7 @@ package core.controller.commands
 	{
 		override public function execute(notification:INotification):void
 		{
-			facade.removeMediator(WinPopupMediator.NAME);
+		//	facade.removeMediator(WinPopupMediator.NAME);
 			facade.removeMediator(LevelMediator.NAME);
 			facade.removeProxy(LevelProxy.NAME);
 //			facade.registerMediator(new LevelMediator);

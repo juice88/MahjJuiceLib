@@ -51,7 +51,7 @@ package lobby.enterName.view.mediator
 		protected function onBackUserExistPopupHand(event:Event):void
 		{
 			sendNotification(GeneralNotifications.REMOVE_DIALOG, NAME);
-			sendNotification(GeneralNotifications.SHOW_ENTER_NAME_POPUP);
+			sendNotification(GeneralNotifications.POPUP_SHOW_ENTER_NAME);
 		}
 	}
 }

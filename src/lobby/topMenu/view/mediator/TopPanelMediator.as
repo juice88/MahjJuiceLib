@@ -37,21 +37,17 @@ package lobby.topMenu.view.mediator
 		}
 		protected function onGoToMenuHand(event:Event):void
 		{
-			trace ("нажата кнопка Menu");
-			sendNotification(GeneralNotifications.BACK_TO_MENU);
-			topPanel.removeEventListener(GeneralEventsConst.GO_TO_MENU, onGoToMenuHand);
+			sendNotification(GeneralNotifications.POPUP_SHOW_CONFIRM_TO_EXIT);
 		}
 		
 		protected function onReStartGameHand(event:Event):void
 		{
-			trace ("нажата кнопка restart");
-			sendNotification(GeneralNotifications.RESTART_GAME);
+			sendNotification(GeneralNotifications.POPUP_SHOW_CONFIRM_TO_RESTART);
 		}
 		
 		protected function onPauseHand(event:Event):void
 		{
-			trace("нажата кнопка pause");
-			sendNotification(GeneralNotifications.PAUSE);
+			sendNotification(GeneralNotifications.POPUP_SHOW_PAUSE);
 		}
 		override public function listNotificationInterests():Array{
 			return [GeneralNotifications.MOVES_COUTNER_UPDATED,
