@@ -1,4 +1,4 @@
-package lobby.levelsMap.controller.commands
+package core.controller.commands
 {
 	import core.counters.model.proxy.CountersProxy;
 	import core.levelsConfig.model.proxy.LevelsGameConfigProxy;

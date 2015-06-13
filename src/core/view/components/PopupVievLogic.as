@@ -1,5 +1,8 @@
 package core.view.components
 {
+	import com.greensock.TweenLite;
+	import com.greensock.easing.Back;
+	
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
 	import core.model.dto.PopupConfDto;
@@ -44,6 +47,7 @@ package core.view.components
 		{
 			super("PopupShablon");
 			popupLoad(popupDto);
+			contentTween();
 		}
 		
 		private function get popup():MovieClip
@@ -55,6 +59,13 @@ package core.view.components
 		{
 			init();
 			noNeedToRemove(popupDto);
+		}
+		protected function contentTween():void{
+			popup.y=-240;
+			popup.x = 640;
+			popup.scaleX = 0.1;
+			popup.scaleY = 0.1;
+			TweenLite.to(popup, 0.7, {x:0, y:0, scaleX:1, scaleY:1, ease:Back.easeOut});
 		}
 		
 		private function init():void
@@ -199,6 +210,7 @@ package core.view.components
 		
 		private function removeListeners():void
 		{
+			TweenLite.killTweensOf(popup);
 			_backBtn.removeEventListener(MouseEvent.CLICK, onBackBtnClickHand);
 			_nextBtn.removeEventListener(MouseEvent.CLICK, onNextBtnClickHand);
 			_xBtn.removeEventListener(MouseEvent.CLICK, onXBtnClickHand);

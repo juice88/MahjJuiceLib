@@ -121,8 +121,6 @@ package core.counters.model.proxy
 		{
 			timerStop();
 			return counters.totalScore;
-			
-		//	sendNotification(GeneralNotifications.TOTAL_SCORE_UPDATED, counters.totalScore);
 		}
 		
 		public function timerStart():void // перевірка чи таймер не має бути зупинений
@@ -154,7 +152,6 @@ package core.counters.model.proxy
 				counters.lifesIsFrozen = false;
 				sendNotification(GeneralNotifications.POPUP_SHOW_WIN);
 				sendNotification(GeneralNotifications.SET_PLAYER_SCORE, counters.totalScore);
-				//sendValueScoreTrueFalseMoves();
 			}
 		}
 		
@@ -163,7 +160,6 @@ package core.counters.model.proxy
 			counters.scoreTrueFalseValue = new Array;
 			counters.scoreTrueFalseValue.push(counters.scoreOfSomeLevel, counters.allTrueSelect, counters.allFalseSelect);
 			return counters.scoreTrueFalseValue;
-	//		sendNotification(GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVES, counters.scoreTrueFalseValue);
 		}
 		
 		public function timerGameSet():void

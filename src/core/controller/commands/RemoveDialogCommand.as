@@ -1,7 +1,5 @@
 package core.controller.commands
 {
-	import lobby.enterName.view.mediator.EnterNameMediator;
-	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	

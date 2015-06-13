@@ -5,11 +5,9 @@ package core.config
 		public static const ADD_CHILD_TO_ROOT:String = "add_child_to_root";
 		public static const BACK_TO_MENU:String = "back_to_menu";
 		public static const BONUS_LEVEL_LOAD:String = "bonus_level_load";
-		public static const BONUS_POPUP_SHOW:String = "bonus_popup_show";
 		public static const BONUS_READE_TO_DRAW:String = "bonus_reade_to_draw"; //нотіф про готовність нарисування елементів бонусів (відсилається з проксі послідовність кадрів)
 		public static const BONUS_RESULT_OF_CHOISE:String = "bonus_result_of_choise"; //нотіф з результатом вибору нонуса в скор проксі
-		public static const CHECK_EXISTANS_USER_NAME_IN_SO:String = "check_existans_user_name_in_so";
-		public static const CHOISE_OF_LEVEL:String = "choise_of_level";
+		public static const SHOW_LEVELS_CATEGORY_POPUP:String = "show_levels_category_popup";
 		public static const CONTINUE_BTN_IS_VISIBLE:String = "continue_btn_is_visible"; //нотіф, про те, щоб зробити видимою кнопку continue game
 		public static const CONTINUE_GAME:String = "continue_game";
 		public static const DIALOG_CLOSE:String = "dialog_close"; //нотіф про закривання діалога (відсилається з onRemove DialogMediator)
@@ -18,7 +16,6 @@ package core.config
 		public static const END_TURN:String = "end_turn"; //Нотіф про закінчення вибору елементів
 		public static const FULL_SCREEN:String = "full_screen";
 		public static const GAME_OVER:String = "game_over";
-		public static const GAME_OVER_CLOSE_POPUP:String = "game_over_close_popup";
 		public static const HIGH_SCORE_SEND:String = "high_score_send";
 		public static const HIGH_SCORE_UPDATE:String = "high_score_update";
 		public static const LEVELS_MAP_CHOISE:String = "levels_map_choise";
@@ -51,14 +48,10 @@ package core.config
 		public static const SET_PLAYER_NAME:String = "set_player_name"; //нотіфом пересилається в highScore проксі введене ім"я гравця
 		public static const SET_PLAYER_SCORE:String = "set_player_score"; //нотіфом пересилається в highScore проксі score гравця
 		public static const SETTINGS_PANEL_OPEN:String = "settings_panel_open";
-		public static const SHOW_ENTER_NAME_POPUP:String = "show_enter_name_popup";
 		public static const START_NEW_GAME:String = "start_new_game";
 		public static const START_TIMER:String = "start_timer";
 		public static const START_APP:String = "start_app";
-		public static const TOTAL_SCORE_UPDATED:String = "total_score_updated"; //----
 		public static const VALUES_MINUTE_SECOND:String = "values_minute_second"; //нотіф що передає значення хвилин та секунд, для відображення таймера
-		public static const VALUES_SCORE_TRUE_FALSE_MOVES:String = "values_score_true_false_movs"; //відплавляємо нотіфом значення totalScore, trueMoves, falseMoves
-		public static const WIN:String = "win"; //перемога (пройдено рівень)
 		
 		public static const POPUP_SHOW_ENTER_NAME:String = "popup_show_enter_name";
 		public static const POPUP_SHOW_CHECK_USER_NAME_EXIST:String = "POPUP_SHOW_CHECK_USER_NAME_EXIST";

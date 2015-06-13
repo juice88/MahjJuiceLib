@@ -1,4 +1,4 @@
-package lobby.levelsMap.controller.commands
+package core.controller.commands
 {
 	import core.sharedObject.model.proxy.SharedObjProxy;
 	

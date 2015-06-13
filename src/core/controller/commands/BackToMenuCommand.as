@@ -1,4 +1,4 @@
-package lobby.topMenu.controller.commands
+package core.controller.commands
 {
 	import core.sharedObject.model.proxy.SharedObjProxy;
 	import core.counters.model.proxy.CountersProxy;

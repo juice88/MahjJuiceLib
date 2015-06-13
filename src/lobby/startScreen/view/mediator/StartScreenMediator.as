@@ -57,7 +57,7 @@ package lobby.startScreen.view.mediator
 		
 		protected function onChoiseOfLevelHand(event:Event):void
 		{
-			sendNotification(GeneralNotifications.CHOISE_OF_LEVEL);			
+			sendNotification(GeneralNotifications.SHOW_LEVELS_CATEGORY_POPUP);			
 		}
 		
 		override public function listNotificationInterests():Array

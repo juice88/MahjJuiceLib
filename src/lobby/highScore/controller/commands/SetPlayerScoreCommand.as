@@ -1,4 +1,4 @@
-package core.counters.controller.commands
+package lobby.highScore.controller.commands
 {
 	import lobby.highScore.model.proxy.HighScoreProxy;
 	

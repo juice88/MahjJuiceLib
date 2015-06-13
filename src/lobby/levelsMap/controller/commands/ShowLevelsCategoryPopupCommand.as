@@ -1,4 +1,4 @@
-package lobby.startScreen.controller.commands
+package lobby.levelsMap.controller.commands
 {
 	import core.config.GeneralNotifications;
 	
@@ -7,7 +7,7 @@ package lobby.startScreen.controller.commands
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
-	public class ChoiseOfLevelCommand extends SimpleCommand
+	public class ShowLevelsCategoryPopupCommand extends SimpleCommand
 	{
 		override public function execute(notification:INotification):void
 		{

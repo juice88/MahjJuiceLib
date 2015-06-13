@@ -1,4 +1,4 @@
-package lobby.highScore.controller.commands
+package core.sharedObject.controller.commands
 {
 	import core.sharedObject.model.proxy.SharedObjProxy;
 	

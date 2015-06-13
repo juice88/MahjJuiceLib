@@ -60,8 +60,7 @@ package gamePlay.level1.view.mediator
 					GeneralNotifications.PAUSE_CONTINUE_GAME,
 					GeneralNotifications.POPUP_SHOW_GAME_OVER,
 					GeneralNotifications.POPUP_SHOW_WIN,
-					GeneralNotifications.SCORE_MOVES_ANIMATION,
-					GeneralNotifications.BONUS_POPUP_SHOW]; //потрібно буде переробити на один нотуф, щоб звук запускався з іншого місця...
+					GeneralNotifications.SCORE_MOVES_ANIMATION];
 		}
 		
 		override public function handleNotification(notification:INotification):void
@@ -97,9 +96,6 @@ package gamePlay.level1.view.mediator
 					break;
 				case GeneralNotifications.SCORE_MOVES_ANIMATION:
 					levelVL.setScorAnim(notification.getBody() as int);
-					break;
-				case GeneralNotifications.BONUS_POPUP_SHOW:
-					levelVL.win();
 					break;
 			}
 		}
