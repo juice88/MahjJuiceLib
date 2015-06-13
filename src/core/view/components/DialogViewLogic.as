@@ -13,14 +13,16 @@ package core.view.components
 	public class DialogViewLogic extends EventDispatcher
 	{
 		protected var displayObject:DisplayObject;
-		
 		private var _background:Sprite;
+		public var allContent:Sprite;
 		
 		public function DialogViewLogic(name:String)
 		{
+			allContent = new Sprite();
 			this.displayObject = Warehouse.getInstance().getAsset(name);
 			addBackground();
-			(this.displayObject as Sprite).addChildAt(_background, 0);
+			allContent.addChild(_background);
+			allContent.addChild(content);
 		}
 		
 		public function get content():DisplayObject{
