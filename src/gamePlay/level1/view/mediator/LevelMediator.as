@@ -55,7 +55,6 @@ package gamePlay.level1.view.mediator
 					GeneralNotifications.RESULTS_TURN, 
 					GeneralNotifications.PERMIT_TO_ADD,
 					GeneralNotifications.REPLAY_LEVEL,
-					GeneralNotifications.MUTE,
 					GeneralNotifications.PAUSE,
 					GeneralNotifications.PAUSE_CONTINUE_GAME,
 					GeneralNotifications.POPUP_SHOW_GAME_OVER,
@@ -71,16 +70,14 @@ package gamePlay.level1.view.mediator
 					levelVL.readyToDraw(notification.getBody() as Vector.<ElementDto>);
 					break;
 				case GeneralNotifications.RESULTS_TURN:
-					setTimeout(levelVL.resultTurn, Settings.TIME_DELAY, (notification.getBody() as Boolean)); // встановлюється затримка між показом елементів і їх закриванням
+					levelVL.resultTurn(notification.getBody() as Boolean);
+					//	setTimeout(levelVL.resultTurn, Settings.TIME_DELAY, (notification.getBody() as Boolean)); // встановлюється затримка між показом елементів і їх закриванням перед видаленням
 					break;
 				case GeneralNotifications.PERMIT_TO_ADD:
 					levelVL.permitToAdd(notification.getBody() as int);
 					break;
 				case GeneralNotifications.REPLAY_LEVEL:
 					levelVL.replayLevel();
-					break;
-				case GeneralNotifications.MUTE:
-					SoundLib.getInstance().mute();
 					break;
 				case GeneralNotifications.PAUSE:
 					levelVL.removeListener();

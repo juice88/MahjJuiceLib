@@ -2,7 +2,6 @@ package lobby.settings.view.mediator
 {
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
-	
 	import core.view.mediator.DialogMediator;
 	
 	import flash.events.Event;
@@ -42,7 +41,7 @@ package lobby.settings.view.mediator
 		
 		private function onMuteHand(event:Event):void //дубль кода... порешать
 		{
-			sendNotification(GeneralNotifications.MUTE);
+		//	sendNotification(GeneralNotifications.MUTE);
 		}
 		
 		protected function onFullScreenHand(event:Event):void //дубль кода... порешать

@@ -115,10 +115,10 @@ package gamePlay.level1.view.components
 			_movesScoreVal = scoreValue;
 		}
 
-		public function resultTurn(notif:Boolean):void //перевірка результатів ходу (вибору елементів)
+		public function resultTurn(result:Boolean):void //перевірка результатів ходу (вибору елементів)
 		{
 			
-			if(notif as Boolean)
+			if(result)
 			{
 				dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_TRUE));
 				for (var i:uint = 0; i < _openElemList.length; i++)

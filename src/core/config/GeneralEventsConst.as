@@ -38,6 +38,7 @@ package core.config
 		public static const POPUP_X_BTN_CLICK:String = "PopupXBtnClick";
 		public static const POPUP_RESTART_BTN_CLICK:String = "PopupRestartBtnClick";
 		public static const POPUP_ENTER_PRESSET:String = "PopupEnterPresset";
+		public static const POPUP_REMOVE_DIALOG:String = "PopupRemoveDialog";
 		
 	}
 }

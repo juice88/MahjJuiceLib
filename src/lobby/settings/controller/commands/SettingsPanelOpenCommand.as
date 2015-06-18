@@ -1,6 +1,7 @@
 package lobby.settings.controller.commands
 {
 	import core.config.GeneralNotifications;
+	import core.utils.SoundLib;
 	
 	import lobby.settings.view.mediator.SettingsPanelMediator;
 	

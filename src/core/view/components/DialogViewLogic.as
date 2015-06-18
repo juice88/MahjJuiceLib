@@ -1,5 +1,6 @@
 package core.view.components
 {
+	import core.config.GeneralEventsConst;
 	import core.config.Settings;
 	import core.utils.Warehouse;
 	
@@ -7,6 +8,7 @@ package core.view.components
 	import flash.display.Graphics;
 	import flash.display.Sprite;
 	import flash.display.Stage;
+	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	
@@ -37,5 +39,11 @@ package core.view.components
 			graf.drawRect(0,0,Settings.BACKGROUND_RECT_WIDTH,Settings.BACKGROUND_RECT_HEIGHT);
 			graf.endFill();
 		}
+		
+		public function removeBackground():void
+		{
+			allContent.removeChild(_background);
+		}
+		
 	}
 }

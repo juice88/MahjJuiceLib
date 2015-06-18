@@ -10,12 +10,8 @@ package gamePlay.level1.controller.commands
 	
 	public class OpenedElementCommand extends SimpleCommand
 	{
-		override public function execute(notification:INotification):void{
-			/*var note:MovieClip = notification.getBody() as MovieClip;
-			var openElem:StartGameProxy;
-			openElem = facade.retrieveProxy(StartGameProxy.NAME) as StartGameProxy;
-			openElem.openElement(note);*/
-			
+		override public function execute(notification:INotification):void
+		{
 			(facade.retrieveProxy(LevelProxy.NAME) as LevelProxy).openElement(notification.getBody() as ElementDto);
 		}
 	}

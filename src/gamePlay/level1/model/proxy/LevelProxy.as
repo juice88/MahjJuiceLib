@@ -33,7 +33,7 @@ package gamePlay.level1.model.proxy
 			return getData() as LevelDto;
 		}
 		
-		// формуються гетера та сеттер для перемінної state (стан гри) в LevelDto, щоб було швидко та зручно записати (Set) в ню дані та їх отримати(Get)
+		// формуються гетер та сеттер для перемінної state (стан гри) в LevelDto, щоб було швидко та зручно записати (Set) в ню дані та їх отримати(Get)
 		public function get state():String
 		{
 			return levelDto.state;
@@ -51,18 +51,40 @@ package gamePlay.level1.model.proxy
 			levelDto.ElementListVector = new Vector.<ElementDto>; // ініціалізація вектора усіх елементів
 			levelDto.openElementsList = new Vector.<ElementDto>; // ініціалізація вектора елементів які були відкриті
 			fillKadrList();
-			
-			for (var i:uint = 0; i<levelDto.kadrList.length; i++)
+			if (Settings.user == "admin")
 			{
-				var elementDto:ElementDto = new ElementDto();
-				elementDto.kadr = levelDto.kadrList[i];
-				elementDto.index = i;
-				levelDto.ElementListVector.push(elementDto);
+				var randArr:Vector.<uint> = new Vector.<uint>;
+				randArr = randomizeArray(levelDto.kadrList);
+				for (var i:uint = 0; i<randArr.length; i++)
+				{
+					var randElemDto:ElementDto = new ElementDto();
+					randElemDto.kadr = randArr[i];
+					randElemDto.index = i;
+					levelDto.ElementListVector.push(randElemDto);
+				} 
+			} else {
+				for (var j:uint = 0; j<levelDto.kadrList.length; j++)
+				{
+					var elementDto:ElementDto = new ElementDto();
+					elementDto.kadr = levelDto.kadrList[j];
+					elementDto.index = j;
+					levelDto.ElementListVector.push(elementDto);
+				} 
 			}
 			sendNotification(GeneralNotifications.READY_TO_DRAW, levelDto.ElementListVector); //формуємо повідомлення про готовність до нарисовки елементів та відправляємо масив елементів
 			sendNotification(GeneralNotifications.NUMBER_OF_MOVES, (levelDto.ElementListVector.length as int)/levelDto.openElemLimit); //передається в ScoreProxy кількість ходів (наперід відома) для правильного вибору елементів (тобто кількість можливих ходів аби виграти левел)
 		}
 		
+		private function randomizeArray(arr:Vector.<uint>):Vector.<uint>
+		{
+			var newVector:Vector.<uint> = new Vector.<uint>;
+			while (arr.length > 0)
+			{
+				newVector.push(arr.splice(Math.floor(Math.random()*arr.length), 1));
+			}
+			return newVector;
+		}
+
 		private function fillKadrList():void //наповнюємо ігрове поле елементами(квадратиками)
 		{
 			switch (levelDto.openElemLimit)
@@ -118,8 +140,8 @@ package gamePlay.level1.model.proxy
 			
 			if(levelDto.openElementsList.length == levelDto.openElemLimit) //якщо кількость відкритих елементів рівна заданій в Settings тоді...
 			{
-				sendNotification(GeneralNotifications.RESULTS_TURN, checkElements()); //відправляємо нотіф з результатом ходу (вибору елемента) 
 				state = Settings.RESULT_STATE; //якщо вибрано два елементи то включається режим РесалтСтейт (стан відсилання результату), тобто більше не можливо буде попасти в цю функцію
+				sendNotification(GeneralNotifications.RESULTS_TURN, checkElements()); //відправляємо нотіф з результатом ходу (вибору елемента) 
 			}
 			else
 			{

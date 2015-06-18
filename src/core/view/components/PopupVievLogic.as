@@ -47,7 +47,7 @@ package core.view.components
 		{
 			super("PopupShablon");
 			popupLoad(popupDto);
-			contentTween();
+			addPopupTween();
 		}
 		
 		private function get popup():MovieClip
@@ -59,8 +59,11 @@ package core.view.components
 		{
 			init();
 			noNeedToRemove(popupDto);
+			SoundLib.getInstance().playSound(popupDto.sound, 0, 1, 0.7);
 		}
-		protected function contentTween():void{
+		
+		protected function addPopupTween():void
+		{
 			popup.y=-240;
 			popup.x = 640;
 			popup.scaleX = 0.1;
@@ -180,8 +183,7 @@ package core.view.components
 				{
 					return;
 				} else {
-					
-					addListenersForNextBtn();
+					SoundLib.getInstance().btnClickSound();
 					dispatchEvent(new GameEvent(GeneralEventsConst.POPUP_ENTER_PRESSET, _params));
 					_inputTf.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseClickForText);
 					_inputTf.removeEventListener(KeyboardEvent.KEY_UP, onSetTextHand);
@@ -207,7 +209,6 @@ package core.view.components
 			_inputText.text = "";
 		}
 		
-		
 		private function removeListeners():void
 		{
 			TweenLite.killTweensOf(popup);
@@ -217,8 +218,21 @@ package core.view.components
 			_restartBtn.removeEventListener(MouseEvent.CLICK, onRestartBtnClickHand);
 		}
 		
+		public function removePopupTween():void
+		{
+			removeBackground();
+			TweenLite.to(popup, 0.7, {x:-640, y:360, scaleX:2, scaleY:2, alpha:0.1, ease:Back.easeIn, onComplete:removePopup});
+		}
+		
+		private function removePopup():void
+		{
+			dispatchEvent(new Event(GeneralEventsConst.POPUP_REMOVE_DIALOG));
+		}
+		
 		protected function onRestartBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.getInstance().btnClickSound();
+			removeListeners();
 			dispatchEvent(new Event(GeneralEventsConst.POPUP_RESTART_BTN_CLICK));
 		}
 		
@@ -238,6 +252,8 @@ package core.view.components
 		
 		protected function onBackBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.getInstance().btnClickSound();
+			removeListeners();
 			dispatchEvent(new Event(GeneralEventsConst.POPUP_BACK_BTN_CLICK));
 		}
 	}

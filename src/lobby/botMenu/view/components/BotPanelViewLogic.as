@@ -37,27 +37,6 @@ package lobby.botMenu.view.components
 			_lifesPic.gotoAndStop(11);
 		}
 		
-		protected function onMuteBtnClickHand(event:MouseEvent):void
-		{
-			SoundLib.getInstance().btnClickSound();
-			if (_frameMuteBtn == 1)
-			{
-				_frameMuteBtn = 2;
-			}
-			else 
-			{
-				_frameMuteBtn = 1;
-			}
-			botPanel.muteBtn.gotoAndStop(_frameMuteBtn);
-			dispatchEvent(new Event(GeneralEventsConst.MUTE));
-		}
-		
-		protected function onFullScreenBtnClickHand(event:MouseEvent):void
-		{
-			SoundLib.getInstance().btnClickSound();
-			dispatchEvent(new Event(GeneralEventsConst.FULL_SCREEN));
-		}
-		
 		protected function onSettingsBtnClickHand(event:MouseEvent):void
 		{
 			SoundLib.getInstance().btnClickSound();

@@ -16,5 +16,6 @@ package core.model.dto
 		public var xBtnShow:Boolean;
 		public var restartBtnShow:Boolean;
 		public var params:String;
+		public var sound:String = "PopupSound";
 	}
 }

@@ -9,6 +9,7 @@ package core.utils
 		private static var _instance:SoundLib;
 		
 		private var _volumeSet:SoundTransform = new SoundTransform();
+		private var _mute:Boolean;
 		
 		public static function getInstance():SoundLib
 		{
@@ -19,25 +20,33 @@ package core.utils
 			return _instance;
 		}
 		
-		public function playSound(name:String, timeStart:int=0, loops:int=1/*, volume:int=1*/):Sound
+		public function playSound(name:String, timeStart:int=0, loops:int=1, volume:Number=1):Sound
 		{
 			var NeedSound:Class = Warehouse.getInstance().getAssetClass(name);
 			var sound:Sound = new NeedSound();
-		//	volumeSet.volume = volume;
+			if (_mute == false)
+			{
+				_volumeSet.volume = volume;
+			}
 			sound.play(timeStart,loops,_volumeSet);
 			return sound;
 		}
 		
-		public function mute():void
+		public function muteSound():void
 		{
-			if (_volumeSet.volume == 0)
-			{
-				_volumeSet.volume = 1;
-			}
-			else
+			if (_mute == false)
 			{
 				_volumeSet.volume = 0;
+				_mute = true;
+			} else {
+				_volumeSet.volume = 1;
+				_mute = false;
 			}
+		}
+		
+		public function getMuteStatus():Boolean
+		{
+			return _mute;
 		}
 		
 		public function btnClickSound():void

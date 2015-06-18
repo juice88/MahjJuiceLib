@@ -41,6 +41,7 @@ package core.view.mediator
 			popupVL.addEventListener(GeneralEventsConst.POPUP_RESTART_BTN_CLICK, onRestartBtnClickHand);
 			popupVL.addEventListener(GeneralEventsConst.POPUP_X_BTN_CLICK, onXBtnClickHand);
 			popupVL.addEventListener(GeneralEventsConst.POPUP_ENTER_PRESSET, onEnterPressetHand);
+			popupVL.addEventListener(GeneralEventsConst.POPUP_REMOVE_DIALOG, onRemoveDialog);
 		}
 		
 		override public function onRemoveListeners():void
@@ -50,34 +51,47 @@ package core.view.mediator
 			popupVL.removeEventListener(GeneralEventsConst.POPUP_RESTART_BTN_CLICK, onRestartBtnClickHand);
 			popupVL.removeEventListener(GeneralEventsConst.POPUP_X_BTN_CLICK, onXBtnClickHand);
 			popupVL.removeEventListener(GeneralEventsConst.POPUP_ENTER_PRESSET, onEnterPressetHand);
+			popupVL.removeEventListener(GeneralEventsConst.POPUP_REMOVE_DIALOG, onRemoveDialog);
+
 		}
 		
 		protected function onBackBtnClickHand(event:Event):void
 		{
-			sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
+			popupVL.removePopupTween();
+		//	sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
 			sendNotification(_notifBackBtn);
 		}
 		
 		protected function onNextBtnClickHand(event:GameEvent):void
 		{
-			sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
+			popupVL.removePopupTween();
+		//	sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
 			sendNotification(_notifNextBtn, event.params);
 		}
 		
 		protected function onRestartBtnClickHand(event:Event):void
 		{
-			sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
+			popupVL.removePopupTween();
+		//	sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
 			sendNotification(_notifRestartBtn);
 		}
 		
 		protected function onXBtnClickHand(event:Event):void
 		{
-			sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
+			popupVL.removePopupTween();
+		//	sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
 			sendNotification(_notifXBtn);
 		}
 		protected function onEnterPressetHand(event:GameEvent):void
 		{
+			popupVL.removePopupTween();
+		//	sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
 			sendNotification(_notifNextBtn, event.params);			
+		}
+		
+		protected function onRemoveDialog(event:Event):void
+		{
+			sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
 		}
 		
 	}

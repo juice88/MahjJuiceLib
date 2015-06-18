@@ -26,26 +26,12 @@ package lobby.botMenu.view.mediator
 		
 		override public function onRegisterListeners():void
 		{
-			botPanel.addEventListener(GeneralEventsConst.MUTE, onMuteHand);
-			botPanel.addEventListener(GeneralEventsConst.FULL_SCREEN, onFullScreenHand);
 			botPanel.addEventListener(GeneralEventsConst.SHOW_SETTINGS_PANEL, onShowSettingsPanelHand);
 		}
 		
 		override public function onRemoveListeners():void
 		{
-			botPanel.removeEventListener(GeneralEventsConst.MUTE, onMuteHand);
-			botPanel.removeEventListener(GeneralEventsConst.FULL_SCREEN, onFullScreenHand);
 			botPanel.removeEventListener(GeneralEventsConst.SHOW_SETTINGS_PANEL, onShowSettingsPanelHand);
-		}
-		
-		private function onMuteHand(event:Event):void
-		{
-			sendNotification(GeneralNotifications.MUTE);
-		}
-		
-		protected function onFullScreenHand(event:Event):void
-		{
-			sendNotification(GeneralNotifications.FULL_SCREEN);
 		}
 		
 		protected function onShowSettingsPanelHand(event:Event):void
