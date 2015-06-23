@@ -17,6 +17,7 @@ package lobby.botMenu.view.components
 		private var _lifesPic:MovieClip;
 		private var _minuteTf:TextField;
 		private var _secondTf:TextField;
+		private var _movesHistory:MovieClip;
 		
 		public function BotPanelViewLogic()
 		{
@@ -35,6 +36,7 @@ package lobby.botMenu.view.components
 			_settingsBtn.addEventListener(MouseEvent.CLICK, onSettingsBtnClickHand);
 			_lifesPic = botPanel["lifesPic"];
 			_lifesPic.gotoAndStop(11);
+			_movesHistory = botPanel["movesHistoryIcon"];
 		}
 		
 		protected function onSettingsBtnClickHand(event:MouseEvent):void

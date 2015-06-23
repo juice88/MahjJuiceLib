@@ -1,10 +1,10 @@
-package core.controller.commands
+package core.popups.controlles.commands
 {
 	import core.config.GeneralNotifications;
 	import core.config.PopupNames;
 	import core.model.dto.PopupConfDto;
 	import core.sharedObject.model.proxy.SharedObjProxy;
-	import core.view.mediator.PopupMediator;
+	import core.popups.view.mediator.PopupMediator;
 	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;

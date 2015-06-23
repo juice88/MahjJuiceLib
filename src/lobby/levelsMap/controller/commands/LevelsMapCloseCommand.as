@@ -11,7 +11,7 @@ package lobby.levelsMap.controller.commands
 		override public function execute(notification:INotification):void
 		{
 			facade.removeMediator(LevelsMapMediator.NAME);
-			facade.registerMediator(new LevelsCategoryPopupMediator);
+			facade.registerMediator(new LevelsCategoryPopupMediator());
 		}
 	}
 }

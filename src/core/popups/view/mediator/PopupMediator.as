@@ -1,14 +1,15 @@
-package core.view.mediator
+package core.popups.view.mediator
 {
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
 	import core.model.dto.PopupConfDto;
-	import core.view.components.PopupVievLogic;
+	import core.popups.view.component.PopupVievLogic;
 	
 	import flash.events.Event;
 	
 	import org.puremvc.as3.patterns.mediator.Mediator;
+	import core.view.mediator.DialogMediator;
 
 	public class PopupMediator extends DialogMediator
 	{
@@ -52,47 +53,40 @@ package core.view.mediator
 			popupVL.removeEventListener(GeneralEventsConst.POPUP_X_BTN_CLICK, onXBtnClickHand);
 			popupVL.removeEventListener(GeneralEventsConst.POPUP_ENTER_PRESSET, onEnterPressetHand);
 			popupVL.removeEventListener(GeneralEventsConst.POPUP_REMOVE_DIALOG, onRemoveDialog);
-
 		}
 		
 		protected function onBackBtnClickHand(event:Event):void
 		{
 			popupVL.removePopupTween();
-		//	sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
 			sendNotification(_notifBackBtn);
 		}
 		
 		protected function onNextBtnClickHand(event:GameEvent):void
 		{
 			popupVL.removePopupTween();
-		//	sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
 			sendNotification(_notifNextBtn, event.params);
 		}
 		
 		protected function onRestartBtnClickHand(event:Event):void
 		{
 			popupVL.removePopupTween();
-		//	sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
 			sendNotification(_notifRestartBtn);
 		}
 		
 		protected function onXBtnClickHand(event:Event):void
 		{
 			popupVL.removePopupTween();
-		//	sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
 			sendNotification(_notifXBtn);
 		}
 		protected function onEnterPressetHand(event:GameEvent):void
 		{
 			popupVL.removePopupTween();
-		//	sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
 			sendNotification(_notifNextBtn, event.params);			
 		}
 		
 		protected function onRemoveDialog(event:Event):void
 		{
-			sendNotification(GeneralNotifications.REMOVE_DIALOG, _name);
+			sendNotification(GeneralNotifications.REMOVE_POPUP, _name);
 		}
-		
 	}
 }

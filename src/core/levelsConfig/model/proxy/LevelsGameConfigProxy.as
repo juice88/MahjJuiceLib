@@ -15,9 +15,10 @@ package core.levelsConfig.model.proxy
 	{
 		public static const NAME:String = "LevelsGameConfigProxy";
 		
-		public function LevelsGameConfigProxy()
+		public function LevelsGameConfigProxy(lvlsConfXML:XML)
 		{
 			super(NAME, new ConfigDto());
+			parseXMLConfFile(lvlsConfXML);
 		}
 		
 		public function get configDto():ConfigDto
@@ -30,22 +31,16 @@ package core.levelsConfig.model.proxy
 			configDto.levelNum = 1;
 		}
 		
-		override public function onRegister():void
-		{
-			loadLevelsConfigFile();
-			
-		}
-		
-		public function loadLevelsConfigFile():void
-		{
-			[Embed(source = "res/ConfigFile.xml", mimeType="application/octet-stream")] var ConfLvl:Class;
-			configDto.configXml = new XML(new ConfLvl());
-			parseXMLConfFile();
+//		public function loadLevelsConfigFile():void
+//		{
+//			[Embed(source = "res/ConfigFile.xml", mimeType="application/octet-stream")] var ConfLvl:Class;
+//			configDto.configXml = new XML(new ConfLvl());
+//			parseXMLConfFile();
 //			configDto.loader = new URLLoader();
 //			configDto.request = new URLRequest("res/ConfigFile.xml");
 //			configDto.loader.load(configDto.request);
 //			configDto.loader.addEventListener(Event.COMPLETE, onLoad);
-		}
+//		}
 		
 //		protected function onLoad(event:Event):void
 //		{
@@ -60,13 +55,13 @@ package core.levelsConfig.model.proxy
 //			} 
 //		}
 		
-		private function parseXMLConfFile():void
+		private function parseXMLConfFile(lvlsConfXML:XML):void
 		{
 			configDto.levelConfigList = new Vector.<LevelConfigDto>;
-			for (var i:int = 0; i<configDto.configXml.children().length(); i++)
+			for (var i:int = 0; i<lvlsConfXML.children().length(); i++)
 			{
 				var levelConfigDto:LevelConfigDto = new LevelConfigDto();
-				var xmlObj:XML = configDto.configXml.level[i];
+				var xmlObj:XML = lvlsConfXML.level[i];
 				levelConfigDto.elemNum = parseInt(xmlObj.elemNum.text(), 10);
 				levelConfigDto.framesBeginNum = parseInt(xmlObj.framesBeginNum.text(), 10);
 				levelConfigDto.framesNum = parseInt(xmlObj.framesNum.text(), 10);
@@ -88,7 +83,7 @@ package core.levelsConfig.model.proxy
 		public function setLevelConfig():void
 		{
 			sendNotification(GeneralNotifications.SET_LEVEL_CONFIG, configDto.levelConfigList[configDto.levelNum-1]);
-			if (configDto.levelNum == configDto.configXml.children().length())
+			if (configDto.levelNum == configDto.levelConfigList.length)
 			{
 				configDto.levelNum = 0;
 			}
@@ -105,6 +100,5 @@ package core.levelsConfig.model.proxy
 		{
 			configDto.levelNum = lvlNum;
 		}
-		
 	}
 }

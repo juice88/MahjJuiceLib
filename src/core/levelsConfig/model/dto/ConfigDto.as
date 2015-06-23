@@ -5,7 +5,6 @@ package core.levelsConfig.model.dto
 
 	public class ConfigDto extends Object
 	{
-		public var configXml:XML;
 		public var levelNum:int;
 		public var levelConfigList:Vector.<LevelConfigDto>;
 		

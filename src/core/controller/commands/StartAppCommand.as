@@ -3,13 +3,26 @@ package core.controller.commands
 	import core.config.GeneralNotifications;
 	import core.config.Settings;
 	import core.counters.controller.commands.NumberOfMovesSendCommand;
-	import lobby.highScore.controller.commands.SetPlayerScoreCommand;
+	import core.counters.controller.commands.PauseContinueGameCommand;
+	import core.counters.controller.commands.StartTimerCommand;
 	import core.levelsConfig.controller.commands.SetLevelConfigCommand;
 	import core.levelsConfig.controller.commands.SetNumLevelCommand;
+	import core.popups.controlles.commands.PopupShowBonusCommand;
+	import core.popups.controlles.commands.PopupShowCheckUserNameExistCommand;
+	import core.popups.controlles.commands.PopupShowConfirmToExitCommand;
+	import core.popups.controlles.commands.PopupShowConfirmToRestartCommand;
+	import core.popups.controlles.commands.PopupShowEnterNameCommand;
+	import core.popups.controlles.commands.PopupShowGameOverCommand;
+	import core.popups.controlles.commands.PopupShowPauseCommand;
+	import core.popups.controlles.commands.PopupShowWinCommand;
+	import core.popups.controlles.commands.RemovePopupCommand;
 	import core.queue.controller.commands.DialogCloseCommand;
 	import core.queue.controller.commands.DialogLoadToQueueCommand;
 	import core.queue.controller.commands.DialogOpenCommand;
+	import core.sharedObject.controller.commands.ContinueGameCommand;
+	import core.sharedObject.controller.commands.HighScoreUpdateCommand;
 	import core.sharedObject.controller.commands.SetConfToContinGameCommand;
+	import core.sharedObject.controller.commands.SetNameLevelAndScoreInSOCommand;
 	import core.view.mediator.RootMediator;
 	
 	import flash.display.Sprite;
@@ -22,14 +35,10 @@ package core.controller.commands
 	import gamePlay.level1.controller.commands.SelectIsTrueCommand;
 	
 	import lobby.highScore.controller.commands.SetPlayerNameCommand;
-	import core.sharedObject.controller.commands.HighScoreUpdateCommand;
-	import core.sharedObject.controller.commands.SetNameLevelAndScoreInSOCommand;
+	import lobby.highScore.controller.commands.SetPlayerScoreCommand;
 	import lobby.levelsMap.controller.commands.LevelsMapCloseCommand;
-	import core.counters.controller.commands.PauseContinueGameCommand;
-	import core.counters.controller.commands.StartTimerCommand;
-	import lobby.settings.controller.commands.SettingsPanelOpenCommand;
 	import lobby.levelsMap.controller.commands.ShowLevelsCategoryPopupCommand;
-	import core.sharedObject.controller.commands.ContinueGameCommand;
+	import lobby.settings.controller.commands.SettingsPanelOpenCommand;
 	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
@@ -42,7 +51,9 @@ package core.controller.commands
 			Settings.BACKGROUND_RECT_WIDTH = rootSprite.stage.stageWidth;
 			registerCommand();
 			facade.registerMediator(new RootMediator(rootSprite));
-			sendNotification(GeneralNotifications.LOAD_URL_REQUEST);
+			var mainConfigPath:String = "res/xml/MainConfig.xml";
+			var assetsPath:String = "res/";
+			sendNotification(GeneralNotifications.LOAD_URL_REQUEST, assetsPath, mainConfigPath);
 		}
 		
 		private function registerCommand():void
@@ -60,12 +71,11 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.LEVELS_MAP_CHOISE, LevelsMapChoiseCommand);
 			facade.registerCommand(GeneralNotifications.LEVELS_MAP_CLOSE, LevelsMapCloseCommand);
 			facade.registerCommand(GeneralNotifications.LEVELS_MAP_SHOW, LevelsMapShowCommand);
-			facade.registerCommand(GeneralNotifications.LOAD_URL_REQUEST, LoadUrlRequestCommand);
 			facade.registerCommand(GeneralNotifications.NEXT_LEVEL, NextLevelCommand);
 			facade.registerCommand(GeneralNotifications.NUMBER_OF_MOVES, NumberOfMovesSendCommand);
 			facade.registerCommand(GeneralNotifications.ON_OPEN_ELEMENT, OpenedElementCommand);
 			facade.registerCommand(GeneralNotifications.PAUSE_CONTINUE_GAME, PauseContinueGameCommand);
-			facade.registerCommand(GeneralNotifications.REMOVE_DIALOG, RemoveDialogCommand);
+			facade.registerCommand(GeneralNotifications.REMOVE_POPUP, RemovePopupCommand);
 			facade.registerCommand(GeneralNotifications.RESTART_GAME, RestartCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_TRUE, SelectIsTrueCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_FALSE, SelectIsFalseCommand);
@@ -88,6 +98,8 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.POPUP_SHOW_WIN, PopupShowWinCommand);
 			facade.registerCommand(GeneralNotifications.POPUP_SHOW_GAME_OVER, PopupShowGameOverCommand);
 			
+			facade.registerCommand(GeneralNotifications.LOAD_URL_REQUEST, LoadUrlRequestCommand);
+			facade.registerCommand(GeneralNotifications.LOAD_MAIN_CONTENT, LoadMainContentCommand);
 		}
 	}
 }

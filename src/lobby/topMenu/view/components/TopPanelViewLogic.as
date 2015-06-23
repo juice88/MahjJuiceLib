@@ -86,7 +86,7 @@ package lobby.topMenu.view.components
 		{
 			_scoreArr = [parseInt(_scoreTf.text)];
 			var diffVal:int;
-			if (_scoreArr[0]==0)
+			if (_scoreArr[0] == 0)
 			{
 				diffVal = 0;
 				_scoreArr = [scoreValue];

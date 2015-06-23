@@ -22,7 +22,6 @@ package core.config
 		public static const LEVELS_MAP_CLOSE:String = "levels_map_close";
 		public static const LEVELS_MAP_SHOW:String = "levels_map_show";
 		public static const LIFES_COUNTER_UPDATED:String = "lifes_counter_updated";
-		public static const LOAD_URL_REQUEST:String = "load_url_request";
 		public static const MOVES_COUTNER_UPDATED:String = "moves_coutner_updated"; //нотіф з проксі про те що лічильник обновився... (має нове значення)
 		public static const MUTE:String = "mute";
 		public static const NEXT_LEVEL:String = "next_level"
@@ -33,7 +32,7 @@ package core.config
 		public static const PERMIT_TO_ADD:String = "permit_to_add"; //Нотіф про дозвіл добавити ще один вибраний елемент
 		public static const READY_TO_DRAW:String = "ready_to_draw"; // Нотіф про готовність до розташування елементів
 		public static const REMOVE_CHILD_FROM_ROOT:String = "remove_child_from_root";
-		public static const REMOVE_DIALOG:String = "remove_dialog"; //нотіф яким в команду передається ім"я медіатора, котрий потрібно видалити
+		public static const REMOVE_POPUP:String = "remove_popup"; //нотіф яким в команду передається ім"я медіатора, котрий потрібно видалити
 		public static const REPLAY_LEVEL:String = "replay_level";
 		public static const RESTART_GAME:String = "restart_game";
 		public static const RESULTS_TURN:String = "result_turn"; //нотіф з результатом ходу (вибору елемента)
@@ -61,5 +60,8 @@ package core.config
 		public static const POPUP_SHOW_BONUS:String = "popup_show_bonus";
 		public static const POPUP_SHOW_WIN:String = "popup_show_win";
 		public static const POPUP_SHOW_GAME_OVER:String = "popup_show_game_over";
+		
+		public static const LOAD_URL_REQUEST:String = "load_url_request";
+		public static const LOAD_MAIN_CONTENT:String = "load_main_content";
 	}
 }

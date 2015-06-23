@@ -36,7 +36,7 @@ package lobby.settings.view.mediator
 		
 		protected function onCloseSettingPanelHand(event:Event):void
 		{
-			sendNotification(GeneralNotifications.REMOVE_DIALOG, NAME);
+			sendNotification(GeneralNotifications.REMOVE_POPUP, NAME);
 		}
 		
 		private function onMuteHand(event:Event):void //дубль кода... порешать

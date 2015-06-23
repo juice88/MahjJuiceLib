@@ -1,4 +1,4 @@
-package core.view.components
+package core.popups.view.component
 {
 	import com.greensock.TweenLite;
 	import com.greensock.easing.Back;
@@ -14,6 +14,7 @@ package core.view.components
 	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
+	import core.view.components.DialogViewLogic;
 
 	public class PopupVievLogic extends DialogViewLogic
 	{
@@ -211,7 +212,6 @@ package core.view.components
 		
 		private function removeListeners():void
 		{
-			TweenLite.killTweensOf(popup);
 			_backBtn.removeEventListener(MouseEvent.CLICK, onBackBtnClickHand);
 			_nextBtn.removeEventListener(MouseEvent.CLICK, onNextBtnClickHand);
 			_xBtn.removeEventListener(MouseEvent.CLICK, onXBtnClickHand);
@@ -226,6 +226,7 @@ package core.view.components
 		
 		private function removePopup():void
 		{
+			TweenLite.killTweensOf(popup);
 			dispatchEvent(new Event(GeneralEventsConst.POPUP_REMOVE_DIALOG));
 		}
 		
