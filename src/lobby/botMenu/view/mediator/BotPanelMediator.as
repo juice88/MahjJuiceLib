@@ -42,7 +42,8 @@ package lobby.botMenu.view.mediator
 		override public function listNotificationInterests():Array
 		{
 			return [GeneralNotifications.LIFES_COUNTER_UPDATED,
-					GeneralNotifications.VALUES_MINUTE_SECOND];
+					GeneralNotifications.VALUES_MINUTE_SECOND,
+					GeneralNotifications.SEND_HISTORY_MOVES];
 		}
 		
 		override public function handleNotification(notification:INotification):void
@@ -54,6 +55,9 @@ package lobby.botMenu.view.mediator
 					break;
 				case (GeneralNotifications.VALUES_MINUTE_SECOND):
 					botPanel.timerUpdated(notification.getBody() as Array);
+					break;
+				case (GeneralNotifications.SEND_HISTORY_MOVES):
+					botPanel.historyMovesUpdated(notification.getBody() as Array);
 					break;
 			}
 		}

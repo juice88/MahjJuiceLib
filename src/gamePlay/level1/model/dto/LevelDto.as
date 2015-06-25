@@ -16,6 +16,7 @@ package gamePlay.level1.model.dto
 		public var framesBeginNum:int; //початковий кадр елемента, кадр з якого починаються формуватися кадри елементів напр. з 5 по framesNum
 		public var framesNum:int; // кількість кадрів яка формуватиметься починаючи з кадру framesBeginNum
 		public var openElemLimit:int; // кількість елементів яка порівнюється
+		public var historyArray:Array;
 		
 		public function LevelDto(confDto:LevelConfigDto):void
 		{

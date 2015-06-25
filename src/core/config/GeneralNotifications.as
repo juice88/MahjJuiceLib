@@ -40,6 +40,7 @@ package core.config
 		public static const SCORE_MOVES_ANIMATION:String = "score_moves_animation"; //нотіф з числом очків, які зараховуються при правильному ході
 		public static const SELECT_IS_TRUE:String = "select_is_true"; //нотіф про правильне порівняння елементів (для лічильника очків)
 		public static const SELECT_IS_FALSE:String = "select_is_false"; //нотіф про неправильне порівняння елементів (для лічильника очків)
+		public static const SEND_HISTORY_MOVES:String = "send_history_moves";
 		public static const SET_CONF_TO_CONTINUE_GAME:String = "set_conf_to_continue_game"; //нотіф з налаштуваннями левела для продовження гри
 		public static const SET_LEVEL_CONFIG:String = "set_level_config";
 		public static const SET_NAME_LEVEL_AND_SCORE_IN_SO:String = "set_name_and_score_in_so";

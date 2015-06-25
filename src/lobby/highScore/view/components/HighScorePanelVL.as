@@ -13,7 +13,7 @@ package lobby.highScore.view.components
 		private var _allPlayersBtn:SimpleButton;
 		private var _myFriendsBtn:SimpleButton;
 		private var _friendsScorePanel:MyFriendsHighScorePanel;
-		private var _friendsScorePanelOnScene:Boolean = false;
+		private var _friendsScorePanelOnScene:Boolean;
 		private var _n:String = "n";
 		private var _player:String = "player";
 		private var _score:String = "score";

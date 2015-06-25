@@ -46,10 +46,13 @@ package gamePlay.level1.model.proxy
 		
 		public function init():void
 		{ 
+			
 			state = Settings.IDLE_STATE; // коли гра перший раз загрузилася тоді включається режим очікування
 			levelDto.kadrList = new Vector.<uint>; //ініціалізація вектора значень кадрів
 			levelDto.ElementListVector = new Vector.<ElementDto>; // ініціалізація вектора усіх елементів
 			levelDto.openElementsList = new Vector.<ElementDto>; // ініціалізація вектора елементів які були відкриті
+			levelDto.historyArray = new Array;
+			resultMovesHistory();
 			fillKadrList();
 			if (Settings.user == "admin")
 			{
@@ -122,6 +125,7 @@ package gamePlay.level1.model.proxy
 			{
 				elem.ifSelect = true; //встановлюєтсья true та означає те, що цей елемент вже відкритий та на ньому не можливо буде клікнути ще раз
 				levelDto.openElementsList.push(elem); //додаємо поточний елемент в масив відкритих елементів
+				resultMovesHistory();
 				sendNotification(GeneralNotifications.PERMIT_TO_ADD, elem.index as int);
 			}
 			else
@@ -135,6 +139,7 @@ package gamePlay.level1.model.proxy
 				}
 				elem.ifSelect = true;	
 				levelDto.openElementsList.push(elem);
+				resultMovesHistory();
 				sendNotification(GeneralNotifications.PERMIT_TO_ADD, elem.index as int);
 			}
 			
@@ -146,6 +151,35 @@ package gamePlay.level1.model.proxy
 			else
 			{
 				state = Settings.OPENING_STATE; // інакше якщо вибраний один елемент, тоді включається режим ОпенінгСтейт (стан вибору елементів)
+			}
+		}
+		
+		public function resultMovesHistory():void
+		{
+			var isLast:Boolean;
+			if (levelDto.openElementsList.length == levelDto.openElemLimit)
+			{
+				isLast = true;
+			}
+			if (levelDto.openElementsList.length == 0)
+			{
+				levelDto.historyArray.push(levelDto.openElemLimit, isLast, 0);
+				sendNotification(GeneralNotifications.SEND_HISTORY_MOVES, levelDto.historyArray);
+				levelDto.historyArray = new Array();
+				
+			} else {
+				levelDto.historyArray.push(levelDto.openElemLimit, isLast, 1);
+				for (var i:int=0; i<levelDto.openElementsList.length; i++)
+				{
+					if (levelDto.openElementsList[0].kadr == levelDto.openElementsList[i].kadr)
+					{
+						levelDto.historyArray.push(2);
+					} else {
+						levelDto.historyArray.push(3);
+					}
+				}
+				sendNotification(GeneralNotifications.SEND_HISTORY_MOVES, levelDto.historyArray);
+				levelDto.historyArray = new Array();
 			}
 		}
 		
@@ -171,11 +205,13 @@ package gamePlay.level1.model.proxy
 				{
 					ifSelectElementToFalse();
 					levelDto.openElementsList = new Vector.<ElementDto>; // обнуляємо вектора для того щоб можна було знову відкрити елементи які були закриті після неуспішного порівняння 
+					levelDto.historyArray = new Array();
 					return false;
 				}
 			}
 			ifSelectElementToFalse();
 			levelDto.openElementsList = new Vector.<ElementDto>;
+			levelDto.historyArray = new Array();
 			return true;
 		}
 		

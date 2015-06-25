@@ -9,6 +9,7 @@ package lobby.botMenu.view.components
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
+	import flash.utils.setTimeout;
 
 	public class BotPanelViewLogic extends ViewLogic
 	{
@@ -18,6 +19,7 @@ package lobby.botMenu.view.components
 		private var _minuteTf:TextField;
 		private var _secondTf:TextField;
 		private var _movesHistory:MovieClip;
+		private var _icon:String = "icon_";
 		
 		public function BotPanelViewLogic()
 		{
@@ -37,6 +39,7 @@ package lobby.botMenu.view.components
 			_lifesPic = botPanel["lifesPic"];
 			_lifesPic.gotoAndStop(11);
 			_movesHistory = botPanel["movesHistoryIcon"];
+			visibleMovesHistoryIcon();
 		}
 		
 		protected function onSettingsBtnClickHand(event:MouseEvent):void
@@ -69,6 +72,44 @@ package lobby.botMenu.view.components
 			else
 			{
 				_minuteTf.text = minSec[0].toString(10);
+			}
+		}
+		
+		private function visibleMovesHistoryIcon():void
+		{
+			var i:int = 0;
+			while (_movesHistory.hasOwnProperty(_icon+i))
+			{
+				(_movesHistory[_icon+i] as MovieClip).visible = false;
+				i++;
+			}
+		}
+		public function historyMovesUpdated(historyArr:Array):void
+		{
+			if (historyArr[2] == 0)
+			{
+				for (var i:int=0; i<historyArr[0]; i++)
+				{
+					(_movesHistory[_icon+i] as MovieClip).visible = true;
+				}
+			} else if (historyArr[2] == 1) {
+				for (var j:int = 0; j<historyArr.length - 3; j++)
+				{
+					(_movesHistory[_icon+j] as MovieClip).gotoAndStop(historyArr[3+j]);
+				}
+			}
+			if (historyArr[1])
+			{
+				setTimeout(cleanMovesHistoryIcon, 500);
+			}
+		}
+		private function cleanMovesHistoryIcon():void
+		{
+			var i:int = 0;
+			while (_movesHistory.hasOwnProperty(_icon+i))
+			{
+				(_movesHistory[_icon+i] as MovieClip).gotoAndStop(1);
+				i++;
 			}
 		}
 	}
