@@ -75,7 +75,7 @@ package lobby.botMenu.view.components
 			}
 		}
 		
-		private function visibleMovesHistoryIcon():void
+		public function visibleMovesHistoryIcon():void
 		{
 			var i:int = 0;
 			while (_movesHistory.hasOwnProperty(_icon+i))
@@ -103,7 +103,7 @@ package lobby.botMenu.view.components
 				setTimeout(cleanMovesHistoryIcon, 500);
 			}
 		}
-		private function cleanMovesHistoryIcon():void
+		public function cleanMovesHistoryIcon():void
 		{
 			var i:int = 0;
 			while (_movesHistory.hasOwnProperty(_icon+i))

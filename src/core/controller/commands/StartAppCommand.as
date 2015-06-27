@@ -10,6 +10,7 @@ package core.controller.commands
 	import core.popups.controlles.commands.PopupShowBonusCommand;
 	import core.popups.controlles.commands.PopupShowCheckUserNameExistCommand;
 	import core.popups.controlles.commands.PopupShowConfirmToExitCommand;
+	import core.popups.controlles.commands.PopupShowConfirmToNewGameCommand;
 	import core.popups.controlles.commands.PopupShowConfirmToRestartCommand;
 	import core.popups.controlles.commands.PopupShowEnterNameCommand;
 	import core.popups.controlles.commands.PopupShowGameOverCommand;
@@ -86,7 +87,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.SET_PLAYER_NAME, SetPlayerNameCommand);
 			facade.registerCommand(GeneralNotifications.SET_PLAYER_SCORE, SetPlayerScoreCommand);
 			facade.registerCommand(GeneralNotifications.SETTINGS_PANEL_OPEN, SettingsPanelOpenCommand);
-			facade.registerCommand(GeneralNotifications.START_NEW_GAME, StartGameCommand);
+			facade.registerCommand(GeneralNotifications.START_NEW_GAME, StartNewGameCommand);
 			facade.registerCommand(GeneralNotifications.START_TIMER, StartTimerCommand);
 			
 			facade.registerCommand(GeneralNotifications.POPUP_SHOW_ENTER_NAME, PopupShowEnterNameCommand);
@@ -94,6 +95,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.POPUP_SHOW_PAUSE, PopupShowPauseCommand);
 			facade.registerCommand(GeneralNotifications.POPUP_SHOW_CONFIRM_TO_RESTART, PopupShowConfirmToRestartCommand);
 			facade.registerCommand(GeneralNotifications.POPUP_SHOW_CONFIRM_TO_EXIT, PopupShowConfirmToExitCommand);
+			facade.registerCommand(GeneralNotifications.POPUP_SHOW_CONFIRM_TO_NEW_GAME, PopupShowConfirmToNewGameCommand);
 			facade.registerCommand(GeneralNotifications.POPUP_SHOW_BONUS, PopupShowBonusCommand);
 			facade.registerCommand(GeneralNotifications.POPUP_SHOW_WIN, PopupShowWinCommand);
 			facade.registerCommand(GeneralNotifications.POPUP_SHOW_GAME_OVER, PopupShowGameOverCommand);

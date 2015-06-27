@@ -43,7 +43,10 @@ package lobby.botMenu.view.mediator
 		{
 			return [GeneralNotifications.LIFES_COUNTER_UPDATED,
 					GeneralNotifications.VALUES_MINUTE_SECOND,
-					GeneralNotifications.SEND_HISTORY_MOVES];
+					GeneralNotifications.SEND_HISTORY_MOVES,
+					GeneralNotifications.POPUP_SHOW_GAME_OVER,
+					GeneralNotifications.POPUP_SHOW_WIN,
+					GeneralNotifications.REPLAY_LEVEL];
 		}
 		
 		override public function handleNotification(notification:INotification):void
@@ -58,6 +61,16 @@ package lobby.botMenu.view.mediator
 					break;
 				case (GeneralNotifications.SEND_HISTORY_MOVES):
 					botPanel.historyMovesUpdated(notification.getBody() as Array);
+					break;
+				case (GeneralNotifications.POPUP_SHOW_GAME_OVER):
+					botPanel.visibleMovesHistoryIcon();
+					break;
+				case (GeneralNotifications.POPUP_SHOW_WIN):
+					botPanel.visibleMovesHistoryIcon();
+					break;
+				case (GeneralNotifications.REPLAY_LEVEL):
+					botPanel.visibleMovesHistoryIcon();
+					botPanel.cleanMovesHistoryIcon();
 					break;
 			}
 		}

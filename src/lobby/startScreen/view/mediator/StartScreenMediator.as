@@ -42,7 +42,7 @@ package lobby.startScreen.view.mediator
 		
 		protected function onStartGameHand(event:Event):void
 		{
-			sendNotification(GeneralNotifications.START_NEW_GAME);
+			sendNotification(GeneralNotifications.POPUP_SHOW_CONFIRM_TO_NEW_GAME);
 		}
 		
 		protected function onContinueGameHand(event:Event):void

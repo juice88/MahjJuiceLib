@@ -2,6 +2,7 @@ package gamePlay.level1.view.components
 {
 	import com.greensock.TweenLite;
 	import com.greensock.TweenMax;
+	import com.greensock.data.TweenLiteVars;
 	import com.greensock.easing.Back;
 	import com.greensock.easing.Circ;
 	import com.greensock.easing.Elastic;
@@ -117,7 +118,6 @@ package gamePlay.level1.view.components
 
 		public function resultTurn(result:Boolean):void //перевірка результатів ходу (вибору елементів)
 		{
-			
 			if(result)
 			{
 				dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_TRUE));
@@ -204,7 +204,6 @@ package gamePlay.level1.view.components
 		{
 			var pos_x:int = event.currentTarget.parent.parent.x;
 			var pos_y:int = event.currentTarget.parent.parent.y;
-			
 			TweenLite.to(event.currentTarget, 1, {x:pos_x, y:pos_y-20, /*scaleX:1.1, scaleY:1.1,*/ ease:Back.easeInOut});
 		}
 		
@@ -229,6 +228,8 @@ package gamePlay.level1.view.components
 			
 			for (var j:uint = 0; j<_allElemList.length; j++)
 			{
+				_allElemList[j].x = 0;
+				_allElemList[j].y = 0;
 				((level1Content[_shablon+j]) as MovieClip).addChild(_allElemList[j]); //додаємо вектор усіх елементів на сцену
 			}
 				_openElemList = new Vector.<MovieClip>; //обнуляємо вектор відкритих елементів, щоб після рестарта можна було вибирати елементи спочатку
@@ -249,7 +250,6 @@ package gamePlay.level1.view.components
 				_vectorElementDto[i].element.removeEventListener(MouseEvent.CLICK, onClickElement);
 				_vectorElementDto[i].element.removeEventListener(MouseEvent.MOUSE_OVER, onMouseOverHand);
 				_vectorElementDto[i].element.removeEventListener(MouseEvent.MOUSE_OUT, onMouseOutHand);
-				
 			}
 		}
 		

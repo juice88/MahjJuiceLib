@@ -16,7 +16,7 @@ package gamePlay.level1.model.proxy
 	
 	public class LevelProxy extends Proxy
 	{
-		public static const NAME:String = "StartGameProxy";
+		public static const NAME:String = "LevelProxy";
 		
 		public function LevelProxy(confDto:LevelConfigDto)
 		{
@@ -46,7 +46,6 @@ package gamePlay.level1.model.proxy
 		
 		public function init():void
 		{ 
-			
 			state = Settings.IDLE_STATE; // коли гра перший раз загрузилася тоді включається режим очікування
 			levelDto.kadrList = new Vector.<uint>; //ініціалізація вектора значень кадрів
 			levelDto.ElementListVector = new Vector.<ElementDto>; // ініціалізація вектора усіх елементів
@@ -217,8 +216,14 @@ package gamePlay.level1.model.proxy
 		
 		public function replayLevel():void
 		{
+			for (var i:int = 0; i<levelDto.openElementsList.length; i++)
+			{
+				levelDto.openElementsList[i].ifSelect = false;
+			}
 			levelDto.openElementsList = new Vector.<ElementDto>; //обнуляємо вектор відкритих елементів, щоб після рестарта можна було вибирати елементи спочатку
 			sendNotification(GeneralNotifications.REPLAY_LEVEL);
+			levelDto.historyArray = new Array();
+			resultMovesHistory();
 		}
 	}
 }

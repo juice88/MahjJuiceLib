@@ -23,7 +23,7 @@ package core.counters.model.proxy
 		}
 		override public function onRegister():void
 		{
-			counters.timer = new Timer(1000, 60);
+			counters.timer = new Timer(1000, 1);
 		}
 		
 		public function get counters():CountersDto
@@ -89,9 +89,7 @@ package core.counters.model.proxy
 				counters.scoreOfSomeLevel += counters.scoreOneSel; //Settings.SCORE_ONE_TRUE_SELECT;
 				sendNotification(GeneralNotifications.SCORE_MOVES_ANIMATION, counters.scoreOneSel);
 				sendNotification(GeneralNotifications.SCORE_COUTNER_UPDATED, counters.totalScore);
-			}
-			else //інакше добавляємо по 30 очок
-			{
+			} else {//інакше добавляємо по 30 очок
 				counters.totalScore += counters.scoreMoreSel; //Settings.SCORE_THREE_TRUE_SELECT;
 				counters.scoreOfSomeLevel += counters.scoreMoreSel; //Settings.SCORE_THREE_TRUE_SELECT;
 				sendNotification(GeneralNotifications.SCORE_MOVES_ANIMATION, counters.scoreMoreSel);
@@ -182,30 +180,31 @@ package core.counters.model.proxy
 			counters.second--;
 			if (counters.second < 0)
 			{
-				counters.minute--;
+				if (counters.minute != 0)
+				{
+					counters.minute--;
+				}
 				counters.second = 59;
 			}
 			counters.minuteSecond.push(counters.minute, counters.second);
 			sendNotification(GeneralNotifications.VALUES_MINUTE_SECOND, counters.minuteSecond, counters.timerIsStopped as String);
 			counters.minuteSecond.length = 0;
 			trace("таймер", counters.minute, ":", counters.second);
-			if (counters.minute == 0)
+			if (counters.minute == 0 && counters.second == 0)
 			{
-				if (counters.second == 0)
-				{
-					timerStop();
-					sendNotification(GeneralNotifications.POPUP_SHOW_GAME_OVER);
-				}
+				timerStop();
+				sendNotification(GeneralNotifications.POPUP_SHOW_GAME_OVER);
 			}
 		}
 		
 		protected function onTimerComplete(event:TimerEvent):void
 		{
-			if (counters.minute >= 0 && counters.second > 0)
+			if (counters.minute >= 0)
 			{
-				if (counters.second != 0)
+				counters.timer.start();
+				if (counters.minute == 0 && counters.second == 0)
 				{
-					counters.timer.start();
+					timerStop();
 				}
 			}
 		}

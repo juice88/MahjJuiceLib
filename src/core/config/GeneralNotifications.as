@@ -15,7 +15,6 @@ package core.config
 		public static const DIALOG_OPEN:String = "dialog_open";
 		public static const END_TURN:String = "end_turn"; //Нотіф про закінчення вибору елементів
 		public static const FULL_SCREEN:String = "full_screen";
-		public static const GAME_OVER:String = "game_over";
 		public static const HIGH_SCORE_SEND:String = "high_score_send";
 		public static const HIGH_SCORE_UPDATE:String = "high_score_update";
 		public static const LEVELS_MAP_CHOISE:String = "levels_map_choise";
@@ -56,8 +55,9 @@ package core.config
 		public static const POPUP_SHOW_ENTER_NAME:String = "popup_show_enter_name";
 		public static const POPUP_SHOW_CHECK_USER_NAME_EXIST:String = "POPUP_SHOW_CHECK_USER_NAME_EXIST";
 		public static const POPUP_SHOW_PAUSE:String ="popup_show_pause";
-		public static const POPUP_SHOW_CONFIRM_TO_RESTART:String = "popup_show_confirm_to_restart";
 		public static const POPUP_SHOW_CONFIRM_TO_EXIT:String = "popup_show_confirm_to_exit";
+		public static const POPUP_SHOW_CONFIRM_TO_NEW_GAME:String = "popup_show_confirm_to_new_game";
+		public static const POPUP_SHOW_CONFIRM_TO_RESTART:String = "popup_show_confirm_to_restart";
 		public static const POPUP_SHOW_BONUS:String = "popup_show_bonus";
 		public static const POPUP_SHOW_WIN:String = "popup_show_win";
 		public static const POPUP_SHOW_GAME_OVER:String = "popup_show_game_over";

@@ -6,7 +6,7 @@ package gamePlay.level1.model.dto
 	{
 		public var kadr:int; 
 		public var index:int; 
-		public var ifSelect:Boolean = false;
+		public var ifSelect:Boolean;
 		public var element:MovieClip;
 	}
 }
