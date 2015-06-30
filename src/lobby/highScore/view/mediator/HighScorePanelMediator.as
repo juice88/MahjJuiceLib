@@ -37,7 +37,7 @@ package lobby.highScore.view.mediator
 			switch (notification.getName())
 			{
 				case GeneralNotifications.HIGH_SCORE_SEND:
-					highScoreVL.highScoreBoardUpdate(notification.getBody() as Array);
+					highScoreVL.highScoreBoardUpdate(notification.getBody() as Array, notification.getType());
 					break;
 			}
 		}

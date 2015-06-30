@@ -17,6 +17,7 @@ package lobby.highScore.view.components
 		private var _n:String = "n";
 		private var _player:String = "player";
 		private var _score:String = "score";
+		private var _lvl:String = "lvl";
 		
 		public function HighScorePanelVL()
 		{
@@ -55,28 +56,32 @@ package lobby.highScore.view.components
 			highScore.addChild(_friendsScorePanel.friendScore);
 		}
 		
-		public function highScoreBoardUpdate(arrUserData:Array):void
+		public function highScoreBoardUpdate(arrUserData:Array, maxLvlNum:String):void
 		{
 			notVisibleTextOnBoard();
 			for (var i:int = 0; i<arrUserData.length && i<=9; i++) // переробити, щоб знати кількість техтфілдів на контенті, вайл контен.хесЧайл(текстякисьтам_і)
 			{
 				var obj:Object = arrUserData[i];
-				var playerName:TextField = highScore[_player+(i+1)];
+				var playerName:TextField = highScore.scoreBoard[_player+(i+1)];
 					playerName.text = obj.name as String;
 					playerName.visible = true;
-				var playerScore:TextField = highScore[_score+(i+1)];
+				var playerScore:TextField = highScore.scoreBoard[_score+(i+1)];
 					playerScore.text = obj.score.toString();
 					playerScore.visible = true;
-				((highScore[_n+(i+1)]) as TextField).visible = true;
+				var lvlNum:TextField  = highScore.scoreBoard[_lvl+(i+1)];
+					lvlNum.text = obj.lvl.toString()+"/"+maxLvlNum;
+					lvlNum.visible = true;
+				((highScore.scoreBoard[_n+(i+1)]) as TextField).visible = true;
 			}
 		}
 		private function notVisibleTextOnBoard():void
 		{
 			for (var i:int = 1; i<11; i++)
 			{
-				((highScore[_n+i]) as TextField).visible = false;
-				((highScore[_player+i]) as TextField).visible = false;
-				((highScore[_score+i]) as TextField).visible = false;
+				((highScore.scoreBoard[_n+i]) as TextField).visible = false;
+				((highScore.scoreBoard[_player+i]) as TextField).visible = false;
+				((highScore.scoreBoard[_score+i]) as TextField).visible = false;
+				((highScore.scoreBoard[_lvl+i]) as TextField).visible = false;
 			}
 		}
 	}

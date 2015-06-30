@@ -1,5 +1,6 @@
 package core.sharedObject.controller.commands
 {
+	import core.levelsConfig.model.proxy.LevelsGameConfigProxy;
 	import core.sharedObject.model.proxy.SharedObjProxy;
 	
 	import org.puremvc.as3.interfaces.INotification;
@@ -9,7 +10,8 @@ package core.sharedObject.controller.commands
 	{
 		override public function execute(notification:INotification):void
 		{
-			(facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).highScoreUpdate();
+			var maxLvlNum:int = (facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).configDto.levelConfigList.length;
+			(facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).highScoreUpdate(maxLvlNum);
 		}
 	}
 }

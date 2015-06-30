@@ -8,7 +8,7 @@ package lobby.highScore.view.components
 	{
 		public function MyFriendsHighScorePanel()
 		{
-			super("MyFriendsHighScore");
+			super("ScoreBoard");
 		}
 		
 		public function get friendScore():MovieClip

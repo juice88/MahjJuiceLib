@@ -118,7 +118,7 @@ package core.sharedObject.model.proxy
 			sharedDto.arrNamesAndScores = new Array();
 			for each(var obj:Object in sharedDto.sharedObject.data){
 				try {
-					sharedDto.arrNamesAndScores.push({name:obj.name as String, score:obj.score as int});
+					sharedDto.arrNamesAndScores.push({name:obj.name as String, score:obj.score as int, lvl:obj.maxLvl+1 as int});
 				}
 				catch (err:Error) {
 					//нічого не робити - попалось поле sharedDto.sharedObject.data.name
@@ -128,10 +128,10 @@ package core.sharedObject.model.proxy
 			return sharedDto.arrNamesAndScores;
 		}
 		
-		public function highScoreUpdate():void
+		public function highScoreUpdate(maxLvlNum:int):void //походу тут лажа...!!!! звернути увагу
 		{
 			var arrData:Array = getUserNameAndScoreList();
-			sendNotification(GeneralNotifications.HIGH_SCORE_SEND, arrData);
+			sendNotification(GeneralNotifications.HIGH_SCORE_SEND, arrData, maxLvlNum.toString(10));
 		}
 		
 		public function getFinishedLvlNum():int
