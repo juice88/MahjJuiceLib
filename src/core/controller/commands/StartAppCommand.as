@@ -40,6 +40,7 @@ package core.controller.commands
 	import lobby.levelsMap.controller.commands.LevelsMapCloseCommand;
 	import lobby.levelsMap.controller.commands.ShowLevelsCategoryPopupCommand;
 	import lobby.settings.controller.commands.SettingsPanelOpenCommand;
+	import lobby.tutorial.controller.commands.TutorialShowCommand;
 	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
@@ -78,6 +79,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.PAUSE_CONTINUE_GAME, PauseContinueGameCommand);
 			facade.registerCommand(GeneralNotifications.REMOVE_POPUP, RemovePopupCommand);
 			facade.registerCommand(GeneralNotifications.RESTART_GAME, RestartCommand);
+			facade.registerCommand(GeneralNotifications.TUTORIAL_SHOW, TutorialShowCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_TRUE, SelectIsTrueCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_FALSE, SelectIsFalseCommand);
 			facade.registerCommand(GeneralNotifications.SET_CONF_TO_CONTINUE_GAME, SetConfToContinGameCommand);

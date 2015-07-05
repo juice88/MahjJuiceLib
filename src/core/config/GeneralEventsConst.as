@@ -17,7 +17,6 @@ package core.config
 		public static const LEVELS_MAP_CHOISE:String = "LevelsMapChoise";
 		public static const LEVELS_MAP_CLOSE:String = "LevelsMapClose";
 		public static const LEVELS_MAP_SHOW:String = "LevelsMapShow";
-		public static const MUTE:String = "Mute";
 		public static const NEXT_LEVEL:String = "NextLevel";
 		public static const OPENED_ELEMENT:String = "OpenedElement";
 		public static const PAUSE:String = "Pause";
@@ -39,6 +38,10 @@ package core.config
 		public static const POPUP_RESTART_BTN_CLICK:String = "PopupRestartBtnClick";
 		public static const POPUP_ENTER_PRESSET:String = "PopupEnterPresset";
 		public static const POPUP_REMOVE_DIALOG:String = "PopupRemoveDialog";
+		
+		public static const TUTORIAL_SHOW:String = "TutorialShow";
+		public static const TUTORIAL_CLOSE:String = "TutorialClose";
+		public static const TUTORIAL_NEXT:String = "TutorialNext";
 		
 	}
 }

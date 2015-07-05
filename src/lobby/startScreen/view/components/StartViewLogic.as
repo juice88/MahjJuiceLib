@@ -15,6 +15,7 @@ package lobby.startScreen.view.components
 		private var _continueGameBtn:SimpleButton;
 		private var _settingsBtn:SimpleButton;
 		private var _choiseLvlBtn:SimpleButton;
+		private var _tutorialBtn:SimpleButton;
 		
 		public function StartViewLogic()
 		{
@@ -36,6 +37,8 @@ package lobby.startScreen.view.components
 			_settingsBtn.addEventListener(MouseEvent.CLICK, onSettingsBtnClickHand);
 			_choiseLvlBtn = startContent["choiseLvlBtn"];
 			_choiseLvlBtn.addEventListener(MouseEvent.CLICK, onChoiseLvlBtnClickHand);
+			_tutorialBtn = startContent["tutorialBtn"];
+			_tutorialBtn.addEventListener(MouseEvent.CLICK, ontutorialaBtnClickHand);
 		}
 		
 		protected function onNewGameBtnClickHand(event:MouseEvent):void
@@ -60,6 +63,12 @@ package lobby.startScreen.view.components
 		{
 			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.CHOISE_OF_LEVEL));
+		}
+		
+		protected function ontutorialaBtnClickHand(event:MouseEvent):void
+		{
+			SoundLib.getInstance().btnClickSound();
+			dispatchEvent(new Event(GeneralEventsConst.TUTORIAL_SHOW));
 		}
 		
 		public function continueGameBtnIsVis():void

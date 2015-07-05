@@ -24,14 +24,12 @@ package lobby.settings.view.mediator
 		override public function onRegisterListeners():void
 		{
 			settingsPanel.addEventListener(GeneralEventsConst.SETTINGS_PANEL_CLOSE, onCloseSettingPanelHand);
-			settingsPanel.addEventListener(GeneralEventsConst.MUTE, onMuteHand); //дубль кода... порешать
-			settingsPanel.addEventListener(GeneralEventsConst.FULL_SCREEN, onFullScreenHand); ////дубль кода... порешать
+			settingsPanel.addEventListener(GeneralEventsConst.FULL_SCREEN, onFullScreenHand);
 		}
 		override public function onRemoveListeners():void
 		{
 			settingsPanel.removeEventListener(GeneralEventsConst.SETTINGS_PANEL_CLOSE, onCloseSettingPanelHand);
-			settingsPanel.removeEventListener(GeneralEventsConst.MUTE, onMuteHand); //дубль кода... порешать
-			settingsPanel.removeEventListener(GeneralEventsConst.FULL_SCREEN, onFullScreenHand); //дубль кода... порешать
+			settingsPanel.removeEventListener(GeneralEventsConst.FULL_SCREEN, onFullScreenHand);
 		}
 		
 		protected function onCloseSettingPanelHand(event:Event):void
@@ -39,12 +37,7 @@ package lobby.settings.view.mediator
 			sendNotification(GeneralNotifications.REMOVE_POPUP, NAME);
 		}
 		
-		private function onMuteHand(event:Event):void //дубль кода... порешать
-		{
-		//	sendNotification(GeneralNotifications.MUTE);
-		}
-		
-		protected function onFullScreenHand(event:Event):void //дубль кода... порешать
+		protected function onFullScreenHand(event:Event):void
 		{
 			sendNotification(GeneralNotifications.FULL_SCREEN);
 		}

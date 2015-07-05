@@ -72,7 +72,6 @@ package lobby.settings.view.components
 			SoundLib.getInstance().btnClickSound();
 			SoundLib.getInstance().muteSound();
 			checkMuteStatus();
-			dispatchEvent(new Event(GeneralEventsConst.MUTE));
 		}
 		
 		protected function onFullScreenBtnClickHand(event:MouseEvent):void

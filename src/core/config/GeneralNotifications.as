@@ -21,8 +21,9 @@ package core.config
 		public static const LEVELS_MAP_CLOSE:String = "levels_map_close";
 		public static const LEVELS_MAP_SHOW:String = "levels_map_show";
 		public static const LIFES_COUNTER_UPDATED:String = "lifes_counter_updated";
+		public static const LOAD_URL_REQUEST:String = "load_url_request";
+		public static const LOAD_MAIN_CONTENT:String = "load_main_content";
 		public static const MOVES_COUTNER_UPDATED:String = "moves_coutner_updated"; //нотіф з проксі про те що лічильник обновився... (має нове значення)
-		public static const MUTE:String = "mute";
 		public static const NEXT_LEVEL:String = "next_level"
 		public static const NUMBER_OF_MOVES:String = "number_of_moves"; //передається в ScoreProxy кількість ходів (наперід відома) для правильного вибору елементів (тобто кількість можливих ходів аби виграти левел)
 		public static const ON_OPEN_ELEMENT:String = "on_open_element"; //Нотіф про те що елемент ще не відкритий, а ми лише намірені його відкрити цей елемент
@@ -50,6 +51,7 @@ package core.config
 		public static const START_NEW_GAME:String = "start_new_game";
 		public static const START_TIMER:String = "start_timer";
 		public static const START_APP:String = "start_app";
+		public static const TUTORIAL_SHOW:String = "tutorial_show";
 		public static const VALUES_MINUTE_SECOND:String = "values_minute_second"; //нотіф що передає значення хвилин та секунд, для відображення таймера
 		
 		public static const POPUP_SHOW_ENTER_NAME:String = "popup_show_enter_name";
@@ -62,7 +64,5 @@ package core.config
 		public static const POPUP_SHOW_WIN:String = "popup_show_win";
 		public static const POPUP_SHOW_GAME_OVER:String = "popup_show_game_over";
 		
-		public static const LOAD_URL_REQUEST:String = "load_url_request";
-		public static const LOAD_MAIN_CONTENT:String = "load_main_content";
 	}
 }
