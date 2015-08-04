@@ -1,5 +1,7 @@
 package lobby.tutorial.controller.commands
 {
+	import core.config.GeneralNotifications;
+	
 	import lobby.tutorial.view.mediator.TutorialPopupMediator;
 	
 	import org.puremvc.as3.interfaces.INotification;
@@ -9,7 +11,8 @@ package lobby.tutorial.controller.commands
 	{
 		override public function execute(notification:INotification):void
 		{
-			facade.registerMediator(new TutorialPopupMediator());
+			var tutorialMed:TutorialPopupMediator = new TutorialPopupMediator();
+			sendNotification(GeneralNotifications.DIALOG_LOAD_TO_QUEUE, tutorialMed);
 		}
 	}
 }
