@@ -24,7 +24,6 @@ package core.controller.commands
 			facade.removeProxy(LevelProxy.NAME);
 			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).backToMenu();
 			facade.registerMediator(new StartScreenMediator());
-			facade.registerMediator(new HighScorePanelMediator());
 			(facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).visibleContinueBtn();
 		}
 	}

@@ -29,7 +29,7 @@ package core.view.mediator
 		}
 		
 		override public function listNotificationInterests():Array{
-			return [GeneralNotifications.ADD_CHILD_TO_ROOT, 
+			return [GeneralNotifications.ADD_CHILD_TO_ROOT,
 					GeneralNotifications.REMOVE_CHILD_FROM_ROOT,
 					GeneralNotifications.FULL_SCREEN];
 		}

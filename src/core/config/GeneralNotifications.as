@@ -14,6 +14,7 @@ package core.config
 		public static const DIALOG_LOAD_TO_QUEUE:String = "dialog_load_to_queue"; //завантажується медіатор діалога в чергу
 		public static const DIALOG_OPEN:String = "dialog_open";
 		public static const END_TURN:String = "end_turn"; //Нотіф про закінчення вибору елементів
+		public static const ENTERTAINMENT_SCREEN_SHOW:String = "entertainment_screen_show";
 		public static const FULL_SCREEN:String = "full_screen";
 		public static const HIGH_SCORE_SEND:String = "high_score_send";
 		public static const HIGH_SCORE_UPDATE:String = "high_score_update";
@@ -23,6 +24,7 @@ package core.config
 		public static const LIFES_COUNTER_UPDATED:String = "lifes_counter_updated";
 		public static const LOAD_URL_REQUEST:String = "load_url_request";
 		public static const LOAD_MAIN_CONTENT:String = "load_main_content";
+		public static const PRELOADER_SHOW_HIDE:String = "preloader_show_hide";
 		public static const MOVES_COUTNER_UPDATED:String = "moves_coutner_updated"; //нотіф з проксі про те що лічильник обновився... (має нове значення)
 		public static const NEXT_LEVEL:String = "next_level"
 		public static const NUMBER_OF_MOVES:String = "number_of_moves"; //передається в ScoreProxy кількість ходів (наперід відома) для правильного вибору елементів (тобто кількість можливих ходів аби виграти левел)
@@ -36,6 +38,7 @@ package core.config
 		public static const REPLAY_LEVEL:String = "replay_level";
 		public static const RESTART_GAME:String = "restart_game";
 		public static const RESULTS_TURN:String = "result_turn"; //нотіф з результатом ходу (вибору елемента)
+		public static const SCORE_BOARD_SHOW:String = "score_board_show";
 		public static const SCORE_COUTNER_UPDATED:String = "score_coutner_updated"; // нотіф з СкорПроксі про обновлення лічильника очків обновився... (має нове значення)
 		public static const SCORE_MOVES_ANIMATION:String = "score_moves_animation"; //нотіф з числом очків, які зараховуються при правильному ході
 		public static const SELECT_IS_TRUE:String = "select_is_true"; //нотіф про правильне порівняння елементів (для лічильника очків)

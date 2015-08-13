@@ -1,10 +1,10 @@
 package lobby.highScore.view.components
 {
-	import core.view.components.ViewLogic;
+	import core.view.components.DialogViewLogic;
 	
 	import flash.display.MovieClip;
 	
-	public class MyFriendsHighScorePanel extends ViewLogic
+	public class MyFriendsHighScorePanel extends DialogViewLogic
 	{
 		public function MyFriendsHighScorePanel()
 		{

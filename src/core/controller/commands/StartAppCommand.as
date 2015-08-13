@@ -35,10 +35,13 @@ package core.controller.commands
 	import gamePlay.level1.controller.commands.SelectIsFalseCommand;
 	import gamePlay.level1.controller.commands.SelectIsTrueCommand;
 	
+	import lobby.entertainmentScreen.controller.commands.EntertainmentScreenShowCommand;
+	import lobby.highScore.controller.commands.ScoreBoardShowCommand;
 	import lobby.highScore.controller.commands.SetPlayerNameCommand;
 	import lobby.highScore.controller.commands.SetPlayerScoreCommand;
 	import lobby.levelsMap.controller.commands.LevelsMapCloseCommand;
 	import lobby.levelsMap.controller.commands.ShowLevelsCategoryPopupCommand;
+	import lobby.preloader.controller.commands.PreloaderShowHideCommand;
 	import lobby.settings.controller.commands.SettingsPanelOpenCommand;
 	import lobby.tutorial.controller.commands.TutorialShowCommand;
 	
@@ -53,6 +56,7 @@ package core.controller.commands
 			Settings.BACKGROUND_RECT_WIDTH = rootSprite.stage.stageWidth;
 			registerCommand();
 			facade.registerMediator(new RootMediator(rootSprite));
+			sendNotification(GeneralNotifications.PRELOADER_SHOW_HIDE, true);
 			var mainConfigPath:String = "res/xml/MainConfig.xml";
 			var assetsPath:String = "res/";
 			sendNotification(GeneralNotifications.LOAD_URL_REQUEST, assetsPath, mainConfigPath);
@@ -69,6 +73,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.DIALOG_LOAD_TO_QUEUE, DialogLoadToQueueCommand);
 			facade.registerCommand(GeneralNotifications.DIALOG_OPEN, DialogOpenCommand);
 			facade.registerCommand(GeneralNotifications.END_TURN, EndTurnCommand);
+			facade.registerCommand(GeneralNotifications.ENTERTAINMENT_SCREEN_SHOW, EntertainmentScreenShowCommand);
 			facade.registerCommand(GeneralNotifications.HIGH_SCORE_UPDATE, HighScoreUpdateCommand);
 			facade.registerCommand(GeneralNotifications.LEVELS_MAP_CHOISE, LevelsMapChoiseCommand);
 			facade.registerCommand(GeneralNotifications.LEVELS_MAP_CLOSE, LevelsMapCloseCommand);
@@ -77,9 +82,11 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.NUMBER_OF_MOVES, NumberOfMovesSendCommand);
 			facade.registerCommand(GeneralNotifications.ON_OPEN_ELEMENT, OpenedElementCommand);
 			facade.registerCommand(GeneralNotifications.PAUSE_CONTINUE_GAME, PauseContinueGameCommand);
+			facade.registerCommand(GeneralNotifications.PRELOADER_SHOW_HIDE, PreloaderShowHideCommand);
 			facade.registerCommand(GeneralNotifications.REMOVE_POPUP, RemovePopupCommand);
 			facade.registerCommand(GeneralNotifications.RESTART_GAME, RestartCommand);
 			facade.registerCommand(GeneralNotifications.TUTORIAL_SHOW, TutorialShowCommand);
+			facade.registerCommand(GeneralNotifications.SCORE_BOARD_SHOW, ScoreBoardShowCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_TRUE, SelectIsTrueCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_FALSE, SelectIsFalseCommand);
 			facade.registerCommand(GeneralNotifications.SET_CONF_TO_CONTINUE_GAME, SetConfToContinGameCommand);

@@ -32,6 +32,7 @@ package lobby.startScreen.view.mediator
 			startScreen.addEventListener(GeneralEventsConst.SHOW_SETTINGS_PANEL, onShowSettingsPanelHand);
 			startScreen.addEventListener(GeneralEventsConst.CHOISE_OF_LEVEL, onChoiseOfLevelHand);
 			startScreen.addEventListener(GeneralEventsConst.TUTORIAL_SHOW, onShowTutorialPopup);
+			startScreen.addEventListener(GeneralEventsConst.SCORE_BOARD_SHOW, onScoreBoardShowHand);
 		}
 		
 		override public function onRemoveListeners():void
@@ -41,6 +42,7 @@ package lobby.startScreen.view.mediator
 			startScreen.removeEventListener(GeneralEventsConst.SHOW_SETTINGS_PANEL, onShowSettingsPanelHand);
 			startScreen.removeEventListener(GeneralEventsConst.CHOISE_OF_LEVEL, onChoiseOfLevelHand);
 			startScreen.removeEventListener(GeneralEventsConst.TUTORIAL_SHOW, onShowTutorialPopup);
+			startScreen.removeEventListener(GeneralEventsConst.SCORE_BOARD_SHOW, onScoreBoardShowHand);
 		}
 		
 		protected function onStartGameHand(event:Event):void
@@ -66,6 +68,11 @@ package lobby.startScreen.view.mediator
 		protected function onShowTutorialPopup(event:Event):void
 		{
 			sendNotification(GeneralNotifications.TUTORIAL_SHOW);
+		}
+		
+		protected function onScoreBoardShowHand(event:Event):void
+		{
+			sendNotification(GeneralNotifications.SCORE_BOARD_SHOW);
 		}
 		
 		override public function listNotificationInterests():Array

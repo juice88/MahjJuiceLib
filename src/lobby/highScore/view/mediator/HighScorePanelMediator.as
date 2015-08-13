@@ -1,30 +1,49 @@
 package lobby.highScore.view.mediator
 {
+	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
-	import core.view.mediator.UIMediator;
+	import core.view.mediator.DialogMediator;
+	
+	import flash.events.Event;
 	
 	import lobby.highScore.view.components.HighScorePanelVL;
 	
 	import org.puremvc.as3.interfaces.INotification;
 	
-	public class HighScorePanelMediator extends UIMediator
+	public class HighScorePanelMediator extends DialogMediator
 	{
 		public static const NAME:String = "HighScorePanelMediator";
 		
 		public function HighScorePanelMediator()
 		{
 			super(NAME, new HighScorePanelVL());
-			layer = "lower";
-		}
-		
-		override public function onRegisterListeners():void
-		{
-			sendNotification(GeneralNotifications.HIGH_SCORE_UPDATE);
+			layer = "upper";
 		}
 		
 		private function get highScoreVL():HighScorePanelVL
 		{
 			return viewLogic as HighScorePanelVL;
+		}
+		
+		override public function onRegister():void
+		{
+			super.onRegister();
+			sendNotification(GeneralNotifications.HIGH_SCORE_UPDATE);
+		}
+		
+		override public function onRegisterListeners():void
+		{
+			highScoreVL.addEventListener(GeneralEventsConst.SCORE_BOARD_HIDE, onScoreBoardHideHand);
+		}
+		
+		override public function onRemoveListeners():void
+		{
+			highScoreVL.removeEventListener(GeneralEventsConst.SCORE_BOARD_HIDE, onScoreBoardHideHand);
+		}
+		
+		protected function onScoreBoardHideHand(event:Event):void
+		{
+			facade.removeMediator(HighScorePanelMediator.NAME);			
 		}
 		
 		override public function listNotificationInterests():Array

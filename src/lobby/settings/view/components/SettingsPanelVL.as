@@ -43,11 +43,11 @@ package lobby.settings.view.components
 		
 		protected function addSettingsPanelTween():void
 		{
-			setPanelVL.y=-240;
-			setPanelVL.x = 640;
-			setPanelVL.scaleX = 0.1;
-			setPanelVL.scaleY = 0.1;
-			TweenLite.to(setPanelVL, 0.7, {x:0, y:0, scaleX:1, scaleY:1, ease:Back.easeOut});
+			//setPanelVL.y=-645;
+			setPanelVL.x = -1280;
+			setPanelVL.scaleX = 0.001;
+//			setPanelVL.scaleY = 0.1;
+			TweenLite.to(setPanelVL, 0.7, {x:0, y:0, scaleX:1, scaleY:1/*, ease:Back.easeOut*/});
 		}
 		
 		private function checkMuteStatus():void

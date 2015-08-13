@@ -1,15 +1,20 @@
 package lobby.highScore.view.components
 {
+	import com.greensock.TweenLite;
+	
+	import core.config.GeneralEventsConst;
 	import core.utils.SoundLib;
-	import core.view.components.ViewLogic;
+	import core.view.components.DialogViewLogic;
 	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	
-	public class HighScorePanelVL extends ViewLogic
+	public class HighScorePanelVL extends DialogViewLogic
 	{
+		private var _closeBtn:SimpleButton;
 		private var _allPlayersBtn:SimpleButton;
 		private var _myFriendsBtn:SimpleButton;
 		private var _friendsScorePanel:MyFriendsHighScorePanel;
@@ -32,11 +37,26 @@ package lobby.highScore.view.components
 		
 		private function highScoreLoad():void
 		{
-			_friendsScorePanel = new MyFriendsHighScorePanel();
+			highScore.x = 437;
+			highScore.y = -456;
+			TweenLite.to(highScore, .7, {x:437, y:132});
+			_closeBtn = highScore["closeBtn"];
+			_closeBtn.addEventListener(MouseEvent.CLICK, onCloseBtnClickHand);
 			_allPlayersBtn = highScore["allPlayersBtn"];
 			_allPlayersBtn.addEventListener(MouseEvent.CLICK, onAllPlayersBtnClickHand);
 			_myFriendsBtn = highScore["myFriendsBtn"];
 			_myFriendsBtn.addEventListener(MouseEvent.CLICK, onMyFriendsBtnClickHand);
+		}
+		
+		protected function onCloseBtnClickHand(event:MouseEvent):void
+		{
+			TweenLite.to(highScore, .3, {x:437, y:730, onComplete:closeScoreBoard});
+			SoundLib.getInstance().btnClickSound();
+		}
+		
+		private function closeScoreBoard():void
+		{
+			dispatchEvent(new Event(GeneralEventsConst.SCORE_BOARD_HIDE));
 		}
 		
 		protected function onAllPlayersBtnClickHand(event:MouseEvent):void
@@ -51,6 +71,7 @@ package lobby.highScore.view.components
 		
 		protected function onMyFriendsBtnClickHand(event:MouseEvent):void
 		{
+			_friendsScorePanel = new MyFriendsHighScorePanel();
 			SoundLib.getInstance().btnClickSound();
 			_friendsScorePanelOnScene = true;
 			highScore.addChild(_friendsScorePanel.friendScore);

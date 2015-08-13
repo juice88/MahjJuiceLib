@@ -37,7 +37,7 @@ package core.controller.commands
 			for (var i:int=0; i<_mainConfigXML.conf.length(); i++){
 				var asset_type:String=_mainConfigXML.conf[i].@TYPE;
 				var asset_title:String=_mainConfigXML.conf[i].@TITLE;
-				_loader.add(_assetsPath+_mainConfigXML.conf[i].@URL, {id:asset_title}); 
+				_loader.add(_assetsPath+_mainConfigXML.conf[i].@URL, {id:asset_title});
 			}
 			_loader.addEventListener(BulkLoader.COMPLETE, onLoaderParseComplete);
 			_loader.addEventListener(BulkLoader.ERROR, onError);
@@ -60,7 +60,8 @@ package core.controller.commands
 						break;
 				}
 			}
-			sendNotification(GeneralNotifications.LOAD_MAIN_CONTENT);
+			sendNotification(GeneralNotifications.PRELOADER_SHOW_HIDE, false);
+			sendNotification(GeneralNotifications.ENTERTAINMENT_SCREEN_SHOW);
 		}
 		
 		protected function onError(event:Event):void

@@ -22,6 +22,8 @@ package core.config
 		public static const PAUSE:String = "Pause";
 		public static const PAUSE_CONTINUE_GAME:String = "PauseContinueGame"; // при натиснені на кнопці Сontinue на ПавзаПопап
 		public static const RESTART_GAME:String = "RestartGame";
+		public static const SCORE_BOARD_SHOW:String = "ScoreBoardShow";
+		public static const SCORE_BOARD_HIDE:String = "ScoreBoardHide";
 		public static const SELECT_IS_TRUE:String = "SelectIsTrue";
 		public static const SELECT_IS_FALSE:String = "SelectIsFalse";
 		public static const SET_PLAYER_NAME:String = "SetPlayerName";

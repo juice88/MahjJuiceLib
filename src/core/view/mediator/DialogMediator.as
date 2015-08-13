@@ -9,7 +9,6 @@ package core.view.mediator
 	{
 		public var layer:String = "upper";
 		
-		
 		public function DialogMediator(mediatorName:String=null, viewComponent:Object=null)
 		{
 			super(mediatorName, viewComponent);
