@@ -50,6 +50,7 @@ package lobby.highScore.view.components
 		
 		protected function onCloseBtnClickHand(event:MouseEvent):void
 		{
+			removeBackground();
 			TweenLite.to(highScore, .3, {x:437, y:730, onComplete:closeScoreBoard});
 			SoundLib.getInstance().btnClickSound();
 		}

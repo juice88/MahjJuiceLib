@@ -69,6 +69,7 @@ package lobby.tutorial.view.components
 		
 		private function destroyPopup():void
 		{
+			removeBackground();
 			SoundLib.getInstance().btnClickSound();
 			_popupIsClose = true;
 			TweenLite.killTweensOf(_mouseHand);

@@ -63,6 +63,7 @@ package lobby.settings.view.components
 		
 		protected function onCloseBtnClickHand(event:MouseEvent):void
 		{
+			removeBackground();
 			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.SETTINGS_PANEL_CLOSE));
 		}

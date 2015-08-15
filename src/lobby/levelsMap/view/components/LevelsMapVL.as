@@ -83,7 +83,7 @@ package lobby.levelsMap.view.components
 				}
 				if (_currentLvl<_maxNumOfComplLvl+3)
 				{
-					lvlNumIcon.block.gotoAndStop(_show);
+					lvlNumIcon.lock.gotoAndStop(_show);
 				}
 				lvlNumIcon.lvlNum.text = _startLvlNumIcon++.toString();
 				((lvlsMap[_shablon+i]) as MovieClip).addChild(lvlNumIcon);

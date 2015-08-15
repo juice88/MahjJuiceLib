@@ -40,6 +40,7 @@ package lobby.levelsMap.view.components
 		
 		protected function onCloseBtnClickHand(event:MouseEvent):void
 		{
+			removeBackground();
 			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.LEVELS_CATEGORY_POPUP_CLOSE));
 		}

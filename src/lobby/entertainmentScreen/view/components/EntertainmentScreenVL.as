@@ -1,5 +1,6 @@
 package lobby.entertainmentScreen.view.components
 {
+	import core.utils.SoundLib;
 	import core.view.components.ViewLogic;
 	
 	import flash.display.MovieClip;
@@ -9,6 +10,7 @@ package lobby.entertainmentScreen.view.components
 		public function EntertainmentScreenVL()
 		{
 			super("EntertainmantScreen");
+			SoundLib.getInstance().playSound("EntertainmentSound", 0, 1, 1);
 		}
 		
 		public function get entScreen():MovieClip

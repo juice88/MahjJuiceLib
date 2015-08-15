@@ -3,7 +3,6 @@ package lobby.preloader.view.components
 	import core.utils.PreloaderComponent;
 	
 	import flash.display.DisplayObjectContainer;
-	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	
 	public class PreloaderVL extends Sprite

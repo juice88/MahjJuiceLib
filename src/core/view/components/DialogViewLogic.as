@@ -1,5 +1,8 @@
 package core.view.components
 {
+	import com.greensock.TweenLite;
+	import com.greensock.TweenNano;
+	
 	import core.config.GeneralEventsConst;
 	import core.config.Settings;
 	import core.utils.Warehouse;
@@ -23,6 +26,8 @@ package core.view.components
 			allContent = new Sprite();
 			this.displayObject = Warehouse.getInstance().getAsset(name);
 			addBackground();
+			_background.alpha = 0;
+			TweenLite.to(_background, 0.3, {alpha:1});
 			allContent.addChild(_background);
 			allContent.addChild(content);
 		}
@@ -42,8 +47,10 @@ package core.view.components
 		
 		public function removeBackground():void
 		{
+			TweenLite.to(_background, 0.3, {alpha:0, onComplete:removeBack});
+		}
+		private function removeBack():void{
 			allContent.removeChild(_background);
 		}
-		
 	}
 }
