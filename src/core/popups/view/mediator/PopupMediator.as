@@ -3,7 +3,7 @@ package core.popups.view.mediator
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
-	import core.model.dto.PopupConfDto;
+	import core.popups.model.dto.PopupConfDto;
 	import core.popups.view.component.PopupVievLogic;
 	
 	import flash.events.Event;

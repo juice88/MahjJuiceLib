@@ -5,7 +5,7 @@ package core.popups.view.component
 	
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
-	import core.model.dto.PopupConfDto;
+	import core.popups.model.dto.PopupConfDto;
 	import core.utils.SoundLib;
 	
 	import flash.display.MovieClip;

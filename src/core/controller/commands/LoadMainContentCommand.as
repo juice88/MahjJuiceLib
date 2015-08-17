@@ -23,7 +23,7 @@ package core.controller.commands
 			facade.registerProxy(new HighScoreProxy());
 			facade.registerMediator(new StartScreenMediator());
 			sendNotification(GeneralNotifications.POPUP_SHOW_ENTER_NAME);
-	//		facade.registerMediator(new HighScorePanelMediator());
+			//facade.registerMediator(new HighScorePanelMediator());
 		}
 	}
 }

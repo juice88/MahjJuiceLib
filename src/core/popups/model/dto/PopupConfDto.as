@@ -1,4 +1,4 @@
-package core.model.dto
+package core.popups.model.dto
 {
 	public class PopupConfDto extends Object
 	{

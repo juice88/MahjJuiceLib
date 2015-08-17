@@ -28,13 +28,13 @@ package core.sharedObject.model.proxy
 		override public function onRegister():void
 		{
 			sharedDto.continGameConfDto = new ContinGameConfDto();
+			sharedDto.sharedObject = SharedObject.getLocal(sharedDto.apName);
 		}
 		
 		public function setUserNameLevelEndScore(usDto:UserDto):void
 		{
 			sharedDto.continGameConfDto.userName = usDto.userName;
 			sharedDto.userName = usDto.userName;
-			sharedDto.sharedObject = SharedObject.getLocal(sharedDto.apName);
 			if(usDto.userScore == 0)
 			{
 				if(sharedDto.sharedObject.size == 0)
@@ -114,7 +114,6 @@ package core.sharedObject.model.proxy
 		
 		private function getUserNameAndScoreList():Array 
 		{	
-			sharedDto.sharedObject = SharedObject.getLocal(sharedDto.apName);
 			sharedDto.arrNamesAndScores = new Array();
 			for each(var obj:Object in sharedDto.sharedObject.data){
 				try {

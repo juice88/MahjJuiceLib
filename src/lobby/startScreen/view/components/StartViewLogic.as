@@ -1,7 +1,9 @@
 package lobby.startScreen.view.components
 {
 	import core.config.GeneralEventsConst;
+	import core.utils.MyButton;
 	import core.utils.SoundLib;
+	import core.utils.Warehouse;
 	import core.view.components.ViewLogic;
 	
 	import flash.display.MovieClip;
@@ -9,6 +11,7 @@ package lobby.startScreen.view.components
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.text.TextField;
 	
 	public class StartViewLogic extends ViewLogic
 	{
@@ -19,6 +22,8 @@ package lobby.startScreen.view.components
 		private var _choiseLvlBtn:SimpleButton;
 		private var _tutorialBtn:SimpleButton;
 		private var _scoreBoardBtn:SimpleButton;
+		private var _gameBtn:MyButton;
+		private var _gameIconMC:MovieClip;
 		
 		public function StartViewLogic()
 		{
@@ -45,6 +50,10 @@ package lobby.startScreen.view.components
 			_tutorialBtn.addEventListener(MouseEvent.CLICK, onTutorialaBtnClickHand);
 			_scoreBoardBtn = startContent["scoreBoardBtn"];
 			_scoreBoardBtn.addEventListener(MouseEvent.CLICK, onScoreBoardBtnClickHand);
+			_gameIconMC = Warehouse.getInstance().getAsset("gameBtn_0") as MovieClip;
+			_gameBtn = new MyButton(_gameIconMC, false);
+	//		(_gameIconMC["text_body"] as TextField).text = "БлаБла";
+			(startContent["game_icon_places_0"] as MovieClip).addChild(_gameIconMC);
 		}
 		
 		protected function onNewGameBtnClickHand(event:MouseEvent):void

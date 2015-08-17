@@ -2,7 +2,7 @@ package core.popups.controlles.commands
 {
 	import core.config.GeneralNotifications;
 	import core.config.PopupNames;
-	import core.model.dto.PopupConfDto;
+	import core.popups.model.dto.PopupConfDto;
 	import core.sharedObject.model.proxy.SharedObjProxy;
 	import core.popups.view.mediator.PopupMediator;
 	

@@ -3,7 +3,7 @@ package core.popups.controlles.commands
 	import core.config.GeneralNotifications;
 	import core.config.PopupNames;
 	import core.counters.model.proxy.CountersProxy;
-	import core.model.dto.PopupConfDto;
+	import core.popups.model.dto.PopupConfDto;
 	import core.popups.view.mediator.PopupMediator;
 	
 	import org.puremvc.as3.interfaces.INotification;

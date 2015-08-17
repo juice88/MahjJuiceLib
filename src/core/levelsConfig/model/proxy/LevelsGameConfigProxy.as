@@ -58,25 +58,28 @@ package core.levelsConfig.model.proxy
 		private function parseXMLConfFile(lvlsConfXML:XML):void
 		{
 			configDto.levelConfigList = new Vector.<LevelConfigDto>;
-			for (var i:int = 0; i<lvlsConfXML.children().length(); i++)
+			for (var i:int = 0; i<lvlsConfXML.game.length(); i++)
 			{
-				var levelConfigDto:LevelConfigDto = new LevelConfigDto();
-				var xmlObj:XML = lvlsConfXML.level[i];
-				levelConfigDto.elemNum = parseInt(xmlObj.elemNum.text(), 10);
-				levelConfigDto.framesBeginNum = parseInt(xmlObj.framesBeginNum.text(), 10);
-				levelConfigDto.framesNum = parseInt(xmlObj.framesNum.text(), 10);
-				levelConfigDto.nameOfGameField = xmlObj.nameOfGameField.text();
-				levelConfigDto.elemName = xmlObj.elemName.text();
-				levelConfigDto.openElemLimit = parseInt(xmlObj.openElemLimit.text(), 10);
-				levelConfigDto.showElemDelay = parseInt(xmlObj.showElemDelay.text(), 10);
-				levelConfigDto.minute = parseInt(xmlObj.minute.text(), 10);
-				levelConfigDto.second = parseInt(xmlObj.second.text(), 10);
-				levelConfigDto.scoreOneSel = parseInt(xmlObj.scoreOneSel.text(), 10);
-				levelConfigDto.scoreMoreSel = parseInt(xmlObj.scoreMoreSel.text(), 10);
-				levelConfigDto.scoreBonus = parseInt(xmlObj.scoreBonus.text(), 10);
-				levelConfigDto.numSelForScoreMoreSel = parseInt(xmlObj.numSelForScoreMoreSel.text(), 10);
-				
-				configDto.levelConfigList.push(levelConfigDto);
+				trace("кількість ігор - ",lvlsConfXML.*.length());
+				for (var j:int = 0; j<lvlsConfXML.game[i].level.length(); j++){
+					var levelConfigDto:LevelConfigDto = new LevelConfigDto();
+					var xmlObj:XML = lvlsConfXML.game[i].level[j];
+					levelConfigDto.elemNum = parseInt(xmlObj.elemNum.text(), 10);
+					levelConfigDto.framesBeginNum = parseInt(xmlObj.framesBeginNum.text(), 10);
+					levelConfigDto.framesNum = parseInt(xmlObj.framesNum.text(), 10);
+					levelConfigDto.nameOfGameField = xmlObj.nameOfGameField.text();
+					levelConfigDto.elemName = xmlObj.elemName.text();
+					levelConfigDto.openElemLimit = parseInt(xmlObj.openElemLimit.text(), 10);
+					levelConfigDto.showElemDelay = parseInt(xmlObj.showElemDelay.text(), 10);
+					levelConfigDto.minute = parseInt(xmlObj.minute.text(), 10);
+					levelConfigDto.second = parseInt(xmlObj.second.text(), 10);
+					levelConfigDto.scoreOneSel = parseInt(xmlObj.scoreOneSel.text(), 10);
+					levelConfigDto.scoreMoreSel = parseInt(xmlObj.scoreMoreSel.text(), 10);
+					levelConfigDto.scoreBonus = parseInt(xmlObj.scoreBonus.text(), 10);
+					levelConfigDto.numSelForScoreMoreSel = parseInt(xmlObj.numSelForScoreMoreSel.text(), 10);
+					
+					configDto.levelConfigList.push(levelConfigDto);
+				}
 			}
 		}
 		
