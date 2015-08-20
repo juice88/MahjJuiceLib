@@ -2,6 +2,7 @@ package core.levelsConfig.model.proxy
 {
 	import core.config.GeneralNotifications;
 	import core.levelsConfig.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.GameLevelsDtoArrDto;
 	import core.levelsConfig.model.dto.LevelConfigDto;
 	import core.sharedObject.model.dto.ContinGameConfDto;
 	
@@ -28,39 +29,20 @@ package core.levelsConfig.model.proxy
 		
 		public function newGame():void
 		{
-			configDto.levelNum = 1;
+			configDto.currentLvlNum = 1;
 		}
-		
-//		public function loadLevelsConfigFile():void
-//		{
-//			[Embed(source = "res/ConfigFile.xml", mimeType="application/octet-stream")] var ConfLvl:Class;
-//			configDto.configXml = new XML(new ConfLvl());
-//			parseXMLConfFile();
-//			configDto.loader = new URLLoader();
-//			configDto.request = new URLRequest("res/ConfigFile.xml");
-//			configDto.loader.load(configDto.request);
-//			configDto.loader.addEventListener(Event.COMPLETE, onLoad);
-//		}
-		
-//		protected function onLoad(event:Event):void
-//		{
-//			var loader:URLLoader = event.target as URLLoader; 
-//			if (loader != null) 
-//			{ 
-//				configDto.configXml = new XML(loader.data); 
-//			} 
-//			else 
-//			{ 
-//				trace("loader is not a URLLoader!"); 
-//			} 
-//		}
 		
 		private function parseXMLConfFile(lvlsConfXML:XML):void
 		{
-			configDto.levelConfigList = new Vector.<LevelConfigDto>;
+			trace("кількість ігор - ",lvlsConfXML.*.length());
+			configDto.gameTypeArrDto = new Vector.<GameLevelsDtoArrDto>;
+			configDto.totalNumOfGames = lvlsConfXML.game.length();
 			for (var i:int = 0; i<lvlsConfXML.game.length(); i++)
 			{
-				trace("кількість ігор - ",lvlsConfXML.*.length());
+				var gameLevelsDtoArrDto:GameLevelsDtoArrDto = new GameLevelsDtoArrDto();
+				gameLevelsDtoArrDto.levelsConfigDtoArr = new Vector.<LevelConfigDto>;
+				gameLevelsDtoArrDto.gameNumber = i;
+				gameLevelsDtoArrDto.gameName = lvlsConfXML.game[i].@NAME.toString();
 				for (var j:int = 0; j<lvlsConfXML.game[i].level.length(); j++){
 					var levelConfigDto:LevelConfigDto = new LevelConfigDto();
 					var xmlObj:XML = lvlsConfXML.game[i].level[j];
@@ -77,31 +59,56 @@ package core.levelsConfig.model.proxy
 					levelConfigDto.scoreMoreSel = parseInt(xmlObj.scoreMoreSel.text(), 10);
 					levelConfigDto.scoreBonus = parseInt(xmlObj.scoreBonus.text(), 10);
 					levelConfigDto.numSelForScoreMoreSel = parseInt(xmlObj.numSelForScoreMoreSel.text(), 10);
-					
-					configDto.levelConfigList.push(levelConfigDto);
+					gameLevelsDtoArrDto.levelsConfigDtoArr.push(levelConfigDto);
 				}
+				configDto.gameTypeArrDto.push(gameLevelsDtoArrDto);
 			}
+		}
+		
+		public function getTotalNumOfGames():int
+		{
+			return configDto.totalNumOfGames;
+		}
+		
+		public function setTypeOfGame(selectedGame:int):void
+		{
+			configDto.gameType = selectedGame;
 		}
 		
 		public function setLevelConfig():void
 		{
-			sendNotification(GeneralNotifications.SET_LEVEL_CONFIG, configDto.levelConfigList[configDto.levelNum-1]);
-			if (configDto.levelNum == configDto.levelConfigList.length)
+			sendNotification(GeneralNotifications.SET_LEVEL_CONFIG, configDto.gameTypeArrDto[configDto.gameType].levelsConfigDtoArr[configDto.currentLvlNum-1]);
+			if (configDto.currentLvlNum == configDto.gameTypeArrDto[configDto.gameType].levelsConfigDtoArr.length)
 			{
-				configDto.levelNum = 0;
+				configDto.currentLvlNum=0;
+				configDto.gameType++;
+				if (configDto.gameType == configDto.totalNumOfGames)
+				{
+					configDto.gameType = 0;
+				}
 			}
-			sendNotification(GeneralNotifications.SET_NUM_LEVEL, configDto.levelNum, configDto.levelConfigList.length.toString());
-			trace("Кількість левелів у грі", configDto.levelConfigList.length);
+			sendNotification(GeneralNotifications.SET_NUM_LEVEL, configDto.currentLvlNum, getTotalNumbersOfLevels().toString());
+			trace("Кількість левелів у грі", getTotalNumbersOfLevels());
+		}
+		
+		public function getTotalNumbersOfLevels():int
+		{
+			var totalNumbersOfLvl:int;
+			for (var i:int = 0; i<configDto.totalNumOfGames; i++)
+			{
+				totalNumbersOfLvl += configDto.gameTypeArrDto[i].levelsConfigDtoArr.length;
+			}
+			return totalNumbersOfLvl;
 		}
 		
 		public function addLevelNum():void
 		{
-			configDto.levelNum++;
+			configDto.currentLvlNum++;
 		}
 		
 		public function setLevelNum(lvlNum:int):void
 		{
-			configDto.levelNum = lvlNum;
+			configDto.currentLvlNum = lvlNum;
 		}
 	}
 }

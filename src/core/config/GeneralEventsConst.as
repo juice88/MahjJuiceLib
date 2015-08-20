@@ -9,10 +9,11 @@ package core.config
 		public static const BONUS_RESULT_OF_CHOISE:String = "ResultOfChoiseBonus";
 		public static const CHOISE_OF_LEVEL:String = "ChoiseOfLevel";
 		public static const CONTINUE_GAME:String = "ContinueGame"; //при натиснені кнопки на стартСкріні Continue game
-		public static const GO_TO_MENU:String = "GoToMenu";
 		public static const END_TURN:String = "EndTurn";
 		public static const ENTER_NAME_POPUP_CLOSE:String = "EnterNamePopupClose";
  		public static const FULL_SCREEN:String = "FullScreen";
+		public static const GAME_TYPE_SELECTED:String = "GameSelected";
+		public static const GO_TO_MENU:String = "GoToMenu";
 		public static const LEVELS_CATEGORY_POPUP_CLOSE:String = "LevelsCategoryPopupClose";
 		public static const LEVELS_MAP_CHOISE:String = "LevelsMapChoise";
 		public static const LEVELS_MAP_CLOSE:String = "LevelsMapClose";

@@ -19,6 +19,7 @@ package lobby.highScore.view.components
 		private var _myFriendsBtn:SimpleButton;
 		private var _friendsScorePanel:MyFriendsHighScorePanel;
 		private var _friendsScorePanelOnScene:Boolean;
+		private var _scoreBoard:MovieClip;
 		private var _n:String = "n";
 		private var _player:String = "player";
 		private var _score:String = "score";
@@ -40,6 +41,8 @@ package lobby.highScore.view.components
 			highScore.x = 437;
 			highScore.y = -456;
 			TweenLite.to(highScore, .7, {x:437, y:132});
+			_friendsScorePanel = new MyFriendsHighScorePanel();
+			_scoreBoard = highScore["scoreBoard"];
 			_closeBtn = highScore["closeBtn"];
 			_closeBtn.addEventListener(MouseEvent.CLICK, onCloseBtnClickHand);
 			_allPlayersBtn = highScore["allPlayersBtn"];
@@ -65,6 +68,7 @@ package lobby.highScore.view.components
 			SoundLib.getInstance().btnClickSound();
 			if (_friendsScorePanelOnScene == true)
 			{
+				_scoreBoard.visible = true;
 				highScore.removeChild(_friendsScorePanel.friendScore);
 				_friendsScorePanelOnScene = false;
 			}
@@ -72,9 +76,9 @@ package lobby.highScore.view.components
 		
 		protected function onMyFriendsBtnClickHand(event:MouseEvent):void
 		{
-			_friendsScorePanel = new MyFriendsHighScorePanel();
 			SoundLib.getInstance().btnClickSound();
 			_friendsScorePanelOnScene = true;
+			_scoreBoard.visible = false;
 			highScore.addChild(_friendsScorePanel.friendScore);
 		}
 		

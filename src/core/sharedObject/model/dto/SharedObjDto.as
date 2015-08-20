@@ -9,5 +9,6 @@ package core.sharedObject.model.dto
 		public var userName:String;
 		public var arrNamesAndScores:Array;
 		public var continGameConfDto:ContinGameConfDto;
+		public var gameType:String = "_game_";
 	}
 }

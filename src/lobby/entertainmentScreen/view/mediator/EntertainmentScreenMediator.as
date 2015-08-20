@@ -24,7 +24,7 @@ package lobby.entertainmentScreen.view.mediator
 		override public function onRegister():void
 		{
 			super.onRegister();
-			setTimeout(removeEntScreen, 8000);
+			setTimeout(removeEntScreen, 1000);
 		}
 		
 		private function removeEntScreen():void

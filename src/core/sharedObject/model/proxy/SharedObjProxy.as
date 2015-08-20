@@ -42,17 +42,27 @@ package core.sharedObject.model.proxy
 					sharedDto.sharedObject.data[sharedDto.userName] = new Object();
 					sharedDto.sharedObject.data.name = sharedDto.apName;
 					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
+					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
 					sharedDto.sharedObject.data[sharedDto.userName].score = 0;
-					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 0;
-					sharedDto.sharedObject.data[sharedDto.userName].maxLvl = 0;
+//					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 0;
+//					sharedDto.sharedObject.data[sharedDto.userName].maxLvl = 0;
+					sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType] = new Object();
+					sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].numLvl = 0;
+					sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].maxLvl = 0;
 				}
 				if (sharedDto.sharedObject.data[sharedDto.userName] == null)
 				{
 					sharedDto.sharedObject.data[sharedDto.userName] = new Object();
 					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
 					sharedDto.sharedObject.data[sharedDto.userName].score = 0;
-					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 0;
-					sharedDto.sharedObject.data[sharedDto.userName].maxLvl = 0;
+//					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 0;
+//					sharedDto.sharedObject.data[sharedDto.userName].maxLvl = 0;
+				}
+				if (sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType] == null)
+				{
+					sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType] = new Object();
+					sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].numLvl = 0;
+					sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].maxLvl = 0;
 				}
 				visibleContinueBtn();
 			}
@@ -64,7 +74,8 @@ package core.sharedObject.model.proxy
 					sharedDto.sharedObject.data.name = sharedDto.apName;
 					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
 					sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
-					sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
+				//	sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
+					sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].numLvl = usDto.numLevel;
 					setMaxContinueLvl();
 				}
 				if (sharedDto.sharedObject.data[sharedDto.userName] == null)
@@ -72,29 +83,35 @@ package core.sharedObject.model.proxy
 					sharedDto.sharedObject.data[sharedDto.userName] = new Object();
 					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
 					sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
-					sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
-					setMaxContinueLvl();
-				}
-				else 
-				{
+//					sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
+//					setMaxContinueLvl();
+				} else {
 					sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
-					sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
-					setMaxContinueLvl();
+					//sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
+					//setMaxContinueLvl();
 				}
+				sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].numLvl = usDto.numLevel;
+				setMaxContinueLvl();
 			}
 		}
+		
+		public function setGameType(gameType:int):void
+		{
+			sharedDto.gameType = "_game_" + gameType.toString();
+		}
+		
 		private function setMaxContinueLvl():void
 		{
-			if (sharedDto.sharedObject.data[sharedDto.userName].maxLvl < sharedDto.sharedObject.data[sharedDto.userName].numLvl)
+			if (sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].maxLvl < sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].numLvl)
 			{
-				sharedDto.sharedObject.data[sharedDto.userName].maxLvl = sharedDto.sharedObject.data[sharedDto.userName].numLvl;
+				sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].maxLvl = sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].numLvl;
 			}
-			trace("Останній завершений левел",sharedDto.sharedObject.data[sharedDto.userName].maxLvl);
+			trace("Останній завершений левел",sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].maxLvl);
 		}
 		
 		public function visibleContinueBtn():void
 		{
-			if (sharedDto.sharedObject.data[sharedDto.userName].maxLvl >= 1)
+			if (sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].maxLvl >= 1)
 			{
 				sendNotification(GeneralNotifications.CONTINUE_BTN_IS_VISIBLE);
 			}
@@ -108,7 +125,7 @@ package core.sharedObject.model.proxy
 		
 		private function setDataForContinueGame():void
 		{
-			sharedDto.continGameConfDto.numLvl = sharedDto.sharedObject.data[sharedDto.continGameConfDto.userName].numLvl;
+			sharedDto.continGameConfDto.numLvl = sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].numLvl;
 			sharedDto.continGameConfDto.userScore = sharedDto.sharedObject.data[sharedDto.continGameConfDto.userName].score;
 		}
 		
@@ -117,7 +134,11 @@ package core.sharedObject.model.proxy
 			sharedDto.arrNamesAndScores = new Array();
 			for each(var obj:Object in sharedDto.sharedObject.data){
 				try {
-					sharedDto.arrNamesAndScores.push({name:obj.name as String, score:obj.score as int, lvl:obj.maxLvl+1 as int});
+					if (obj.name as String)
+					{
+						var maxLvlNum:int =	getMaxLevelForName(obj.name as String);
+						sharedDto.arrNamesAndScores.push({name:obj.name as String, score:obj.score as int, lvl:maxLvlNum+1 as int});
+					}
 				}
 				catch (err:Error) {
 					//нічого не робити - попалось поле sharedDto.sharedObject.data.name
@@ -125,6 +146,11 @@ package core.sharedObject.model.proxy
 			}
 			sharedDto.arrNamesAndScores.sortOn("score", Array.DESCENDING | Array.NUMERIC); //Сортування масиву за спадданням очків
 			return sharedDto.arrNamesAndScores;
+		}
+		
+		private function getMaxLevelForName(name:String):int
+		{
+			return sharedDto.sharedObject.data[name+sharedDto.gameType].maxLvl;
 		}
 		
 		public function highScoreUpdate(maxLvlNum:int):void //походу тут лажа...!!!! звернути увагу
@@ -135,12 +161,12 @@ package core.sharedObject.model.proxy
 		
 		public function getFinishedLvlNum():int
 		{
-			return sharedDto.sharedObject.data[sharedDto.userName].numLvl;
+			return sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].numLvl;
 		}
 		
 		public function getMaxNumOfComplLvl():int
 		{
-			return sharedDto.sharedObject.data[sharedDto.userName].maxLvl;
+			return sharedDto.sharedObject.data[sharedDto.userName+sharedDto.gameType].maxLvl;
 		}
 		
 		public function getScoreForChoiseLvl():ContinGameConfDto

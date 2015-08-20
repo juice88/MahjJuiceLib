@@ -74,10 +74,13 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.DIALOG_OPEN, DialogOpenCommand);
 			facade.registerCommand(GeneralNotifications.END_TURN, EndTurnCommand);
 			facade.registerCommand(GeneralNotifications.ENTERTAINMENT_SCREEN_SHOW, EntertainmentScreenShowCommand);
+			facade.registerCommand(GeneralNotifications.GAME_TYPE_SELECTED, GameTypeSelectedCommand);
 			facade.registerCommand(GeneralNotifications.HIGH_SCORE_UPDATE, HighScoreUpdateCommand);
 			facade.registerCommand(GeneralNotifications.LEVELS_MAP_CHOISE, LevelsMapChoiseCommand);
 			facade.registerCommand(GeneralNotifications.LEVELS_MAP_CLOSE, LevelsMapCloseCommand);
 			facade.registerCommand(GeneralNotifications.LEVELS_MAP_SHOW, LevelsMapShowCommand);
+			facade.registerCommand(GeneralNotifications.LOAD_URL_REQUEST, LoadUrlRequestCommand);
+			facade.registerCommand(GeneralNotifications.LOAD_MAIN_CONTENT, LoadMainContentCommand);
 			facade.registerCommand(GeneralNotifications.NEXT_LEVEL, NextLevelCommand);
 			facade.registerCommand(GeneralNotifications.NUMBER_OF_MOVES, NumberOfMovesSendCommand);
 			facade.registerCommand(GeneralNotifications.ON_OPEN_ELEMENT, OpenedElementCommand);
@@ -109,8 +112,6 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.POPUP_SHOW_WIN, PopupShowWinCommand);
 			facade.registerCommand(GeneralNotifications.POPUP_SHOW_GAME_OVER, PopupShowGameOverCommand);
 			
-			facade.registerCommand(GeneralNotifications.LOAD_URL_REQUEST, LoadUrlRequestCommand);
-			facade.registerCommand(GeneralNotifications.LOAD_MAIN_CONTENT, LoadMainContentCommand);
 		}
 	}
 }

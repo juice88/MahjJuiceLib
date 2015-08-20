@@ -16,6 +16,7 @@ package core.config
 		public static const END_TURN:String = "end_turn"; //Нотіф про закінчення вибору елементів
 		public static const ENTERTAINMENT_SCREEN_SHOW:String = "entertainment_screen_show";
 		public static const FULL_SCREEN:String = "full_screen";
+		public static const GAME_TYPE_SELECTED:String = "game_type_selected";
 		public static const HIGH_SCORE_SEND:String = "high_score_send";
 		public static const HIGH_SCORE_UPDATE:String = "high_score_update";
 		public static const LEVELS_MAP_CHOISE:String = "levels_map_choise";

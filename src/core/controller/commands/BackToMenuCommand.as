@@ -1,7 +1,8 @@
 package core.controller.commands
 {
-	import core.sharedObject.model.proxy.SharedObjProxy;
 	import core.counters.model.proxy.CountersProxy;
+	import core.levelsConfig.model.proxy.LevelsGameConfigProxy;
+	import core.sharedObject.model.proxy.SharedObjProxy;
 	
 	import gamePlay.level1.model.proxy.LevelProxy;
 	import gamePlay.level1.view.mediator.LevelMediator;
@@ -23,7 +24,8 @@ package core.controller.commands
 			facade.removeMediator(BotPanelMediator.NAME);
 			facade.removeProxy(LevelProxy.NAME);
 			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).backToMenu();
-			facade.registerMediator(new StartScreenMediator());
+			var totalNumOfGames:int = (facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).getTotalNumOfGames();
+			facade.registerMediator(new StartScreenMediator(totalNumOfGames));
 			(facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).visibleContinueBtn();
 		}
 	}

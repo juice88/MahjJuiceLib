@@ -5,9 +5,11 @@ package core.levelsConfig.model.dto
 
 	public class ConfigDto extends Object
 	{
-		public var levelNum:int;
-		public var levelConfigList:Vector.<LevelConfigDto>;
-		
+		public var totalNumOfGames:int;//загальна кількість ігор
+		public var gameType:int = 1; //номер поточної гри
+		public var currentLvlNum:int;
+		public var gameTypeArrDto:Vector.<GameLevelsDtoArrDto>;
+	
 		// загрузка XML файла
 //		public var loader:URLLoader;
 //		public var request:URLRequest;

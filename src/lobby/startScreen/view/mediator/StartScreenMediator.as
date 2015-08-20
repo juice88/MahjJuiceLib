@@ -1,6 +1,7 @@
 package lobby.startScreen.view.mediator
 {
 	
+	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
 	import core.view.mediator.UIMediator;
@@ -15,9 +16,9 @@ package lobby.startScreen.view.mediator
 	{
 		public static const NAME:String = "StartMediator";
 		
-		public function StartScreenMediator()
+		public function StartScreenMediator(totalNumOfGames:int)
 		{
-			super(NAME, new StartViewLogic());
+			super(NAME, new StartViewLogic(totalNumOfGames));
 		}
 		
 		private function get startScreen():StartViewLogic
@@ -33,6 +34,7 @@ package lobby.startScreen.view.mediator
 			startScreen.addEventListener(GeneralEventsConst.CHOISE_OF_LEVEL, onChoiseOfLevelHand);
 			startScreen.addEventListener(GeneralEventsConst.TUTORIAL_SHOW, onShowTutorialPopup);
 			startScreen.addEventListener(GeneralEventsConst.SCORE_BOARD_SHOW, onScoreBoardShowHand);
+			startScreen.addEventListener(GeneralEventsConst.GAME_TYPE_SELECTED, onGameSelectedHand);
 		}
 		
 		override public function onRemoveListeners():void
@@ -43,6 +45,12 @@ package lobby.startScreen.view.mediator
 			startScreen.removeEventListener(GeneralEventsConst.CHOISE_OF_LEVEL, onChoiseOfLevelHand);
 			startScreen.removeEventListener(GeneralEventsConst.TUTORIAL_SHOW, onShowTutorialPopup);
 			startScreen.removeEventListener(GeneralEventsConst.SCORE_BOARD_SHOW, onScoreBoardShowHand);
+			startScreen.removeEventListener(GeneralEventsConst.GAME_TYPE_SELECTED, onGameSelectedHand);
+		}
+		
+		protected function onGameSelectedHand(event:GameEvent):void
+		{
+			sendNotification(GeneralNotifications.GAME_TYPE_SELECTED, event.params as int);
 		}
 		
 		protected function onStartGameHand(event:Event):void

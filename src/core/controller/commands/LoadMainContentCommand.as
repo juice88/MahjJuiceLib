@@ -21,7 +21,8 @@ package core.controller.commands
 			facade.registerProxy(new QueueDialogProxy());
 			facade.registerProxy(new CountersProxy());
 			facade.registerProxy(new HighScoreProxy());
-			facade.registerMediator(new StartScreenMediator());
+			var totalNumOfGames:int = (facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).getTotalNumOfGames();
+			facade.registerMediator(new StartScreenMediator(totalNumOfGames));
 			sendNotification(GeneralNotifications.POPUP_SHOW_ENTER_NAME);
 			//facade.registerMediator(new HighScorePanelMediator());
 		}

@@ -1,11 +1,13 @@
 package lobby.startScreen.view.components
 {
+	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
 	import core.utils.MyButton;
 	import core.utils.SoundLib;
 	import core.utils.Warehouse;
 	import core.view.components.ViewLogic;
 	
+	import flash.display.Graphics;
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.display.Sprite;
@@ -15,6 +17,7 @@ package lobby.startScreen.view.components
 	
 	public class StartViewLogic extends ViewLogic
 	{
+		private var _totalNumOfGame:int;
 		private var _btnPanel:MovieClip;
 		private var _newGameBtn:SimpleButton;
 		private var _continueGameBtn:SimpleButton;
@@ -22,12 +25,14 @@ package lobby.startScreen.view.components
 		private var _choiseLvlBtn:SimpleButton;
 		private var _tutorialBtn:SimpleButton;
 		private var _scoreBoardBtn:SimpleButton;
-		private var _gameBtn:MyButton;
-		private var _gameIconMC:MovieClip;
 		
-		public function StartViewLogic()
+		private var _gameBtnsBG:Sprite;
+		private var _gameBtnsArr:Array;
+		
+		public function StartViewLogic(totalNumOfGames:int)
 		{
 			super("StartScreen");
+			_totalNumOfGame = totalNumOfGames;
 			startUpScreenLoad();
 		}
 		private function get startContent():Sprite{
@@ -50,10 +55,46 @@ package lobby.startScreen.view.components
 			_tutorialBtn.addEventListener(MouseEvent.CLICK, onTutorialaBtnClickHand);
 			_scoreBoardBtn = startContent["scoreBoardBtn"];
 			_scoreBoardBtn.addEventListener(MouseEvent.CLICK, onScoreBoardBtnClickHand);
-			_gameIconMC = Warehouse.getInstance().getAsset("gameBtn_0") as MovieClip;
-			_gameBtn = new MyButton(_gameIconMC, false);
+			drawButtonsBackgraund();
+			addGamesButtons();
+		}
+		
+		private function drawButtonsBackgraund():void
+		{
+			_gameBtnsBG = new Sprite();
+			var graf:Graphics = _gameBtnsBG.graphics;
+			graf.beginFill(0xFF0000, 0.3);
+			if (_totalNumOfGame<=4)
+			{
+				graf.drawRect(0,150,1280,320);
+			} else {
+				graf.drawRect(0,150,((250*_totalNumOfGame)+56*(_totalNumOfGame+1)),320);
+			}
+			graf.endFill();
+			startContent.addChild(_gameBtnsBG);
+		}
+		
+		private function addGamesButtons():void
+		{
+			_gameBtnsArr = new Array();
+			for (var i:int = 0; i<_totalNumOfGame; i++)
+			{
+				var _gameIconMC:MovieClip = Warehouse.getInstance().getAsset("gameBtn_"+i) as MovieClip;
+				var _gameBtn:MyButton = new MyButton(_gameIconMC, false);
+				_gameIconMC.x = 50+((50+_gameIconMC.width)*i);
+				_gameIconMC.y = 200;
+				_gameBtnsBG.addChild(_gameIconMC);
+				_gameBtn.addEventListener(MouseEvent.CLICK, selectedGameTypeHand);
+				_gameBtnsArr.push(_gameBtn);
+			}
 	//		(_gameIconMC["text_body"] as TextField).text = "БлаБла";
-			(startContent["game_icon_places_0"] as MovieClip).addChild(_gameIconMC);
+			//_gameIconMC.addEventListener(MouseEvent.CLICK, 
+		}
+		
+		protected function selectedGameTypeHand(event:Event):void
+		{
+			var gameNum:int= int((event.target as MyButton).buttonText.substr(4))-1;   
+			dispatchEvent(new GameEvent(GeneralEventsConst.GAME_TYPE_SELECTED, gameNum));
 		}
 		
 		protected function onNewGameBtnClickHand(event:MouseEvent):void
