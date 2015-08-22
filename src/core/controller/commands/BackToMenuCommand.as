@@ -24,7 +24,7 @@ package core.controller.commands
 			facade.removeMediator(BotPanelMediator.NAME);
 			facade.removeProxy(LevelProxy.NAME);
 			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).backToMenu();
-			var totalNumOfGames:int = (facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).getTotalNumOfGames();
+			var totalNumOfGames:int = (facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).getTotalNumOfGamesType();
 			facade.registerMediator(new StartScreenMediator(totalNumOfGames));
 			(facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).visibleContinueBtn();
 		}

@@ -133,9 +133,9 @@ package lobby.startScreen.view.components
 			dispatchEvent(new Event(GeneralEventsConst.SCORE_BOARD_SHOW));
 		}
 		
-		public function continueGameBtnIsVis():void
+		public function continueGameBtnIsVis(visible:Boolean):void
 		{
-			_continueGameBtn.visible = true;
+			_continueGameBtn.visible = visible;
 		}
 	}
 }

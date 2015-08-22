@@ -43,7 +43,7 @@ package lobby.highScore.view.mediator
 		
 		protected function onScoreBoardHideHand(event:Event):void
 		{
-			facade.removeMediator(HighScorePanelMediator.NAME);			
+			sendNotification(GeneralNotifications.REMOVE_POPUP, NAME);
 		}
 		
 		override public function listNotificationInterests():Array

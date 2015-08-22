@@ -93,7 +93,7 @@ package lobby.startScreen.view.mediator
 			switch (notification.getName())
 			{
 				case GeneralNotifications.CONTINUE_BTN_IS_VISIBLE:
-					startScreen.continueGameBtnIsVis();
+					startScreen.continueGameBtnIsVis(notification.getBody() as Boolean);
 					break;
 			}
 		}

@@ -7,8 +7,10 @@ package core.sharedObject.model.dto
 		public var sharedObject:SharedObject;
 		public var apName:String = "Mahjjuice_game";
 		public var userName:String;
-		public var arrNamesAndScores:Array;
+		public var arrNamesScoresAndMaxComplLvl:Array;
 		public var continGameConfDto:ContinGameConfDto;
-		public var gameType:String = "_game_";
+		public var gameType:int=0;
+		public var userDataDto:UserDataDto;
+		public var userDataString:String;
 	}
 }

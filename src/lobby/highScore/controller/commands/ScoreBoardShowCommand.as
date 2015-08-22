@@ -11,9 +11,8 @@ package lobby.highScore.controller.commands
 	{
 		override public function execute(notification:INotification):void
 		{
-//			var highScorePanel:HighScorePanelMediator = new HighScorePanelMediator();
-//			sendNotification(GeneralNotifications.DIALOG_LOAD_TO_QUEUE, highScorePanel);
-			facade.registerMediator(new HighScorePanelMediator());
+			var highScorePanel:HighScorePanelMediator = new HighScorePanelMediator();
+			sendNotification(GeneralNotifications.DIALOG_LOAD_TO_QUEUE, highScorePanel);
 		}
 	}
 }

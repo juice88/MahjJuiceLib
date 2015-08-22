@@ -65,33 +65,38 @@ package core.levelsConfig.model.proxy
 			}
 		}
 		
-		public function getTotalNumOfGames():int
+		public function getTotalNumOfGamesType():int
 		{
 			return configDto.totalNumOfGames;
 		}
 		
+		public function getCurrentGameType():int
+		{
+			return configDto.currentGameType;
+		}
+		
 		public function setTypeOfGame(selectedGame:int):void
 		{
-			configDto.gameType = selectedGame;
+			configDto.currentGameType = selectedGame;
 		}
 		
 		public function setLevelConfig():void
 		{
-			sendNotification(GeneralNotifications.SET_LEVEL_CONFIG, configDto.gameTypeArrDto[configDto.gameType].levelsConfigDtoArr[configDto.currentLvlNum-1]);
-			if (configDto.currentLvlNum == configDto.gameTypeArrDto[configDto.gameType].levelsConfigDtoArr.length)
+			sendNotification(GeneralNotifications.SET_LEVEL_CONFIG, configDto.gameTypeArrDto[configDto.currentGameType].levelsConfigDtoArr[configDto.currentLvlNum-1]);
+			if (configDto.currentLvlNum == configDto.gameTypeArrDto[configDto.currentGameType].levelsConfigDtoArr.length)
 			{
 				configDto.currentLvlNum=0;
-				configDto.gameType++;
-				if (configDto.gameType == configDto.totalNumOfGames)
+				configDto.currentGameType++;
+				if (configDto.currentGameType == configDto.totalNumOfGames)
 				{
-					configDto.gameType = 0;
+					configDto.currentGameType = 0;
 				}
 			}
-			sendNotification(GeneralNotifications.SET_NUM_LEVEL, configDto.currentLvlNum, getTotalNumbersOfLevels().toString());
-			trace("Кількість левелів у грі", getTotalNumbersOfLevels());
+			sendNotification(GeneralNotifications.SET_NUM_LEVEL, configDto.currentLvlNum, getTotalNumOfLevels().toString());
+			trace("Кількість левелів у грі", getTotalNumOfLevels());
 		}
 		
-		public function getTotalNumbersOfLevels():int
+		public function getTotalNumOfLevels():int
 		{
 			var totalNumbersOfLvl:int;
 			for (var i:int = 0; i<configDto.totalNumOfGames; i++)

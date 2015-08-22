@@ -5,5 +5,6 @@ package lobby.highScore.model.dto
 		public var userName:String;
 		public var userScore:int;
 		public var numLevel:int; //левел, який гравець ще не пройшов
+		public var currentGameType:int;
 	}
 }
