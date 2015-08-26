@@ -11,7 +11,7 @@ package core.config
 		public static var BACKGROUND_RECT_HEIGHT:int;
 		public static var BACKGROUND_RECT_WIDTH:int;
 		
-		public static var user:String = "admin";
+		public static var user:String = "noadmin"; //admin
 		
 	}
 }

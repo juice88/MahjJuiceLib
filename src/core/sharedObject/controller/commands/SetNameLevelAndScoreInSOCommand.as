@@ -1,7 +1,6 @@
 package core.sharedObject.controller.commands
 {
 	import core.levelsConfig.model.proxy.LevelsGameConfigProxy;
-	import core.sharedObject.model.dto.UserDataDto;
 	import core.sharedObject.model.proxy.SharedObjProxy;
 	
 	import lobby.highScore.model.dto.UserDto;
@@ -14,8 +13,6 @@ package core.sharedObject.controller.commands
 		override public function execute(notification:INotification):void
 		{
 			var totalNumOfGames:int = (facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).getTotalNumOfGamesType();
-			var currentGameType:int = (facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).getCurrentGameType();
-			(notification.getBody() as UserDto).currentGameType = currentGameType;
 			(facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).setUserNameLevelEndScore(notification.getBody() as UserDto, totalNumOfGames.toString());
 		}
 	}

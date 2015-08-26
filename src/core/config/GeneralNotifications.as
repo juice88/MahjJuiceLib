@@ -48,7 +48,8 @@ package core.config
 		public static const SET_CONF_TO_CONTINUE_GAME:String = "set_conf_to_continue_game"; //нотіф з налаштуваннями левела для продовження гри
 		public static const SET_LEVEL_CONFIG:String = "set_level_config";
 		public static const SET_NAME_LEVEL_AND_SCORE_IN_SO:String = "set_name_and_score_in_so";
-		public static const SET_NUM_LEVEL:String = "set_num_level";
+		public static const SET_NUMBER_OF_LEVEL_IN_HIGH_SCORE_PROXY:String = "set_number_of_level_in_high_score_proxy";
+		public static const SET_NUMBER_OF_LEVEL_IN_TOP_PANEL:String = "set_number_of_level_in_top_panel";
 		public static const SET_PLAYER_NAME:String = "set_player_name"; //нотіфом пересилається в highScore проксі введене ім"я гравця
 		public static const SET_PLAYER_SCORE:String = "set_player_score"; //нотіфом пересилається в highScore проксі score гравця
 		public static const SETTINGS_PANEL_OPEN:String = "settings_panel_open";

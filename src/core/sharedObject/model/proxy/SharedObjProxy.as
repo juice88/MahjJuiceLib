@@ -98,7 +98,7 @@ package core.sharedObject.model.proxy
 					sharedDto.userDataString = JSON.stringify(sharedDto.userDataDto);
 					sharedDto.sharedObject.data[sharedDto.userName].json = sharedDto.userDataString;
 				} else {
-					var parsingUserData:UserDataDto = parsingJSONObj();
+					var parsingUserData:UserDataDto = parsingUserDataJSONObj();
 					sharedDto.userDataDto.name = sharedDto.userName;
 					sharedDto.userDataDto.score = usDto.userScore;
 					sharedDto.userDataDto.currentLvlForGameType = parsingUserData.currentLvlForGameType;
@@ -118,7 +118,7 @@ package core.sharedObject.model.proxy
 			}
 		}
 		
-		private function parsingJSONObj():UserDataDto
+		private function parsingUserDataJSONObj():UserDataDto
 		{
 			var userData:UserDataDto = new UserDataDto();
 			userData.currentLvlForGameType = new Array();
@@ -139,7 +139,7 @@ package core.sharedObject.model.proxy
 		
 		private function checkMaxContinueLvl(currentLvl:int):Boolean
 		{
-			var parsingUserData:UserDataDto = parsingJSONObj();
+			var parsingUserData:UserDataDto = parsingUserDataJSONObj();
 			if (parsingUserData.maxLvlForGameType[sharedDto.gameType] < currentLvl)
 			{
 				return true;
@@ -149,7 +149,7 @@ package core.sharedObject.model.proxy
 		
 		public function visibleContinueBtn():void
 		{
-			var parsingUserData:UserDataDto = parsingJSONObj();
+			var parsingUserData:UserDataDto = parsingUserDataJSONObj();
 			if (parsingUserData.maxLvlForGameType[sharedDto.gameType]>=1)
 			{
 				sendNotification(GeneralNotifications.CONTINUE_BTN_IS_VISIBLE, true);
@@ -166,7 +166,7 @@ package core.sharedObject.model.proxy
 		
 		private function setDataForContinueGame():void
 		{
-			var parsingUserData:UserDataDto = parsingJSONObj();
+			var parsingUserData:UserDataDto = parsingUserDataJSONObj();
 			sharedDto.continGameConfDto.numLvl = parsingUserData.currentLvlForGameType[sharedDto.gameType];
 			sharedDto.continGameConfDto.userScore = parsingUserData.score;
 		}
@@ -208,26 +208,21 @@ package core.sharedObject.model.proxy
 			return totalLvlCopml;
 		}
 		
-		private function getMaxLevelForName(name:String):int
-		{
-			return sharedDto.sharedObject.data[name+sharedDto.gameType].maxLvl;
-		}
-		
-		public function highScoreUpdate(maxLvlNum:int):void //походу тут лажа...!!!! звернути увагу
+		public function highScoreUpdate(totalNumOfLvls:int):void //походу тут лажа...!!!! звернути увагу що maxLvlNum береться з LevelsGameConfigProxy.getTotalNumOfLevels() та тут проходить лише транзитом
 		{
 			var arrData:Array = getUserNameAndScoreList();
-			sendNotification(GeneralNotifications.HIGH_SCORE_SEND, arrData, maxLvlNum.toString(10));
+			sendNotification(GeneralNotifications.HIGH_SCORE_SEND, arrData, totalNumOfLvls.toString(10));
 		}
 		
 		public function getFinishedLvlNum():int
 		{
-			var parsingUserData:UserDataDto = parsingJSONObj();
+			var parsingUserData:UserDataDto = parsingUserDataJSONObj();
 			return parsingUserData.currentLvlForGameType[sharedDto.gameType];
 		}
 		
 		public function getMaxNumOfComplLvl():int
 		{
-			var parsingUserData:UserDataDto = parsingJSONObj();
+			var parsingUserData:UserDataDto = parsingUserDataJSONObj();
 			return parsingUserData.maxLvlForGameType[sharedDto.gameType];
 		}
 		

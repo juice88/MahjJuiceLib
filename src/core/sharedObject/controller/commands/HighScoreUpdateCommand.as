@@ -10,8 +10,8 @@ package core.sharedObject.controller.commands
 	{
 		override public function execute(notification:INotification):void
 		{
-			var maxLvlNum:int = (facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).getTotalNumOfLevels();
-			(facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).highScoreUpdate(maxLvlNum);
+			var totalNumOfLvls:int = (facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).getTotalNumOfLevels();
+			(facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).highScoreUpdate(totalNumOfLvls);
 		}
 	}
 }

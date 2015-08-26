@@ -21,8 +21,8 @@ package core.sharedObject.controller.commands
 			facade.registerMediator(new TopPanelMediator());
 			facade.registerMediator(new BotPanelMediator());
 			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).continueGame(notification.getBody() as ContinGameConfDto);
-			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelNum(((notification.getBody() as ContinGameConfDto).numLvl + 1) as int);
-			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelConfig();
+			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelNum(((notification.getBody() as ContinGameConfDto).numLvl+1) as int);
+			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).continueGame();
 		}
 	}
 }

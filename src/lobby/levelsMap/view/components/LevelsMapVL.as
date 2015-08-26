@@ -48,12 +48,12 @@ package lobby.levelsMap.view.components
 			}
 			else if (_btnClickNum == 2)
 			{
-				_startLvlNumIcon = 29;
+				_startLvlNumIcon = 28;
 				_nameCategory = "MIDDLE LEVELS";
 			}
 			else if (_btnClickNum == 3)
 			{
-				_startLvlNumIcon = 59;
+				_startLvlNumIcon = 58;
 				_nameCategory = "HIGH LEVELS";
 			}
 			_currentLvl+=_startLvlNumIcon;
@@ -77,11 +77,15 @@ package lobby.levelsMap.view.components
 			{
 				_currentLvl++;
 				var lvlNumIcon:MovieClip = new LvlNumIcon();
+				if (_currentLvl-1 == _finishedLvlNum && _currentLvl-1==_maxNumOfComplLvl )
+				{
+					lvlNumIcon.currentLvl.gotoAndStop(_show);
+				}
 				if (_currentLvl == _finishedLvlNum+2)
 				{
 					lvlNumIcon.currentLvl.gotoAndStop(_show);
 				}
-				if (_currentLvl<_maxNumOfComplLvl+3)
+				if (_currentLvl<_maxNumOfComplLvl+2)
 				{
 					lvlNumIcon.lock.gotoAndStop(_show);
 				}

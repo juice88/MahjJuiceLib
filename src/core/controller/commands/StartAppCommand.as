@@ -6,7 +6,7 @@ package core.controller.commands
 	import core.counters.controller.commands.PauseContinueGameCommand;
 	import core.counters.controller.commands.StartTimerCommand;
 	import core.levelsConfig.controller.commands.SetLevelConfigCommand;
-	import core.levelsConfig.controller.commands.SetNumLevelCommand;
+	import core.levelsConfig.controller.commands.SetNumberOfLevelInHighScoreProxyCommand;
 	import core.popups.controlles.commands.PopupShowBonusCommand;
 	import core.popups.controlles.commands.PopupShowCheckUserNameExistCommand;
 	import core.popups.controlles.commands.PopupShowConfirmToExitCommand;
@@ -95,7 +95,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.SET_CONF_TO_CONTINUE_GAME, SetConfToContinGameCommand);
 			facade.registerCommand(GeneralNotifications.SET_LEVEL_CONFIG, SetLevelConfigCommand);
 			facade.registerCommand(GeneralNotifications.SET_NAME_LEVEL_AND_SCORE_IN_SO, SetNameLevelAndScoreInSOCommand);
-			facade.registerCommand(GeneralNotifications.SET_NUM_LEVEL, SetNumLevelCommand);
+			facade.registerCommand(GeneralNotifications.SET_NUMBER_OF_LEVEL_IN_HIGH_SCORE_PROXY, SetNumberOfLevelInHighScoreProxyCommand);
 			facade.registerCommand(GeneralNotifications.SET_PLAYER_NAME, SetPlayerNameCommand);
 			facade.registerCommand(GeneralNotifications.SET_PLAYER_SCORE, SetPlayerScoreCommand);
 			facade.registerCommand(GeneralNotifications.SETTINGS_PANEL_OPEN, SettingsPanelOpenCommand);

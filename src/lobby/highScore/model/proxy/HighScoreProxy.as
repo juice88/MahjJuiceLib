@@ -1,7 +1,7 @@
 package lobby.highScore.model.proxy
 {
-	import core.sharedObject.model.proxy.SharedObjProxy;
 	import core.config.GeneralNotifications;
+	import core.sharedObject.model.proxy.SharedObjProxy;
 	
 	import lobby.highScore.model.dto.HighScoreDto;
 	import lobby.highScore.model.dto.UserDto;
@@ -41,9 +41,10 @@ package lobby.highScore.model.proxy
 			sendNotification(GeneralNotifications.SET_NAME_LEVEL_AND_SCORE_IN_SO, highScoreDto.userDto);
 		}
 		
-		public function setNumLevel(numLevel:int):void
+		public function setNumLevel(numLevel:int, currentGameType:String):void
 		{
 			highScoreDto.userDto.numLevel = numLevel;
+			highScoreDto.userDto.currentGameType = parseInt(currentGameType);
 		}
 		
 		public function setUserScore(usScore:uint):void

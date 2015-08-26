@@ -103,12 +103,12 @@ package lobby.topMenu.view.components
 			_scoreTf.text = String(_scoreArr[0]);
 		}
 		
-		public function lvlsCountUpdate(lvlsNum:int, totalLvlsNum:String):void
+		public function lvlsCountUpdate(lvlNum:int, totalLvlsNum:String):void
 		{
 			_lvlsTf = topPanel.lvlsTf;
-			if (lvlsNum!=0)
+			if (lvlNum!=0)
 			{
-				_lvlsTf.text = String(lvlsNum)+"/"+totalLvlsNum;
+				_lvlsTf.text = String(lvlNum)+"/"+totalLvlsNum;
 			}
 			else
 			{

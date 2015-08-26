@@ -52,7 +52,7 @@ package lobby.topMenu.view.mediator
 		override public function listNotificationInterests():Array{
 			return [GeneralNotifications.MOVES_COUTNER_UPDATED,
 					GeneralNotifications.SCORE_COUTNER_UPDATED,
-					GeneralNotifications.SET_NUM_LEVEL];
+					GeneralNotifications.SET_NUMBER_OF_LEVEL_IN_TOP_PANEL];
 		}
 		override public function handleNotification(notification:INotification):void
 		{
@@ -64,7 +64,7 @@ package lobby.topMenu.view.mediator
 				case GeneralNotifications.SCORE_COUTNER_UPDATED:
 					topPanel.scoreCounterUpdate(notification.getBody() as uint);
 					break;
-				case GeneralNotifications.SET_NUM_LEVEL:
+				case GeneralNotifications.SET_NUMBER_OF_LEVEL_IN_TOP_PANEL:
 					topPanel.lvlsCountUpdate(notification.getBody() as int, notification.getType());
 			}
 		}

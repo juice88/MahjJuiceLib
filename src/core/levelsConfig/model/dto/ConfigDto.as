@@ -5,8 +5,8 @@ package core.levelsConfig.model.dto
 
 	public class ConfigDto extends Object
 	{
-		public var totalNumOfGames:int;//загальна кількість ігор
-		public var currentGameType:int = 1; //номер поточної гри
+		public var totalNumOfGamesType:int;//загальна кількість ігор
+		public var currentGameType:int = 0; //номер поточної гри
 		public var currentLvlNum:int;
 		public var gameTypeArrDto:Vector.<GameLevelsDtoArrDto>;
 	
