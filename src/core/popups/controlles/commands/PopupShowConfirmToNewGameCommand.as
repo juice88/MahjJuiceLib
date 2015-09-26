@@ -14,7 +14,7 @@ package core.popups.controlles.commands
 		override public function execute(notification:INotification):void
 		{
 			var maxNumLvl:int = (facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).getMaxNumOfComplLvl();
-			if (maxNumLvl>1)
+			if (maxNumLvl>0)
 			{
 				var popupDto:PopupConfDto = new PopupConfDto();
 				popupDto.xBtnShow = true;

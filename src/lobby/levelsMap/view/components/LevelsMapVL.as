@@ -77,15 +77,15 @@ package lobby.levelsMap.view.components
 			{
 				_currentLvl++;
 				var lvlNumIcon:MovieClip = new LvlNumIcon();
-				if (_currentLvl-1 == _finishedLvlNum && _currentLvl-1==_maxNumOfComplLvl )
-				{
-					lvlNumIcon.currentLvl.gotoAndStop(_show);
-				}
+//				if (_currentLvl-1 == _finishedLvlNum && _currentLvl-1==_maxNumOfComplLvl )
+//				{
+//					lvlNumIcon.currentLvl.gotoAndStop(_show);
+//				}
 				if (_currentLvl == _finishedLvlNum+2)
 				{
 					lvlNumIcon.currentLvl.gotoAndStop(_show);
 				}
-				if (_currentLvl<_maxNumOfComplLvl+2)
+				if (_currentLvl<_maxNumOfComplLvl+3)
 				{
 					lvlNumIcon.lock.gotoAndStop(_show);
 				}

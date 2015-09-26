@@ -15,17 +15,17 @@ package core.utils
 		static protected const LABEL_ROLL_OUT:String="out";
 		static protected const LABEL_DISABLE:String="disable";
 		
-		private var _content:MovieClip;
+		public var content:MovieClip;
 		private var _hit_zone:SimpleButton;
 		private var _is_disabled:Boolean;
 		private var _new_text:String=null;
 		
-		public function MyButton(content:MovieClip, is_disabled:Boolean=false, text:String=null){
-			init(content, is_disabled, text);
+		public function MyButton(cont:MovieClip, is_disabled:Boolean=false, text:String=null){
+			init(cont, is_disabled, text);
 			_is_disabled ? disable() : setListeners();
 		}
-		private function init(content:MovieClip, is_disabled:Boolean, text:String):void{
-			_content=content;
+		private function init(cont:MovieClip, is_disabled:Boolean, text:String):void{
+			content=cont;
 			_new_text=text;
 			_is_disabled=is_disabled;
 			_hit_zone=getHitZone();
@@ -45,13 +45,13 @@ package core.utils
 			_hit_zone.removeEventListener(MouseEvent.CLICK, mouseClickHandler);
 		}
 		private function setButtonText(newText:String):void{
-			(_content.getChildByName("text") as TextField).text=newText;
+			(content.getChildByName("text") as TextField).text=newText;
 		}
 		public function get buttonText():String{
-			return (_content.getChildByName("text") as TextField).text as String;
+			return (content.getChildByName("text") as TextField).text as String;
 		}
 		private function getHitZone():SimpleButton{
-			return _content.getChildByName("hit") as SimpleButton;
+			return content.getChildByName("hit") as SimpleButton;
 		}
 		private function mouseOverHandler(event:MouseEvent):void{
 			updateState(LABEL_ROLL_OVER);
@@ -70,8 +70,8 @@ package core.utils
 			dispatchEvent(event);
 		}
 		private function updateState(frame_name:String):void{
-			_content.gotoAndPlay(frame_name);
-			_new_text!=null ? (_content.getChildByName("text") as TextField).text=_new_text : null;
+			content.gotoAndPlay(frame_name);
+			_new_text!=null ? (content.getChildByName("text") as TextField).text=_new_text : null;
 		}
 		public function disable(is_disabled:Boolean=true):void{
 			switch (is_disabled){
