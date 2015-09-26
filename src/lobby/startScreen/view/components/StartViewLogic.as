@@ -1,5 +1,8 @@
 package lobby.startScreen.view.components
 {
+	import com.greensock.TweenLite;
+	import com.greensock.easing.Expo;
+	
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
 	import core.utils.MyButton;
@@ -25,7 +28,8 @@ package lobby.startScreen.view.components
 		private var _choiseLvlBtn:SimpleButton;
 		private var _tutorialBtn:SimpleButton;
 		private var _scoreBoardBtn:SimpleButton;
-		
+		private var _scrollBackBtn:SimpleButton;
+		private var _scrollNextBtn:SimpleButton;
 		private var _gameBtnsBG:Sprite;
 		private var _gameBtnsArr:Array;
 		
@@ -33,13 +37,13 @@ package lobby.startScreen.view.components
 		{
 			super("StartScreen");
 			_totalNumOfGame = totalNumOfGames;
-			startUpScreenLoad();
+			initStartScreen();
 		}
 		private function get startContent():Sprite{
 			return content as Sprite;
 		}
 		
-		private function startUpScreenLoad():void
+		private function initStartScreen():void
 		{
 			_btnPanel = startContent["btnPanel"];
 			_newGameBtn = _btnPanel["newGameBtn"];
@@ -55,6 +59,8 @@ package lobby.startScreen.view.components
 			_tutorialBtn.addEventListener(MouseEvent.CLICK, onTutorialaBtnClickHand);
 			_scoreBoardBtn = startContent["scoreBoardBtn"];
 			_scoreBoardBtn.addEventListener(MouseEvent.CLICK, onScoreBoardBtnClickHand);
+			_scrollBackBtn = Warehouse.getInstance().getAsset("ScrollBackBtn") as SimpleButton;
+			_scrollNextBtn = Warehouse.getInstance().getAsset("ScrollNextBtn") as SimpleButton;
 			drawButtonsBackgraund();
 			addGamesButtons();
 		}
@@ -63,7 +69,7 @@ package lobby.startScreen.view.components
 		{
 			_gameBtnsBG = new Sprite();
 			var graf:Graphics = _gameBtnsBG.graphics;
-			graf.beginFill(0xFF0000, 0.3);
+			graf.beginFill(0xFF0000, 0);
 			if (_totalNumOfGame<=4)
 			{
 				graf.drawRect(0,150,1280,320);
@@ -72,6 +78,52 @@ package lobby.startScreen.view.components
 			}
 			graf.endFill();
 			startContent.addChild(_gameBtnsBG);
+			if (_totalNumOfGame>4) 
+			{
+				addScrollingBtns();
+			}
+		}
+		
+		private function addScrollingBtns():void
+		{
+			_scrollBackBtn.x = 0;
+			_scrollBackBtn.y = 220;
+			_scrollNextBtn.x = 1230;
+			_scrollNextBtn.y = 220;
+			startContent.addChild(_scrollBackBtn);
+			_scrollBackBtn.addEventListener(MouseEvent.CLICK, onScrollBackBtnClickHand);
+			startContent.addChild(_scrollNextBtn);
+			_scrollNextBtn.addEventListener(MouseEvent.CLICK, onScrollNextBtnClickHand);
+		}
+		
+		protected function onScrollBackBtnClickHand(event:MouseEvent):void
+		{
+			if (_gameBtnsBG.x < 0)
+			{
+				_scrollBackBtn.removeEventListener(MouseEvent.CLICK, onScrollBackBtnClickHand);
+				TweenLite.to(_gameBtnsBG, 0.7, {x:_gameBtnsBG.x + 300, onComplete:moveBackIsComplete});
+				TweenLite.to(_btnPanel, 0.7, {x:_btnPanel.x + 300});
+			}
+		}
+		
+		protected function onScrollNextBtnClickHand(event:MouseEvent):void
+		{
+			if (_gameBtnsBG.x >= 0)
+			{
+				_scrollNextBtn.removeEventListener(MouseEvent.CLICK, onScrollNextBtnClickHand);
+				TweenLite.to(_gameBtnsBG, 0.7, {x:_gameBtnsBG.x - 300, onComplete:moveNextIsComplete});
+				TweenLite.to(_btnPanel, 0.7, {x:_btnPanel.x - 300});
+			}
+		}
+		
+		private function moveBackIsComplete():void
+		{
+			_scrollBackBtn.addEventListener(MouseEvent.CLICK, onScrollBackBtnClickHand);
+		}
+		
+		private function moveNextIsComplete():void
+		{
+			_scrollNextBtn.addEventListener(MouseEvent.CLICK, onScrollNextBtnClickHand);
 		}
 		
 		private function addGamesButtons():void
@@ -87,14 +139,20 @@ package lobby.startScreen.view.components
 				_gameBtn.addEventListener(MouseEvent.CLICK, selectedGameTypeHand);
 				_gameBtnsArr.push(_gameBtn);
 			}
+			positionBtnPanel((_gameBtnsArr[0] as MyButton).content);
 	//		(_gameIconMC["text_body"] as TextField).text = "БлаБла";
-			//_gameIconMC.addEventListener(MouseEvent.CLICK, 
+		}
+		
+		private function positionBtnPanel(gameBtnIcon:MovieClip):void
+		{
+			TweenLite.to(_btnPanel, 0.5, {x:gameBtnIcon.x+50 + _gameBtnsBG.x, y:480, ease:Expo.easeOut});
 		}
 		
 		protected function selectedGameTypeHand(event:Event):void
 		{
 			var gameNum:int= int((event.target as MyButton).buttonText.substr(4))-1;   
 			dispatchEvent(new GameEvent(GeneralEventsConst.GAME_TYPE_SELECTED, gameNum));
+			positionBtnPanel((event.target as MyButton).content);
 		}
 		
 		protected function onNewGameBtnClickHand(event:MouseEvent):void
